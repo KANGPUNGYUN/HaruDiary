@@ -1,7 +1,7 @@
 import "./reset.css";
 import "./globals.css";
 import type { Metadata } from "next";
-import Image from "next/image";
+import Navigation from "./components/navigation";
 
 export const metadata: Metadata = {
   title: "하루쓰기 | Home",
@@ -15,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <Navigation />
+        {children}
+      </body>
     </html>
   );
 }

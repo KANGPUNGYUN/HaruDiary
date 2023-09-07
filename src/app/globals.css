@@ -1,5 +1,113 @@
-@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Noto+Sans+KR:wght@100&display=swap");
 
 :root {
-  font-family: "Gowun Batang", serif;
+  font-family: "Gowun Batang", serif, "Noto Sans KR", sans-serif;
+  --white: #fff;
+}
+
+body {
+  padding-top: 60px;
+}
+
+.p-navbar {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid transparent;
+  background-color: var(--white);
+  left: 0;
+  transition: background-color 0.2s ease;
+}
+
+.p-container {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+.p-container > .p-container__inner {
+  width: 92%;
+}
+
+.p-container__inner {
+  margin: 0 auto;
+}
+
+.p-navbar__inner-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.p-navbar__logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.p-navbar__logo-container > a {
+  width: 124px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.p-navbar__logo-container > a > h1 {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.p-navbar-tabmenu-ul {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+  align-items: center;
+}
+
+main {
+  height: 100%;
+}
+
+.loginBtn {
+  display: inline-block;
+  margin: 0 0 0 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  font: "Noto Sans KR";
+  font-size: 14px;
+  line-height: 18px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: auto;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 16px;
+  font-weight: 400;
+  box-sizing: border-box;
+  text-align: center;
+  color: #ffffff;
+  background-color: #62d9fc;
+  outline: none;
+  overflow: hidden;
 }
