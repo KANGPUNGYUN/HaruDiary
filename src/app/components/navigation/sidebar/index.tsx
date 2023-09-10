@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,19 +12,41 @@ export default function Sidebar({
   isOpen: boolean;
   toggle: () => void;
 }): JSX.Element {
+  let outside = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let handler = (e: any) => {
+      if (!outside.current?.contains(e.target)) {
+        toggle(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
   return (
     <>
       <div
         className="m-sidebar-outer"
         style={{
-          display: `${isOpen ? "block" : "none"}`,
+          overflow: `${isOpen ? "visible" : "hidden"}`,
           opacity: `${isOpen ? "1" : "0"}`,
-          top: ` ${isOpen ? "0" : "-100%"}`,
+          right: ` ${isOpen ? "0" : "-100%"}`,
+          transition: ` ${isOpen ? "" : "0.3s ease"}`,
         }}
       >
-        <div className="m-sidebar">
+        <div
+          className={`m-sidebar ${isOpen ? "active" : "inactive"}`}
+          ref={outside}
+        >
           <div className="m-sidebar-top">
-            <Logo />
+            <div className="m-sidebar-logo-wrapper" onClick={toggle}>
+              <Logo />
+            </div>
             <button className="m-sidebar-tabmenu" onClick={toggle}>
               <FontAwesomeIcon
                 icon={faXmark}
@@ -34,12 +57,12 @@ export default function Sidebar({
           <Button />
           <hr className="m-sidebar-tabmenu-hr" />
           <ul className="m-sidebar-tabmenu-ul">
-            <li className="m-sidebar-tabmenu-item">
+            <li className="m-sidebar-tabmenu-item" onClick={toggle}>
               <Link href="/about">
                 <div>소개</div>
               </Link>
             </li>
-            <li className="m-sidebar-tabmenu-item">
+            <li className="m-sidebar-tabmenu-item" onClick={toggle}>
               <Link href="/contacts">
                 <div>문의/제안</div>
               </Link>

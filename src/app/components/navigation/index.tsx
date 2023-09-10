@@ -5,9 +5,10 @@ import Sidebar from "./sidebar";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => {
+  function toggle() {
     setIsOpen(!isOpen);
-  };
+  }
+
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
