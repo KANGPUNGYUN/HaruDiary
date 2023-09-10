@@ -16,7 +16,7 @@ export default function Sidebar({
 
   useEffect(() => {
     let handler = (e: any) => {
-      if (!outside.current?.contains(e.target)) {
+      if (!outside.current?.contains(e.target) && isOpen) {
         toggle(false);
       }
     };
