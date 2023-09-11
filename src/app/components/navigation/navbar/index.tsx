@@ -19,7 +19,9 @@ export default function Navbar({ toggle }: { toggle: () => void }) {
                 <Link href="/contacts">문의/제안</Link>
               </li>
               <li className="p-navbar-tabmenu-item-login">
-                <Button />
+                <Link href="/sign_in">
+                  <Button />
+                </Link>
               </li>
             </ul>
             <button className="m-navbar-tabmenu" onClick={toggle}>

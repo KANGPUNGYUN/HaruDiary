@@ -54,7 +54,9 @@ export default function Sidebar({
               />
             </button>
           </div>
-          <Button />
+          <Link href="/sign_in">
+            <Button />
+          </Link>
           <hr className="m-sidebar-tabmenu-hr" />
           <ul className="m-sidebar-tabmenu-ul">
             <li className="m-sidebar-tabmenu-item" onClick={toggle}>

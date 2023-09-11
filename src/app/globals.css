@@ -119,7 +119,7 @@ a {
   background-color: rgba(2, 32, 71, 0.05);
 }
 
-.p-navbar-tabmenu-item-login > button {
+.p-navbar-tabmenu-item-login > a > button {
   display: inline-block;
   margin: 0 0 0 10px;
   padding: 0;
@@ -153,7 +153,7 @@ a {
   overflow: hidden;
 }
 
-.p-navbar-tabmenu-item-login > button:hover {
+.p-navbar-tabmenu-item-login > a > button:hover {
   background-color: #009fce;
 }
 
@@ -199,7 +199,7 @@ a {
   justify-content: space-between;
 }
 
-.m-sidebar > button {
+.m-sidebar > a > button {
   display: inline-block;
   margin: 20px 0px 10px;
   padding: 0;
@@ -233,7 +233,7 @@ a {
   overflow: hidden;
 }
 
-.m-sidebar > button:hover {
+.m-sidebar > a > button:hover {
   background-color: #009fce;
 }
 
@@ -277,7 +277,7 @@ a {
   height: 100%;
   line-height: 1;
 }
-/** footer styling  */
+/** component: footer  */
 
 .p-footer {
   font: 1.2rem "Noto Sans KR";
@@ -336,4 +336,117 @@ a {
 
 .p-footer__copyright {
   text-align: center;
+}
+
+/* page: sign_in */
+
+.p-signin-main {
+  font-family: "Noto Sans KR";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  justify-content: center;
+  min-height: 100%;
+  background-color: #fafafa;
+}
+
+.p-signin-container {
+  display: flex;
+  width: 100%;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+
+.p-signin-container__inner {
+  flex: 1 0 auto;
+  margin: 0 auto;
+  max-width: 300px;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 40px 0;
+}
+
+.p-signin-container-logo {
+  margin-bottom: 30px;
+  font-family: "Gowun Batang";
+}
+
+.p-signin-form {
+  width: 300px;
+}
+
+.p-signin-form-input-outer {
+  position: relative;
+}
+
+.p-signin-form-input-outer input {
+  position: relative;
+  display: block;
+  width: 268px;
+  padding: 13px 15px 14px;
+  -webkit-transition: 0.2s box-shadow, 0.2s background-color;
+  transition: 0.2s box-shadow, 0.2s background-color;
+  border: 1px solid #dbdbdb;
+}
+
+.p-signin-form-input-id {
+  border-radius: 4px 4px 0 0;
+}
+.p-signin-form-input-pw {
+  margin-top: -1px;
+  border-radius: 0 0 4px 4px;
+}
+
+.p-signin-form-input-login > button {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: "Noto Sans KR";
+  font-size: 14px;
+  line-height: 18px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 16px;
+  font-weight: 400;
+  box-sizing: border-box;
+  text-align: center;
+  color: #ffffff;
+  background-color: #62d9fc;
+  outline: none;
+  overflow: hidden;
+}
+
+.p-signin-form-input-login > button:hover {
+  background-color: #009fce;
+}
+
+.p-signin-form__section {
+  width: 100%;
+  text-align: center;
+}
+
+.p-signin-form__section > a:last-of-type {
+  margin-left: 20px;
 }
