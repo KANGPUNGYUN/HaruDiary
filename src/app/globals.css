@@ -339,7 +339,9 @@ a {
 }
 
 /* page: sign_in */
-
+.p-signin-main__outer {
+  height: calc(100vh - 60px);
+}
 .p-signin-main {
   font-family: "Noto Sans KR";
   display: flex;
@@ -370,7 +372,7 @@ a {
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 40px 0;
+  padding: 0px 0 30px;
 }
 
 .p-signin-container-logo {
@@ -382,11 +384,11 @@ a {
   width: 300px;
 }
 
-.p-signin-form-input-outer {
+.p-signin-form-input__outer {
   position: relative;
 }
 
-.p-signin-form-input-outer input {
+.p-signin-form-input__outer input {
   position: relative;
   display: block;
   width: 268px;
@@ -394,6 +396,11 @@ a {
   -webkit-transition: 0.2s box-shadow, 0.2s background-color;
   transition: 0.2s box-shadow, 0.2s background-color;
   border: 1px solid #dbdbdb;
+  color: black;
+}
+
+.p-signin-form-input__outer input::placeholder {
+  color: #dbdbdb;
 }
 
 .p-signin-form-input-id {
@@ -445,8 +452,49 @@ a {
 .p-signin-form__section {
   width: 100%;
   text-align: center;
+  font-size: 15px;
+  font-weight: 900;
 }
 
 .p-signin-form__section > a:last-of-type {
   margin-left: 20px;
+}
+
+.p-signin-sns-signin {
+  width: 100%;
+  margin-top: 30px;
+  border-top: 1px solid #dbdbdb;
+  text-align: center;
+}
+
+.p-signin-sns-signin__text {
+  margin: 15px 0 15px;
+  color: #757575;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.33;
+  text-align: center;
+}
+
+.p-signin-sns-signin-button {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  padding: 0;
+  margin: 0 10px;
+  border-radius: 50%;
+  background-color: #f9fafb;
+  overflow: hidden;
+  position: relative;
+}
+
+.p-signin-sns-signin-button img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.p-signin-sns-signin-button:hover {
+  opacity: 0.6;
 }
