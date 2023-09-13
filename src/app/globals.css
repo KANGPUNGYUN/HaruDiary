@@ -511,12 +511,13 @@ a {
 /* page: sign_up */
 
 .p-signup-main__outer {
-  height: calc(100vh - 60px);
+  height: calc(100% - 60px);
 }
 
 .p-signup-main {
-  width: 360px;
+  width: 380px;
   margin: 0px auto;
+  padding: 0 10px 60px;
 }
 
 .p-signup-h2 {
@@ -573,7 +574,7 @@ a {
   border: 1px solid #dbdbdb;
   background-color: #fff;
   color: #424242;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .form-control-blind {
@@ -596,10 +597,17 @@ a {
   color: #dbdbdb;
 }
 
+.webkit-none {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 .email-input__domain__expand {
   position: absolute;
   top: 10px;
   right: 10px;
+  bottom: 10px;
+  left: 150px;
   padding: 5px;
   background: none;
   border: none;
@@ -620,6 +628,265 @@ a {
   padding: 0px;
   background: rgb(247, 248, 250);
   color: rgb(194, 200, 204);
+  line-height: 20px;
+  font-size: 17px;
+  min-height: 50px;
+  box-sizing: border-box;
+  border: 1px solid rgb(218, 220, 224);
+  user-select: none;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.1s, background-color 0.1s, border-color 0.1s;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.p-signup-form-description {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #828c94;
+  letter-spacing: -0.3px;
+}
+
+.p-signup-form-password-input,
+.p-signup-form-confirm-password-input,
+.p-signup-form-nickname-input {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  padding: 8px 15px 9px;
+  border: 1px solid #dbdbdb;
+  background-color: #fff;
+  color: #000;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 15px;
+  line-height: 21px;
+  transition: border-color 0.1s, background-color 0.1s;
+  resize: none;
+}
+
+.p-signup-form-password-input__outer,
+.p-signup-form-confirm-password-input__outer,
+.p-signup-form-nickname-input__outer,
+.p-signup-form-ToS-input__outer {
+  margin-bottom: 30px;
+}
+
+.p-signup-form-ToS-container {
+  padding: 18px;
+  border: 1px solid #eaedef;
+}
+
+.p-signup-form-ToS-agreeAll-label__outer,
+.p-signup-form-ToS-agree1-label__outer,
+.p-signup-form-ToS-agree2-label__outer,
+.p-signup-form-ToS-agree3-label__outer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.p-signup-form-ToS-agree2-label__outer,
+.p-signup-form-ToS-agree3-label__outer {
+  margin-top: 20px;
+}
+
+.p-signup-form-ToS-agree2-label__outer > a,
+.p-signup-form-ToS-agree3-label__outer > a {
+  padding-left: 8px;
+  width: 18px;
+}
+
+.p-signup-form-ToS-agreeAll-label,
+.p-signup-form-ToS-agree1-label,
+.p-signup-form-ToS-agree2-label,
+.p-signup-form-ToS-agree3-label {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.p-signup-form-ToS-agreeAll-input__outer,
+.p-signup-form-ToS-agree1-input__outer,
+.p-signup-form-ToS-agree2-input__outer,
+.p-signup-form-ToS-agree3-input__outer {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 1px solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border-color: #dadde0;
+  background-color: #ffffff;
+  -webkit-transition: border-color 0.1s, background-color 0.1s;
+  transition: border-color 0.1s, background-color 0.1s;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.p-signup-form-ToS-agreeAll-input__outer .active,
+.p-signup-form-ToS-agree1-input__outer .active,
+.p-signup-form-ToS-agree2-input__outer .active,
+.p-signup-form-ToS-agree3-input__outer .active {
+  border: 1px solid rgb(53, 197, 240);
+  background-color: rgb(53, 197, 240);
+  transition: border-color 0.1s ease 0s, background-color 0.1s ease 0s;
+}
+
+.p-signup-form-ToS-agreeAll-checkbox,
+.p-signup-form-ToS-agree1-checkbox,
+.p-signup-form-ToS-agree2-checkbox,
+.p-signup-form-ToS-agree3-checkbox {
+  position: absolute;
+  overflow: hidden;
+  top: 3.6px;
+  left: 3px;
+  width: 0px;
+  height: 12px;
+  -webkit-transition: width 0.2s 0.1s;
+  transition: width 0.2s 0.1s;
+}
+
+.p-signup-form-ToS-agreeAll-check,
+.p-signup-form-ToS-agree1-check,
+.p-signup-form-ToS-agree2-check,
+.p-signup-form-ToS-agree3-check {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  vertical-align: top;
+  color: #ffffff;
+}
+
+.p-signup-form-ToS-agreeAll-check::before,
+.p-signup-form-ToS-agree1-check::before,
+.p-signup-form-ToS-agree2-check::before,
+.p-signup-form-ToS-agree3-check::before {
+  content: "\e958";
+  vertical-align: top;
+}
+
+.p-signup-form-ToS-agreeAll-input,
+.p-signup-form-ToS-agree1-input,
+.p-signup-form-ToS-agree2-input,
+.p-signup-form-ToS-agree3-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+
+.p-signup-form-ToS-agreeAll-title__outer,
+.p-signup-form-ToS-agree1-title__outer,
+.p-signup-form-ToS-agree2-title__outer,
+.p-signup-form-ToS-agree3-title__outer {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: 6px;
+  color: #2f3438;
+}
+
+.p-signup-form-ToS-agreeAll-title,
+.p-signup-form-ToS-agree1-title,
+.p-signup-form-ToS-agree2-title,
+.p-signup-form-ToS-agree3-title {
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: text-top;
+}
+
+.p-signup-form-ToS-agreeAll-title {
+  font-weight: 700;
+}
+
+.p-signup-form-ToS-agree1-title::after,
+.p-signup-form-ToS-agree2-title::after,
+.p-signup-form-ToS-agree3-title::after {
+  content: "(필수)";
+  display: inline-block;
+  padding-left: 2px;
+  font-size: 12px;
+  line-height: 20px;
+  color: #009fce;
+}
+
+.p-signup-form-ToS-container-hr {
+  margin: 0;
+  padding: 0;
+  height: 1px;
   border: none;
-  outline: none;
+  background-color: #eaedef;
+  margin: 18px 0;
+}
+
+.p-signup-form-submit-button {
+  width: 100%;
+  height: 50px;
+  font-size: 17px;
+  line-height: 26px;
+  background-color: #62d9fc;
+  border-color: #62d9fc;
+  color: #fff;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: inline-block;
+  margin: 0;
+  padding: 11px 10px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.1s, background-color 0.1s, border-color 0.1s;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.p-signup-signin-link {
+  color: #424242;
+  font-size: 15px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.p-signup-signin-link > a {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  font-weight: bold;
+  display: inline-block;
+  padding-left: 10px;
 }
