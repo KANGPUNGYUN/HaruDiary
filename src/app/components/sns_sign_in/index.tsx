@@ -1,0 +1,53 @@
+import Image from "next/image";
+import Link from "next/link";
+
+export default function SnsSignIn() {
+  return (
+    <>
+      <div className="p-signin-sns-signin__text">
+        SNS계정으로 간편 로그인/회원가입
+      </div>
+      <ul className="p-signin-sns-list">
+        <li
+          className="p-signin-sns-list-item"
+          style={{ backgroundColor: "#fee500" }}
+        >
+          <Link href="/">
+            <Image
+              src="/kakao_logo.svg"
+              alt="하루쓰기 홈으로 이동하기"
+              width="25"
+              height="23"
+            />
+          </Link>
+        </li>
+        <li
+          className="p-signin-sns-list-item"
+          style={{ backgroundColor: "#03c75a" }}
+        >
+          <Link href="/">
+            <Image
+              src="/naver_logo.svg"
+              alt="하루쓰기 홈으로 이동하기"
+              width="48"
+              height="48"
+            />
+          </Link>
+        </li>
+        <li
+          className="p-signin-sns-list-item"
+          style={{ backgroundColor: "var(--white)" }}
+        >
+          <Link href="/">
+            <Image
+              src="/google_logo.svg"
+              alt="하루쓰기 홈으로 이동하기"
+              width="64"
+              height="64"
+            />
+          </Link>
+        </li>
+      </ul>
+    </>
+  );
+}

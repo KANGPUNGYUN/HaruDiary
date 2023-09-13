@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Noto+Sans+KR:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Noto+Sans+KR&display=swap");
 
 :root {
-  font-family: "Gowun Batang", serif, "Noto Sans KR", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   --white: #fff;
   --grey400: #b0b8c1;
   --grey500: #8b95a1;
@@ -76,6 +76,7 @@ a {
 .p-navbar__logo__text {
   font-size: 20px;
   font-weight: 900;
+  font-family: "Gowun Batang";
 }
 
 .p-navbar-tabmenu-ul {
@@ -107,6 +108,10 @@ a {
   }
 }
 
+.p-navbar-tabmenu-item {
+  font-family: "Gowun Batang";
+}
+
 .p-navbar-tabmenu-item > a {
   font-size: 15px;
   padding: 6px 10px;
@@ -125,7 +130,6 @@ a {
   padding: 0;
   border: none;
   background: none;
-  font: "Noto Sans KR";
   font-size: 14px;
   line-height: 18px;
   display: -webkit-inline-box;
@@ -246,6 +250,7 @@ a {
 }
 
 .m-sidebar-tabmenu-item {
+  font-family: "Gowun Batang";
   margin: 4px 0px 0px;
   padding: 0px;
   font-size: 14px;
@@ -343,7 +348,6 @@ a {
   height: calc(100vh - 60px);
 }
 .p-signin-main {
-  font-family: "Noto Sans KR";
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -377,7 +381,6 @@ a {
 
 .p-signin-container-logo {
   margin-bottom: 30px;
-  font-family: "Gowun Batang";
 }
 
 .p-signin-form {
@@ -476,25 +479,147 @@ a {
   text-align: center;
 }
 
-.p-signin-sns-signin-button {
+.p-signin-sns-list {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.p-signin-sns-list-item {
+  margin: 0px 10px;
   width: 48px;
   height: 48px;
   border: 0;
   padding: 0;
-  margin: 0 10px;
   border-radius: 50%;
   background-color: #f9fafb;
   overflow: hidden;
   position: relative;
 }
 
-.p-signin-sns-signin-button img {
+.p-signin-sns-list-item img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.p-signin-sns-signin-button:hover {
+.p-signin-sns-list-item:hover {
   opacity: 0.6;
+}
+
+/* page: sign_up */
+
+.p-signup-main__outer {
+  height: calc(100vh - 60px);
+}
+
+.p-signup-main {
+  width: 360px;
+  margin: 0px auto;
+}
+
+.p-signup-h2 {
+  padding: 30px 0;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.p-signup-form {
+  margin: 30px 0px;
+  padding-top: 30px;
+  border-top: 1px solid rgb(237, 237, 237);
+}
+
+.p-signup-form-label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  color: rgb(47, 52, 56);
+  letter-spacing: -0.3px;
+  word-break: keep-all;
+}
+
+.p-signup-form-email-input__inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.p-signup-form-email-input__local,
+.p-signup-form-email-input__domain {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 0px;
+  -moz-box-flex: 1;
+  -moz-flex: 1 1 0px;
+  -ms-flex: 1 1 0px;
+  flex: 1 1 0px;
+}
+
+.form-control {
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+  display: block;
+  box-sizing: border-box;
+  height: 40px;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 40px;
+  border-radius: 4px;
+  border: 1px solid #dbdbdb;
+  background-color: #fff;
+  color: #424242;
+  font-size: 12px;
+}
+
+.form-control-blind {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+}
+
+.email-input__separator {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 20px;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 20px;
+  -ms-flex: 0 0 20px;
+  flex: 0 0 20px;
+  text-align: center;
+  line-height: 35px;
+  color: #dbdbdb;
+}
+
+.email-input__domain__expand {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  background: none;
+  border: none;
+  font-size: 0;
+  cursor: default;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.p-signup-form-email-button__outer {
+  margin-bottom: 30px;
+  padding-top: 2px;
+}
+
+.p-signup-form-email-button {
+  margin-top: 10px;
+  width: 100%;
+  height: 45px;
+  padding: 0px;
+  background: rgb(247, 248, 250);
+  color: rgb(194, 200, 204);
+  border: none;
+  outline: none;
 }

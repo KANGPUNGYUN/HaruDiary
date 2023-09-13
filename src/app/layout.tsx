@@ -19,9 +19,9 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <body>
-        {pathname !== "/sign_in" && <Navigation />}
+        {pathname !== "/sign_in" && pathname !== "/sign_up" && <Navigation />}
         {children}
-        {pathname !== "/sign_in" && <Footer />}
+        {pathname !== "/sign_in" && pathname !== "/sign_up" && <Footer />}
       </body>
     </html>
   );
