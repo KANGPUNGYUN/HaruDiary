@@ -6,7 +6,7 @@ import { faCaretDown, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const metadata: Metadata = {
-  title: "하루쓰기 | Sign UP",
+  title: "하루쓰기 | Sign Up",
   description: "당신의 하루를 작성하세요",
 };
 

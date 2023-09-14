@@ -343,6 +343,93 @@ a {
   text-align: center;
 }
 
+/* page: contacts */
+.p-contact-main {
+  width: 100vw;
+  min-height: calc(100vh - 352px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-contact-main__inner {
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.p-contact-title {
+  font-family: "Gowun Batang";
+  color: #009fce;
+  font-size: 1.5rem;
+}
+
+.p-contact-email__outer {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.p-contact-email {
+  font-size: 1.125rem;
+}
+
+.p-contact-email-copy-button {
+  position: relative;
+  background-color: #414a55;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 50%;
+  opacity: 0.6;
+  transition: all 0.1s ease;
+}
+
+.p-contact-email-copy-button:hover {
+  opacity: 1;
+}
+
+.p-contact-email-copy-button-text {
+  width: 55px;
+  position: absolute;
+  top: 30px;
+  left: -28px;
+  background: #373737;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  opacity: 0;
+}
+
+.p-contact-email-copy-button-text.appear {
+  animation: appear 1s ease;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /* page: sign_in */
 .p-signin-main__outer {
   height: calc(100vh - 60px);
