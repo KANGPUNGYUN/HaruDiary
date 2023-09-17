@@ -501,10 +501,10 @@ a {
   border-radius: 0 0 4px 4px;
 }
 
-.p-signin-form-input-login > button {
+.p-signin-form-input-login {
   display: inline-block;
   margin: 20px 0;
-  padding: 0;
+  padding: 15px 10px;
   border: none;
   background: none;
   font: "Noto Sans KR";
@@ -525,7 +525,6 @@ a {
   width: 100%;
   height: 40px;
   border-radius: 4px;
-  padding: 0 16px;
   font-weight: 400;
   box-sizing: border-box;
   text-align: center;
@@ -976,4 +975,11 @@ a {
   font-weight: bold;
   display: inline-block;
   padding-left: 10px;
+}
+
+.p-signup-form-error-message {
+  padding-top: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgb(255, 119, 119);
 }

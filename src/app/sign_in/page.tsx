@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Button from "../components/navigation/navbar/Button";
 import Logo from "../components/navigation/navbar/Logo";
 import SnsSignIn from "../components/sns_sign_in";
 import { Metadata } from "next";
@@ -40,10 +39,9 @@ export default function SignIn() {
                     required
                   />
                 </div>
-                <div className="p-signin-form-input-login">
-                  <Button />
-                </div>
-
+                <button className="p-signin-form-input-login" type="submit">
+                  로그인
+                </button>
                 <section className="p-signin-form__section">
                   <Link href="/">비밀번호 재설정</Link>
                   <Link href="/sign_up">회원가입</Link>
