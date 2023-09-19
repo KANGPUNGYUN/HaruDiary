@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,22 +16,49 @@ interface FormInput {
   agree3: boolean;
 }
 
-let renderCount = 0;
-
 export default function SignUpForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
     getValues,
+    setValue,
     watch,
   } = useForm<FormInput>({
     mode: "onChange",
+    defaultValues: {
+      agreeAll: false,
+      agree1: false,
+      agree2: false,
+      agree3: false,
+    },
   });
 
   const agreeAll = watch("agreeAll");
+  const agree1 = watch("agree1");
+  const agree2 = watch("agree2");
+  const agree3 = watch("agree3");
 
-  renderCount++;
+  const handleSelectAll = (e: React.FormEvent<HTMLInputElement>) => {
+    if (e.currentTarget.checked) {
+      setValue("agree1", true);
+      setValue("agree2", true);
+      setValue("agree3", true);
+    } else {
+      setValue("agree1", false);
+      setValue("agree2", false);
+      setValue("agree3", false);
+    }
+  };
+
+  useEffect(() => {
+    if (agree1 === true && agree2 === true && agree3 === true) {
+      setValue("agreeAll", true);
+    } else {
+      setValue("agreeAll", false);
+    }
+  }, [agree1, agree2, agree3]);
+
   return (
     <>
       <link
@@ -208,13 +236,27 @@ export default function SignUpForm() {
           </div>
         </div>
         <div className="p-signup-form-ToS-input__outer">
-          <label className="p-signup-form-label">이용약관</label>
-          <div className="p-signup-form-ToS-container">
+          <label
+            className={
+              !agreeAll && errors.agreeAll
+                ? "p-signup-form-label errored"
+                : "p-signup-form-label"
+            }
+          >
+            이용약관
+          </label>
+          <div
+            className={
+              !agreeAll && errors.agreeAll
+                ? "p-signup-form-ToS-container errored"
+                : "p-signup-form-ToS-container"
+            }
+          >
             <div className="p-signup-form-ToS-agreeAll-label__outer">
               <label className="p-signup-form-ToS-agreeAll-label">
                 <div
                   className={
-                    errors.agreeAll
+                    !agreeAll
                       ? "p-signup-form-ToS-agreeAll-input__outer"
                       : "p-signup-form-ToS-agreeAll-input__outer active"
                   }
@@ -225,11 +267,10 @@ export default function SignUpForm() {
                   <input
                     className="p-signup-form-ToS-agreeAll-input"
                     type="checkbox"
+                    checked={agreeAll}
+                    onClick={handleSelectAll}
                     {...register("agreeAll", {
-                      required: {
-                        value: true,
-                        message: "필수 항목에 동의해주세요.",
-                      },
+                      required: "필수 항목에 동의해주세요.",
                     })}
                   />
                 </div>
@@ -245,7 +286,7 @@ export default function SignUpForm() {
               <label className="p-signup-form-ToS-agree1-label">
                 <div
                   className={
-                    errors.agree1
+                    !agree1
                       ? "p-signup-form-ToS-agree1-input__outer"
                       : "p-signup-form-ToS-agree1-input__outer active"
                   }
@@ -256,13 +297,8 @@ export default function SignUpForm() {
                   <input
                     className="p-signup-form-ToS-agree1-input"
                     type="checkbox"
-                    checked={agreeAll}
-                    {...register("agree1", {
-                      required: {
-                        value: true,
-                        message: "필수 항목에 동의해주세요.",
-                      },
-                    })}
+                    checked={agree1}
+                    {...register("agree1")}
                   />
                 </div>
                 <span className="p-signup-form-ToS-agree1-title__outer">
@@ -276,7 +312,7 @@ export default function SignUpForm() {
               <label className="p-signup-form-ToS-agree2-label">
                 <div
                   className={
-                    errors.agree2
+                    !agree2
                       ? "p-signup-form-ToS-agree2-input__outer"
                       : "p-signup-form-ToS-agree2-input__outer active"
                   }
@@ -287,13 +323,8 @@ export default function SignUpForm() {
                   <input
                     className="p-signup-form-ToS-agree2-input"
                     type="checkbox"
-                    checked={agreeAll}
-                    {...register("agree2", {
-                      required: {
-                        value: true,
-                        message: "필수 항목에 동의해주세요.",
-                      },
-                    })}
+                    checked={agree2}
+                    {...register("agree2")}
                   />
                 </div>
                 <span className="p-signup-form-ToS-agree2-title__outer">
@@ -302,7 +333,7 @@ export default function SignUpForm() {
                   </span>
                 </span>
               </label>
-              <Link href="/">
+              <Link href="/policy">
                 <FontAwesomeIcon icon={faAngleRight} width="9" />
               </Link>
             </div>
@@ -310,7 +341,7 @@ export default function SignUpForm() {
               <label className="p-signup-form-ToS-agree3-label">
                 <div
                   className={
-                    errors.agree3
+                    !agree3
                       ? "p-signup-form-ToS-agree3-input__outer"
                       : "p-signup-form-ToS-agree3-input__outer active"
                   }
@@ -321,13 +352,8 @@ export default function SignUpForm() {
                   <input
                     className="p-signup-form-ToS-agree3-input"
                     type="checkbox"
-                    checked={agreeAll}
-                    {...register("agree3", {
-                      required: {
-                        value: true,
-                        message: "필수 항목에 동의해주세요.",
-                      },
-                    })}
+                    checked={agree3}
+                    {...register("agree3")}
                   />
                 </div>
                 <span className="p-signup-form-ToS-agree3-title__outer">
@@ -340,6 +366,9 @@ export default function SignUpForm() {
                 <FontAwesomeIcon icon={faAngleRight} width="9" />
               </Link>
             </div>
+          </div>
+          <div className="p-signup-form-error-message">
+            {!agreeAll && errors.agreeAll?.message}
           </div>
         </div>
         <button className="p-signup-form-submit-button" type="submit">

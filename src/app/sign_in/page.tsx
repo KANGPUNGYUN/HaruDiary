@@ -4,7 +4,7 @@ import SnsSignIn from "../components/sns_sign_in";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "하루쓰기 | Sign In",
+  title: "하루쓰기 | 로그인",
   description: "당신의 하루를 작성하세요",
 };
 
