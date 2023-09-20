@@ -362,7 +362,7 @@ export default function SignUpForm() {
                   </span>
                 </span>
               </label>
-              <Link href="/">
+              <Link href="/privacy">
                 <FontAwesomeIcon icon={faAngleRight} width="9" />
               </Link>
             </div>

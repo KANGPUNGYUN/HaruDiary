@@ -1095,3 +1095,107 @@ a {
   align-items: center;
   flex-wrap: wrap;
 }
+
+/* page: privacy */
+
+.p-privacy-main {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1024px;
+  box-sizing: border-box;
+}
+
+.p-privacy-main__inner {
+  padding: 30px 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #424242;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.p-privacy-main__inner p {
+  margin: 0.5em 0;
+}
+
+.p-privacy-main__inner > p > strong {
+  -webkit-tap-highlight-color: transparent;
+  color: #424242;
+  font-size: 13px;
+  font-weight: 900;
+  font-variant-ligatures: normal;
+  font-variant-caps: normal;
+  letter-spacing: normal;
+  orphans: 2;
+  text-align: start;
+  text-indent: 0px;
+  text-transform: none;
+  white-space: pre-wrap;
+  widows: 2;
+  word-spacing: 0px;
+  -webkit-text-stroke-width: 0px;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+}
+
+.p-privacy-main__inner table {
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  color: #424242;
+  font-size: 12px;
+  font-style: normal;
+  font-variant-ligatures: normal;
+  font-variant-caps: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  orphans: 2;
+  text-align: start;
+  text-transform: none;
+  white-space: pre-wrap;
+  widows: 2;
+  word-spacing: 0px;
+  -webkit-text-stroke-width: 0px;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+}
+
+@media (min-width: 866px) {
+  .p-privacy-main__inner table {
+    width: 836px;
+  }
+}
+
+.p-privacy-main__inner table thead tr th {
+  -webkit-tap-highlight-color: transparent;
+  margin: 0px;
+  padding: 5px;
+  font-weight: 500;
+  text-align: center;
+  background: #f1f2f2;
+  width: 115px;
+  border: 1px solid #bdbdbd;
+  height: 18px;
+}
+
+.p-privacy-main__inner table tbody tr td {
+  -webkit-tap-highlight-color: transparent;
+  margin: 0px;
+  padding: 5px;
+  border-right: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+  border-left: 1px solid #bdbdbd;
+  height: 110px;
+  width: 115px;
+  vertical-align: middle;
+}
+
+.p-privacy-main__inner table tbody tr td h3 {
+  color: #009fce;
+  font-size: 1.17em;
+  font-weight: 900;
+}

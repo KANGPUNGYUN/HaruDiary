@@ -11,7 +11,7 @@ export default function Policy() {
     <>
       <main className="p-policy-main">
         <div className="p-policy-header">
-          <h2 className="p-policy-title">하루쓰기 시비스 이용약관</h2>
+          <h2 className="p-policy-title">하루쓰기 서비스 이용약관</h2>
           <div className="p-policy-date-container__outer">
             <div className="p-policy-date-container">
               <select className="p-policy-date-container-select">
