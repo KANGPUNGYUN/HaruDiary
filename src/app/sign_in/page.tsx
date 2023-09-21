@@ -1,7 +1,7 @@
-import Link from "next/link";
 import Logo from "../components/navigation/navbar/Logo";
 import SnsSignIn from "../components/sns_sign_in";
 import { Metadata } from "next";
+import SignInForm from "./form";
 
 export const metadata: Metadata = {
   title: "하루쓰기 | 로그인",
@@ -18,35 +18,7 @@ export default function SignIn() {
               <div className="p-signin-container-logo">
                 <Logo />
               </div>
-              <form className="p-signin-form">
-                <div className="p-signin-form-input__outer">
-                  <input
-                    className="p-signin-form-input-id"
-                    type="text"
-                    name="username"
-                    placeholder="이메일"
-                    autoComplete="username"
-                    required
-                  />
-                </div>
-                <div className="p-signin-form-input__outer">
-                  <input
-                    className="p-signin-form-input-pw"
-                    type="password"
-                    name="password"
-                    placeholder="비밀번호"
-                    autoComplete="current-password"
-                    required
-                  />
-                </div>
-                <button className="p-signin-form-input-login" type="submit">
-                  로그인
-                </button>
-                <section className="p-signin-form__section">
-                  <Link href="/">비밀번호 재설정</Link>
-                  <Link href="/sign_up">회원가입</Link>
-                </section>
-              </form>
+              <SignInForm />
               <section className="p-signin-sns-signin">
                 <SnsSignIn />
               </section>
