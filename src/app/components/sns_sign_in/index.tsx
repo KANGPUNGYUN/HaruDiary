@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 export default function SnsSignIn() {
   return (
@@ -12,40 +13,70 @@ export default function SnsSignIn() {
           className="p-signin-sns-list-item"
           style={{ backgroundColor: "#fee500" }}
         >
-          <Link href="/">
+          <button
+            onClick={() => {
+              async function handleKakao() {
+                await signIn("kakao", {
+                  redirect: true,
+                  callbackUrl: "/",
+                });
+              }
+              handleKakao();
+            }}
+          >
             <Image
               src="/kakao_logo.svg"
               alt="하루쓰기 홈으로 이동하기"
               width="25"
               height="23"
             />
-          </Link>
+          </button>
         </li>
         <li
           className="p-signin-sns-list-item"
           style={{ backgroundColor: "#03c75a" }}
         >
-          <Link href="/">
+          <button
+            onClick={() => {
+              async function handleNaver() {
+                await signIn("naver", {
+                  redirect: true,
+                  callbackUrl: "/",
+                });
+              }
+              handleNaver();
+            }}
+          >
             <Image
               src="/naver_logo.svg"
               alt="하루쓰기 홈으로 이동하기"
               width="48"
               height="48"
             />
-          </Link>
+          </button>
         </li>
         <li
           className="p-signin-sns-list-item"
           style={{ backgroundColor: "var(--white)" }}
         >
-          <Link href="/">
+          <button
+            onClick={() => {
+              async function handleGoogle() {
+                await signIn("google", {
+                  redirect: true,
+                  callbackUrl: "/",
+                });
+              }
+              handleGoogle();
+            }}
+          >
             <Image
               src="/google_logo.svg"
               alt="하루쓰기 홈으로 이동하기"
               width="64"
               height="64"
             />
-          </Link>
+          </button>
         </li>
       </ul>
     </>

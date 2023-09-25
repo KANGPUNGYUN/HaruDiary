@@ -1,57 +1,64 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import auth from "../../../../firebase/auth";
+import { signIn } from "next-auth/react";
+import { useForm } from "react-hook-form";
+
+interface LoginType {
+  email: string;
+  password: string;
+}
 
 export default function SignInForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const submit = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log(auth);
-
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((res) => {
-        console.log(res);
-        console.log("로그인 성공!");
-      })
-      .catch((error) => {
-        console.log(error);
-        console.log("로그인 실패!");
-      });
-  };
+  const methods = useForm<LoginType>({
+    mode: "onBlur",
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = methods;
 
   return (
     <>
-      <form className="p-signin-form">
+      <form
+        className="p-signin-form"
+        onSubmit={handleSubmit((data) => {
+          async function signin() {
+            await signIn("credentials", {
+              email: data.email,
+              password: data.password,
+              redirect: true,
+              callbackUrl: "/",
+            });
+          }
+          signin();
+        })}
+      >
         <div className="p-signin-form-input__outer">
           <input
+            {...register("email", { required: true })}
             className="p-signin-form-input-id"
-            type="text"
+            type="email"
             name="email"
             placeholder="이메일"
             autoComplete="email"
             required
-            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="p-signin-form-input__outer">
           <input
+            {...register("password", { required: true })}
             className="p-signin-form-input-pw"
             type="password"
             name="password"
             placeholder="비밀번호"
             autoComplete="current-password"
             required
-            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <input
           className="p-signin-form-input-login"
           type="submit"
-          onClick={submit}
           value="로그인"
         />
         <section className="p-signin-form__section">

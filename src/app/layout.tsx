@@ -5,6 +5,7 @@ import Navigation from "./components/navigation";
 import Head from "next/head";
 import Footer from "./components/footer";
 import { usePathname } from "next/navigation";
+import Providers from "./components/Providers";
 
 export default function RootLayout({
   children,
@@ -19,9 +20,11 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <body>
-        {pathname !== "/sign_in" && pathname !== "/sign_up" && <Navigation />}
-        {children}
-        {pathname !== "/sign_in" && pathname !== "/sign_up" && <Footer />}
+        <Providers>
+          {pathname !== "/sign_in" && pathname !== "/sign_up" && <Navigation />}
+          {children}
+          {pathname !== "/sign_in" && pathname !== "/sign_up" && <Footer />}
+        </Providers>
       </body>
     </html>
   );

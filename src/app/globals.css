@@ -584,6 +584,11 @@ a {
   position: relative;
 }
 
+.p-signin-sns-list-item button {
+  margin: 0;
+  border: 0;
+}
+
 .p-signin-sns-list-item img {
   position: absolute;
   top: 50%;
