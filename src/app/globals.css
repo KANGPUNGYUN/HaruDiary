@@ -508,9 +508,9 @@ a {
   padding: 15px 10px;
   border: none;
   background: none;
-  font: "Noto Sans KR";
+  font-family: "Noto Sans KR";
   font-size: 14px;
-  line-height: 18px;
+  line-height: 10px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -585,7 +585,7 @@ a {
 }
 
 .p-signin-sns-list-item button {
-  margin: 0;
+  padding: 0;
   border: 0;
 }
 

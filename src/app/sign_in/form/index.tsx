@@ -2,14 +2,16 @@
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-interface LoginType {
+interface SignInType {
   email: string;
   password: string;
 }
 
 export default function SignInForm() {
-  const methods = useForm<LoginType>({
+  const methods = useForm<SignInType>({
     mode: "onBlur",
   });
   const {
@@ -18,20 +20,27 @@ export default function SignInForm() {
     formState: { errors },
   } = methods;
 
+  const router = useRouter();
+  const [signInError, setSignInError] = useState(null);
+
   return (
     <>
       <form
         className="p-signin-form"
-        onSubmit={handleSubmit((data) => {
-          async function signin() {
-            await signIn("credentials", {
-              email: data.email,
-              password: data.password,
-              redirect: true,
-              callbackUrl: "/",
-            });
+        onSubmit={handleSubmit(async (data) => {
+          const signInData = {
+            email: data.email,
+            password: data.password,
+            callbackUrl: "/",
+            redirect: false,
+          };
+          const res: any = await signIn("credentials", signInData);
+
+          if (res.url) {
+            router.push(res?.url);
+          } else {
+            setSignInError(res.error);
           }
-          signin();
         })}
       >
         <div className="p-signin-form-input__outer">
@@ -55,6 +64,9 @@ export default function SignInForm() {
             autoComplete="current-password"
             required
           />
+        </div>
+        <div className="p-signup-form-error-message">
+          {signInError ? signInError : ""}
         </div>
         <input
           className="p-signin-form-input-login"

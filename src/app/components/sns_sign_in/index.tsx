@@ -14,14 +14,12 @@ export default function SnsSignIn() {
           style={{ backgroundColor: "#fee500" }}
         >
           <button
-            onClick={() => {
-              async function handleKakao() {
-                await signIn("kakao", {
-                  redirect: true,
-                  callbackUrl: "/",
-                });
-              }
-              handleKakao();
+            onClick={async () => {
+              const signInKakao = {
+                redirect: true,
+                callbackUrl: "/",
+              };
+              await signIn("kakao", signInKakao);
             }}
           >
             <Image
@@ -37,14 +35,12 @@ export default function SnsSignIn() {
           style={{ backgroundColor: "#03c75a" }}
         >
           <button
-            onClick={() => {
-              async function handleNaver() {
-                await signIn("naver", {
-                  redirect: true,
-                  callbackUrl: "/",
-                });
-              }
-              handleNaver();
+            onClick={async () => {
+              const signInNaver = {
+                redirect: true,
+                callbackUrl: "/",
+              };
+              await signIn("naver", signInNaver);
             }}
           >
             <Image
@@ -60,14 +56,12 @@ export default function SnsSignIn() {
           style={{ backgroundColor: "var(--white)" }}
         >
           <button
-            onClick={() => {
-              async function handleGoogle() {
-                await signIn("google", {
-                  redirect: true,
-                  callbackUrl: "/",
-                });
-              }
-              handleGoogle();
+            onClick={async () => {
+              const signInGoogle = {
+                redirect: true,
+                callbackUrl: "/",
+              };
+              await signIn("google", signInGoogle);
             }}
           >
             <Image

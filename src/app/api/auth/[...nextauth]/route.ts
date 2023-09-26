@@ -17,7 +17,7 @@ const handler = NextAuth({
         },
         password: { label: "비밀번호", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const res = await fetch(`${process.env.NEXTAUTH_URL}/api/signin`, {
           method: "POST",
           headers: {
@@ -29,13 +29,11 @@ const handler = NextAuth({
           }),
         });
         const user = await res.json();
-        console.log(user);
 
         if (user) {
           return user;
         } else {
-          console.log("이메일 주소나 비밀번호가 틀립니다");
-          return null;
+          throw new Error("이메일 주소나 비밀번호가 틀립니다");
         }
       },
     }),
