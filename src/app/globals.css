@@ -1007,7 +1007,7 @@ a {
 #confettis {
   overflow: hidden;
   position: absolute;
-  height: 100%;
+  height: calc(100vh - 60px);
   width: 100%;
   z-index: -1;
 }

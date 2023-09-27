@@ -21,9 +21,13 @@ export default function RootLayout({
       </Head>
       <body>
         <Providers>
-          {pathname !== "/sign_in" && pathname !== "/sign_up" && <Navigation />}
+          {pathname !== "/sign_in" &&
+            pathname !== "/sign_up" &&
+            pathname !== "/sign_up/success" && <Navigation />}
           {children}
-          {pathname !== "/sign_in" && pathname !== "/sign_up" && <Footer />}
+          {pathname !== "/sign_in" &&
+            pathname !== "/sign_up" &&
+            pathname !== "/sign_up/success" && <Footer />}
         </Providers>
       </body>
     </html>
