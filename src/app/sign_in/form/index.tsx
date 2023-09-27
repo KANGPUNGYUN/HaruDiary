@@ -65,9 +65,7 @@ export default function SignInForm() {
             required
           />
         </div>
-        <div className="p-signup-form-error-message">
-          {signInError ? signInError : ""}
-        </div>
+        <div className="p-signup-form-error-message">{signInError}</div>
         <input
           className="p-signin-form-input-login"
           type="submit"

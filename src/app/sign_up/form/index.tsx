@@ -1,9 +1,10 @@
 "use client";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface FormInput {
   email: string;
@@ -23,6 +24,7 @@ export default function SignUpForm() {
     formState: { errors },
     getValues,
     setValue,
+    setFocus,
     watch,
   } = useForm<FormInput>({
     mode: "onChange",
@@ -39,6 +41,11 @@ export default function SignUpForm() {
   const agree2 = watch("agree2");
   const agree3 = watch("agree3");
 
+  const [isExistEmail, setIsExistEmail] = useState("");
+  const [isExistNickname, setIsExistNickname] = useState("");
+
+  const router = useRouter();
+
   const handleSelectAll = (e: React.FormEvent<HTMLInputElement>) => {
     if (e.currentTarget.checked) {
       setValue("agree1", true);
@@ -51,8 +58,27 @@ export default function SignUpForm() {
     }
   };
 
+  async function signUp(data: FormInput) {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+          nickname: data.nickname,
+        }),
+      }
+    );
+    const signup = await res.json();
+    router.push("/sign_up/success");
+  }
+
   useEffect(() => {
-    if (agree1 === true && agree2 === true && agree3 === true) {
+    if (agree1 && agree2 && agree3) {
       setValue("agreeAll", true);
     } else {
       setValue("agreeAll", false);
@@ -68,13 +94,17 @@ export default function SignUpForm() {
       <form
         className="p-signup-form"
         onSubmit={handleSubmit((data) => {
-          console.log(data);
+          isExistEmail !== ""
+            ? setFocus("email")
+            : isExistNickname !== ""
+            ? setFocus("nickname")
+            : signUp(data);
         })}
       >
         <div className="p-signup-form-email-input__outer">
           <label
             className={
-              errors.email
+              errors.email || isExistEmail !== ""
                 ? "p-signup-form-label errored"
                 : "p-signup-form-label"
             }
@@ -95,10 +125,34 @@ export default function SignUpForm() {
                       },
                     })}
                     className={
-                      errors.email ? "form-control errored" : "form-control"
+                      errors.email || isExistEmail !== ""
+                        ? "form-control errored"
+                        : "form-control"
                     }
                     placeholder="이메일"
                     autoComplete="off"
+                    onBlur={async (data) => {
+                      const res = await fetch(
+                        `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/emailCheck`,
+                        {
+                          method: "POST",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify({
+                            email: data.target.value,
+                          }),
+                        }
+                      );
+                      const checkEmail = await res.json();
+                      if (checkEmail) {
+                        setIsExistEmail(
+                          "이미 가입된 이메일입니다. 비밀번호 재설정 또는 로그인해주세요."
+                        );
+                      } else {
+                        setIsExistEmail("");
+                      }
+                    }}
                   />
                   <span className="form-control-blind">
                     이메일 앞 주소 입력하기
@@ -108,18 +162,22 @@ export default function SignUpForm() {
             </div>
           </div>
           <div className="p-signup-form-error-message">
-            {errors.email?.message}
+            {errors.email ? errors.email?.message : isExistEmail}
           </div>
         </div>
-        <div className="p-signup-form-email-button__outer">
+        {/* <div className="p-signup-form-email-button__outer">
           <button
-            className="p-signup-form-email-button"
+            className={
+              !errors.email && email !== ""
+                ? "p-signup-form-email-button confirmed"
+                : "p-signup-form-email-button"
+            }
             name="emailAuth"
             type="button"
           >
             <span>이메일 인증하기</span>
           </button>
-        </div>
+        </div> */}
         <div className="p-signup-form-password-input__outer">
           <label
             className={
@@ -198,7 +256,7 @@ export default function SignUpForm() {
         <div className="p-signup-form-nickname-input__outer">
           <label
             className={
-              errors.nickname
+              errors.nickname || isExistNickname !== ""
                 ? "p-signup-form-label errored"
                 : "p-signup-form-label"
             }
@@ -211,28 +269,41 @@ export default function SignUpForm() {
                 required: "필수 입력 항목입니다.",
                 minLength: { value: 2, message: "2자 이상으로 입력해주세요." },
                 maxLength: { value: 15, message: "15자 이하로 입력해주세요." },
-                // 추가 작업
-                // validate: {
-                //   check: (val) => {
-                //     if (!!getNickname(val)) {
-                //       return "사용 중인 별명입니다.";
-                //     }
-                //   },
-                // },
               })}
               className={
-                errors.nickname
+                errors.nickname || isExistNickname !== ""
                   ? "p-signup-form-nickname-input errored"
                   : "p-signup-form-nickname-input"
               }
               name="nickname"
               placeholder="별명 (2~15자)"
               autoComplete="off"
+              onBlur={async (data) => {
+                const res = await fetch(
+                  `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/nicknameCheck`,
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      nickname: data.target.value,
+                    }),
+                  }
+                );
+                const checkNickname = await res.json();
+
+                if (checkNickname) {
+                  setIsExistNickname("사용 중인 닉네임입니다.");
+                } else {
+                  setIsExistNickname("");
+                }
+              }}
             />
             <span className="form-control-blind">닉네임 입력하기</span>
           </label>
           <div className="p-signup-form-error-message">
-            {errors.nickname?.message}
+            {errors.nickname ? errors.nickname?.message : isExistNickname}
           </div>
         </div>
         <div className="p-signup-form-ToS-input__outer">
