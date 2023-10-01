@@ -42,7 +42,7 @@ export default function CopyBoard() {
         <span
           className={`p-contact-email-copy-button-text ${next ? "appear" : ""}`}
         >
-          복사됨 :)
+          복사완료
         </span>
         <FontAwesomeIcon
           icon={faCopy}
