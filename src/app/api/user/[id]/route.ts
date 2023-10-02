@@ -16,7 +16,7 @@ export async function GET(
 
   const id = Number(params.id);
 
-  const userPosts = await prisma.post.findMany({
+  const userPosts = await prisma.diary.findMany({
     where: {
       authorId: id,
     },

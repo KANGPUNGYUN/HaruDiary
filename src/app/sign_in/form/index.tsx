@@ -72,7 +72,7 @@ export default function SignInForm() {
           value="로그인"
         />
         <section className="p-signin-form__section">
-          <Link href="/">비밀번호 재설정</Link>
+          <Link href="/sign_up/password">비밀번호 재설정</Link>
           <Link href="/sign_up">회원가입</Link>
         </section>
       </form>
