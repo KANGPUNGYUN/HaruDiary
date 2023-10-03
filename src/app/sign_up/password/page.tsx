@@ -8,12 +8,12 @@ export const metadata: Metadata = {
 export default function Password() {
   return (
     <>
-      <div className="p-password-update-main-outter">
+      <div className="p-password-update-main__outter">
         <main className="p-password-update-main">
           <div className="p-password-update-description">
             가입한 이메일 주소를 입력해주세요.
           </div>
-          <div className="p-password-update-input-outer">
+          <div className="p-password-update-input__outer">
             <input
               className="p-password-update-input"
               type="email"

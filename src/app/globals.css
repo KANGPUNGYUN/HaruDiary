@@ -1522,7 +1522,7 @@ a {
 
 /* page: /api/user/password */
 
-.p-password-update-main-outter {
+.p-password-update-main__outter {
   width: 100%;
   height: calc(100vh - 452px);
   margin: 100px auto 0 auto;
@@ -1531,7 +1531,7 @@ a {
 }
 
 @media (min-width: 768px) {
-  .p-password-update-main-outter {
+  .p-password-update-main__outter {
     width: 375px;
   }
 }
@@ -1548,7 +1548,7 @@ a {
   color: #424242;
 }
 
-.p-password-update-input-outer {
+.p-password-update-input__outer {
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -1609,4 +1609,59 @@ a {
   background-color: #c7effb;
   border-color: #c7effb;
   color: #fff;
+}
+
+/* page: not-found */
+
+.p-notfound-main {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100vw;
+  height: calc(100vh - 352px);
+  line-height: 30px;
+}
+
+.p-notfound-main-title {
+  font-family: "Gowun Batang";
+  font-weight: 900;
+  margin: 20px 0;
+  font-size: 30px;
+  color: #009fce;
+}
+
+.p-notfound-main-description {
+  font-family: "Gowun Batang";
+  font-size: 18px;
+}
+
+.p-notfound-main-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 14px;
+  line-height: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 16px;
+  font-weight: 400;
+  box-sizing: border-box;
+  text-align: center;
+  color: #ffffff;
+  background-color: #62d9fc;
+  outline: none;
+  overflow: hidden;
+}
+
+.p-notfound-main-button:hover {
+  background-color: #009fce;
 }
