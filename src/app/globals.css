@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Noto+Sans+KR&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Agdasima&family=Noto+Sans+KR&display=swap");
 
 :root {
   font-family: "Noto Sans KR", sans-serif;
@@ -1664,4 +1664,88 @@ a {
 
 .p-notfound-main-button:hover {
   background-color: #009fce;
+}
+
+/* page: diary  */
+
+.p-diary-main-outter {
+  width: 100vw;
+  padding: 10px;
+}
+
+.p-diary-year {
+  font-family: "Agdasima";
+  font-size: 50px;
+}
+
+.p-diary-month {
+  font-family: "Agdasima";
+  font-size: 40px;
+  margin: 20px 0;
+}
+
+.p-diary-item {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  background-color: #62d9fc;
+}
+
+.p-diary-item.empty {
+  background-color: #8b8d91;
+}
+
+.p-diary-item-add {
+  font-family: "Agdasima";
+  font-size: 100px;
+  font-weight: 900;
+  color: var(--white);
+}
+
+.p-diary-item a {
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.p-diary-list__outer {
+  width: calc(100vw - 20px);
+  overflow: hidden;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.p-diary-list {
+  display: flex;
+  width: fit-content;
+  gap: 10px;
+}
+
+.p-diary-item-day {
+  font-family: "Agdasima";
+  font-size: 75px;
+  font-weight: 900;
+  color: var(--white);
+}
+
+.p-diary-item-week {
+  font-family: "Agdasima";
+  font-size: 25px;
+  color: var(--white);
+}
+
+@media (min-width: 768px) {
+  .p-diary-main-outter {
+    padding: 50px 100px 100px;
+  }
+
+  .p-diary-list__outer {
+    width: calc(100vw - 200px);
+  }
 }
