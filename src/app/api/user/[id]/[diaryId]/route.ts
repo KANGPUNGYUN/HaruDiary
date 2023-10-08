@@ -7,7 +7,7 @@ export async function GET(
 ) {
   const accessToken = request.headers.get("authorization");
   if (!accessToken || !verifyJwt(accessToken)) {
-    console.log(accessToken);
+    console.error(accessToken);
     // return new Response(JSON.stringify({ error: "No Authorization" , message: }), {
     //   status: 401,
     // });
@@ -16,10 +16,12 @@ export async function GET(
   console.log(params);
 
   const id = Number(params.id);
+  const diaryId = Number(params.diaryId);
 
-  const userPosts = await prisma.diary.findMany({
+  const userPosts = await prisma.diary.findUnique({
     where: {
       authorId: id,
+      id: diaryId,
     },
     include: {
       author: {

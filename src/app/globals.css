@@ -1665,3 +1665,85 @@ a {
 .p-notfound-main-button:hover {
   background-color: #009fce;
 }
+
+/* page: user/[id] */
+
+.p-diary-main {
+  width: 100%;
+}
+
+.p-diary-main__inner {
+  padding: 20px 4% 40px;
+}
+
+.p-diary-title {
+  font-family: "Gowun Batang";
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+.p-diary-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.p-diary-item a {
+  position: relative;
+  display: block;
+  font-family: "Agdasima";
+  border: 2px solid #62d9fc;
+  box-sizing: border-box;
+  border-radius: 11px;
+  padding: 11px;
+  border-width: 2px;
+}
+
+.p-diary-item-fold {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  border-width: 0;
+  border-style: solid;
+  background: #62d9fc;
+  display: block;
+  border-color: transparent #f9fafb #f9fafb transparent;
+  border-radius: 11px 0 0 0;
+
+  -webkit-transition: border-width 0.2s ease-out;
+  -moz-transition: border-width 0.2s ease-out;
+  -ms-transition: border-width 0.2s ease-out;
+  -o-transition: border-width 0.2s ease-out;
+  transition: border-width 0.2s ease-out;
+}
+
+.p-diary-item a:hover .p-diary-item-fold {
+  border-width: 0px 0px 30px 30px;
+}
+
+.p-diary-item h3 {
+  font-size: 40px;
+  font-weight: 900;
+  color: #62d9fc;
+}
+
+.p-diary-item h4 {
+  font-size: 24px;
+  font-weight: 100;
+  color: #62d9fc;
+}
+
+@media (min-width: 768px) {
+  .p-diary-list {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 20px;
+  }
+  .p-diary-item a {
+    height: calc((92vw - 120px) / 7);
+    min-height: 114px;
+  }
+}
