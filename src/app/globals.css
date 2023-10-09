@@ -23,6 +23,12 @@ a {
   color: black;
 }
 
+/** component: back button */
+
+.p-back-button:hover {
+  cursor: pointer;
+}
+
 /** navigation bar styling  */
 
 .p-navbar {
@@ -1668,15 +1674,15 @@ a {
 
 /* page: user/[id] */
 
-.p-diary-main {
+.p-diary-list-main {
   width: 100%;
 }
 
-.p-diary-main__inner {
+.p-diary-list-main__inner {
   padding: 20px 4% 40px;
 }
 
-.p-diary-title {
+.p-diary-list-title {
   font-family: "Gowun Batang";
   font-size: 32px;
   font-weight: 900;
@@ -1746,4 +1752,120 @@ a {
     height: calc((92vw - 120px) / 7);
     min-height: 114px;
   }
+}
+
+/* page: user/[id]/[diaryId] */
+
+.p-diary-main {
+  padding: 20px 4% 40px;
+}
+
+.p-diary-main__inner {
+  margin: 0 auto;
+}
+
+.p-diary-paper {
+  position: relative;
+  background-color: var(--white);
+  width: 100%;
+  margin: 30px auto;
+  padding: 30px;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 38px rgba(0, 0, 0, 0.2);
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .p-diary-main__inner {
+    width: 50%;
+  }
+}
+
+.p-diary-date {
+  color: #6d6c68;
+  font-size: 20px;
+}
+
+.p-diary-title {
+  font-family: "Gowun Batang";
+  font-size: 32px;
+  font-weight: 900;
+  margin-top: 30px;
+}
+
+.p-diary-content {
+  font-family: "Gowun Batang";
+  font-size: 18px;
+  font-weight: 900;
+  margin-top: 40px;
+}
+
+.p-diary-footer {
+  margin-top: 20px;
+  border-top: 1px solid #dbdbdb;
+  padding-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.p-diary-utility {
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-diary-like-button {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 14px;
+  line-height: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 16px;
+  font-weight: 400;
+  box-sizing: border-box;
+  text-align: center;
+  color: #ffffff;
+  background-color: #62d9fc;
+  outline: none;
+  overflow: hidden;
+}
+
+.p-diary-like-button:hover {
+  background-color: #009fce;
+}
+
+.p-diary-report-button {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 14px;
+  line-height: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 16px;
+  font-weight: 400;
+  box-sizing: border-box;
+  text-align: center;
+  color: #ffffff;
+  background-color: #fc6262;
+  outline: none;
+  overflow: hidden;
+}
+
+.p-diary-report-button:hover {
+  background-color: #bc4141;
 }

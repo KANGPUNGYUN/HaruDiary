@@ -6,8 +6,7 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 
 export default function Diary() {
-  const [data, setData] = useState([]);
-
+  const [data, setData] = useState({});
   const params = useParams();
 
   useEffect(() => {
@@ -31,17 +30,25 @@ export default function Diary() {
     getDiary().then((res) => setData(res));
   }, []);
 
-  interface diary {
-    id: number;
-    title: string;
-    content: string;
-    createdAt: Date;
-  }
-
   return (
     <>
-      {<h2 className="p-diary-title">{data.title}</h2>}
-      {<h2 className="p-diary-title">{data.content}</h2>}
+      <div>
+        <p className="p-diary-date">
+          {`${
+            new Date(data.createdAt).toLocaleString("kr-KR").split(".")[0]
+          }년 ${
+            new Date(data.createdAt).toLocaleString("kr-KR").split(".")[1]
+          }월 ${
+            new Date(data.createdAt).toLocaleString("kr-KR").split(".")[2]
+          }일`}
+        </p>
+        <p className="p-diary-title">{data.title}</p>
+        <p className="p-diary-content">{data.content}</p>
+      </div>
+      <div className="p-diary-footer">
+        <div>조회수 {data.views}</div>
+        <div>참 잘했어요 {data.likes}</div>
+      </div>
     </>
   );
 }

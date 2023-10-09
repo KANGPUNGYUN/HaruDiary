@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 export default function MyDiaryList() {
   return (
     <>
-      <main className="p-diary-main">
-        <div className="p-diary-main__inner">
-          <h2 className="p-diary-title">나의 하루</h2>
+      <main className="p-diary-list-main">
+        <div className="p-diary-list-main__inner">
+          <h2 className="p-diary-list-title">나의 하루</h2>
           <DiaryList />
         </div>
       </main>
