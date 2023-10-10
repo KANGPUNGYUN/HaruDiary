@@ -27,6 +27,9 @@ a {
 
 .p-back-button:hover {
   cursor: pointer;
+  transform: translateX(-3px);
+  transition: all 0.5s ease;
+  color: #009fce;
 }
 
 /** navigation bar styling  */
@@ -810,7 +813,8 @@ a {
 .p-signup-form-ToS-agreeAll-label,
 .p-signup-form-ToS-agree1-label,
 .p-signup-form-ToS-agree2-label,
-.p-signup-form-ToS-agree3-label {
+.p-signup-form-ToS-agree3-label,
+.p-diary-form-checkbox-label {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -828,7 +832,8 @@ a {
 .p-signup-form-ToS-agreeAll-input__outer,
 .p-signup-form-ToS-agree1-input__outer,
 .p-signup-form-ToS-agree2-input__outer,
-.p-signup-form-ToS-agree3-input__outer {
+.p-signup-form-ToS-agree3-input__outer,
+.p-diary-form-checkbox-input__outer {
   display: inline-block;
   position: relative;
   width: 20px;
@@ -848,7 +853,8 @@ a {
 .p-signup-form-ToS-agreeAll-input__outer.active,
 .p-signup-form-ToS-agree1-input__outer.active,
 .p-signup-form-ToS-agree2-input__outer.active,
-.p-signup-form-ToS-agree3-input__outer.active {
+.p-signup-form-ToS-agree3-input__outer.active,
+.p-diary-form-checkbox-input__outer.active {
   border: 1px solid rgb(53, 197, 240);
   background-color: rgb(53, 197, 240);
   transition: border-color 0.1s ease 0s, background-color 0.1s ease 0s;
@@ -857,7 +863,8 @@ a {
 .p-signup-form-ToS-agreeAll-checkbox,
 .p-signup-form-ToS-agree1-checkbox,
 .p-signup-form-ToS-agree2-checkbox,
-.p-signup-form-ToS-agree3-checkbox {
+.p-signup-form-ToS-agree3-checkbox,
+.p-diary-form-checkbox {
   position: absolute;
   overflow: hidden;
   top: 3.6px;
@@ -875,14 +882,16 @@ a {
 .p-signup-form-ToS-agree2-input__outer.active
   > .p-signup-form-ToS-agree2-checkbox,
 .p-signup-form-ToS-agree3-input__outer.active
-  > .p-signup-form-ToS-agree3-checkbox {
+  > .p-signup-form-ToS-agree3-checkbox,
+.p-diary-form-checkbox-input__outer.active > .p-diary-form-checkbox {
   width: 12px;
 }
 
 .p-signup-form-ToS-agreeAll-check,
 .p-signup-form-ToS-agree1-check,
 .p-signup-form-ToS-agree2-check,
-.p-signup-form-ToS-agree3-check {
+.p-signup-form-ToS-agree3-check,
+.p-diary-form-check {
   display: inline-block;
   font-size: 12px;
   line-height: 1;
@@ -893,7 +902,8 @@ a {
 .p-signup-form-ToS-agreeAll-check::before,
 .p-signup-form-ToS-agree1-check::before,
 .p-signup-form-ToS-agree2-check::before,
-.p-signup-form-ToS-agree3-check::before {
+.p-signup-form-ToS-agree3-check::before,
+.p-diary-form-check::before {
   font-family: "Material Icons";
   content: "check";
   vertical-align: top;
@@ -903,7 +913,8 @@ a {
 .p-signup-form-ToS-agreeAll-input,
 .p-signup-form-ToS-agree1-input,
 .p-signup-form-ToS-agree2-input,
-.p-signup-form-ToS-agree3-input {
+.p-signup-form-ToS-agree3-input,
+.p-diary-form-checkbox-input {
   position: absolute;
   top: 0;
   left: 0;
@@ -917,7 +928,8 @@ a {
 .p-signup-form-ToS-agreeAll-title__outer,
 .p-signup-form-ToS-agree1-title__outer,
 .p-signup-form-ToS-agree2-title__outer,
-.p-signup-form-ToS-agree3-title__outer {
+.p-signup-form-ToS-agree3-title__outer,
+.p-diary-form-checkbox-text__outer {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -930,7 +942,8 @@ a {
 .p-signup-form-ToS-agreeAll-title,
 .p-signup-form-ToS-agree1-title,
 .p-signup-form-ToS-agree2-title,
-.p-signup-form-ToS-agree3-title {
+.p-signup-form-ToS-agree3-title,
+.p-diary-form-checkbox-text {
   font-size: 14px;
   line-height: 20px;
   vertical-align: text-top;
@@ -1816,7 +1829,8 @@ a {
   justify-content: space-between;
 }
 
-.p-diary-like-button {
+.p-diary-like-button,
+.p-diary-form-submit-button {
   display: inline-block;
   padding: 0;
   border: none;
@@ -1839,7 +1853,8 @@ a {
   overflow: hidden;
 }
 
-.p-diary-like-button:hover {
+.p-diary-like-button:hover,
+.p-diary-form-submit-button:hover {
   background-color: #009fce;
 }
 
@@ -1868,4 +1883,170 @@ a {
 
 .p-diary-report-button:hover {
   background-color: #bc4141;
+}
+
+/* page: write */
+
+.p-diary-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-diary-form-title-label__outer {
+  position: relative;
+  display: inline-block;
+  max-width: 300px;
+}
+
+.p-diary-form-title {
+  width: 100%;
+  font-family: "Gowun Batang";
+  font-size: 32px;
+  font-weight: 900;
+  margin-top: 30px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #bdbdbd;
+  padding: 0;
+}
+
+.p-diary-form-title:focus + .underline {
+  width: 100%;
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 0;
+  background-color: black;
+  transition: 0.5s;
+}
+
+.p-diary-form-title.errored {
+  border-bottom: 2px solid #f77;
+}
+
+.p-diary-form-content {
+  width: 100%;
+  min-height: 256px;
+  font-family: "Gowun Batang";
+  font-size: 18px;
+  font-weight: 900;
+  margin-top: 40px;
+  padding: 6px;
+  border: 2px solid #bdbdbd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.p-diary-form-content.errored {
+  border: 2px solid #f77;
+}
+
+.p-diary-form-checkbox-label__outer {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.p-diary-form-checkbox-label {
+  flex: none;
+}
+
+.p-diary-form-checkbox-label__outer svg {
+  color: #009fce;
+  width: 16px;
+  height: 16px;
+  vertical-align: top;
+}
+
+.p-diary-form-checkbox-label__outer svg:hover {
+  cursor: pointer;
+}
+
+[data-tooltip] {
+  position: relative;
+  z-index: 3;
+  cursor: pointer;
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 10px;
+  width: 200px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+.p-diary-form-utility {
+  display: flex;
+  justify-content: end;
+}
+
+.p-diary-form-error-message {
+  padding: 0 0 20px;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgb(255, 119, 119);
+}
+
+.p-diary-form-content-text-counter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-diary-form-content-text-limit {
+  padding-top: 10px;
+  color: #808080;
+  font-size: 14px;
+  line-height: 18px;
 }
