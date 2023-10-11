@@ -14,22 +14,24 @@ model User {
   id       Int     @id @default(autoincrement())
   email    String  @unique
   name     String?
-  password String
+  password String?
   auth     String?    
   diarys   Diary[]
   likes    Like[]
+  report   Report[]
 }
 
 model Diary {
-  id        Int       @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean   @default(false)
-  createdAt DateTime  @default(now())
-  views     Int       @default(0)
-  author    User      @relation(fields: [authorId], references: [id])
-  authorId  Int
-  likes     Like[]
+  id         Int       @id @default(autoincrement())
+  title      String
+  content    String?
+  isPublic   Boolean
+  createdAt  DateTime  @default(now())
+  views      Int       @default(0)
+  author     User      @relation(fields: [authorId], references: [id])
+  authorId   Int
+  likes      Like[]
+  report     Report[]
 }
 
 model Like {
@@ -37,6 +39,16 @@ model Like {
   diaryId   Int
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
+
+  @@id([diaryId, authorId])
+}
+
+model Report {
+  diary     Diary   @relation(fields: [diaryId], references: [id])
+  diaryId   Int
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+  reportBy  String?
 
   @@id([diaryId, authorId])
 }

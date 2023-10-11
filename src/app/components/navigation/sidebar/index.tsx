@@ -5,6 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "../navbar/Button";
 import Logo from "../navbar/Logo";
 
+interface MenuList {
+  title: string;
+  href: string;
+}
+
 export default function Sidebar({
   isOpen,
   toggle,
@@ -27,6 +32,14 @@ export default function Sidebar({
       document.removeEventListener("mousedown", handler);
     };
   });
+
+  const menuList = [
+    { title: "소개", href: "/abuot" },
+    { title: "문의/제안", href: "/contacts" },
+    { title: "모두의 하루", href: "/user" },
+    { title: "나의 하루", href: "/user" },
+    { title: "하루쓰기", href: "/user/write" },
+  ];
 
   return (
     <>
@@ -59,16 +72,13 @@ export default function Sidebar({
           </Link>
           <hr className="m-sidebar-tabmenu-hr" />
           <ul className="m-sidebar-tabmenu-ul">
-            <li className="m-sidebar-tabmenu-item" onClick={toggle}>
-              <Link href="/about">
-                <div>소개</div>
-              </Link>
-            </li>
-            <li className="m-sidebar-tabmenu-item" onClick={toggle}>
-              <Link href="/contacts">
-                <div>문의/제안</div>
-              </Link>
-            </li>
+            {menuList.map((item: MenuList) => (
+              <li className="m-sidebar-tabmenu-item" onClick={toggle}>
+                <Link href={item.href}>
+                  <div>{item.title}</div>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

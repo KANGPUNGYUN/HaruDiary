@@ -58,24 +58,24 @@ export default function DiaryList() {
       <ol className="p-diary-list">
         {data.map((v: diary) => (
           <li className="p-diary-item">
-            <Link href={"/user/1/" + v.id}>
+            <Link href={`/user/${params.id}/` + v.id}>
               <h3>
                 {Number(
-                  new Date(v.createdAt).toLocaleString("kr-KR").split(".")[2]
+                  new Date(v.createdAt).toLocaleString("ko-KR").split(".")[2]
                 ) < 10
                   ? `0${
                       new Date(v.createdAt)
-                        .toLocaleString("kr-KR")
+                        .toLocaleString("ko-KR")
                         .split(". ")[2]
                     }`
-                  : new Date(v.createdAt).toLocaleString("kr-KR").split(".")[2]}
+                  : new Date(v.createdAt).toLocaleString("ko-KR").split(".")[2]}
               </h3>
               <h4>
                 {
                   month[
                     Number(
                       new Date(v.createdAt)
-                        .toLocaleString("kr-KR")
+                        .toLocaleString("ko-KR")
                         .split(".")[1]
                     )
                   ]

@@ -1,6 +1,8 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,81 +15,73 @@ interface UserData {
 }
 
 interface FormInput {
+  createdAt: Date;
   title: string;
   content: string;
   isPublic: boolean;
   user: UserData;
 }
 
-export default function Form() {
+export default function UpdateForm() {
+  const [formData, setFormData] = useState({});
+  const params = useParams();
   const { data: session } = useSession();
 
   const {
     register,
     handleSubmit,
     setValue,
+    getValues,
     setError,
     watch,
     formState: { errors },
   } = useForm<FormInput>({
-    defaultValues: { isPublic: false, user: {} },
+    defaultValues: {
+      createdAt: new Date(),
+      title: "",
+      content: "",
+      isPublic: false,
+      user: {},
+    },
   });
+
+  const isPublic = watch("isPublic");
+
+  useEffect(() => {
+    if (session?.user) {
+      setValue("user", session?.user);
+    }
+    const getDiary = async () => {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: session?.user?.accessToken,
+          },
+        }
+      );
+      const diary = await res.data;
+
+      return diary;
+    };
+
+    getDiary().then((res) => {
+      setValue("title", res.title);
+      setValue("content", res.content);
+      setValue("isPublic", res.isPublic);
+      setValue("createdAt", res.createdAt);
+    });
+  }, []);
 
   let [inputCount, setInputCount] = useState(0);
   const onInputHandler = (e: any) => {
     setInputCount(e.target.value.length);
   };
 
-  const isPublic = watch("isPublic");
-
-  const date = new Date().toLocaleDateString("ko-KR");
-  const year = date.split(". ")[0];
-  const month = date.split(". ")[1];
-  const day = date.split(".")[2];
-
-  useEffect(() => {
-    if (session?.user) {
-      setValue("user", session?.user);
-    }
-  }, []);
-
-  async function CreateDiary(data: FormInput) {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signin/userCheck`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: data.user.email,
-          auth: data.user.auth,
-        }),
-      }
-    );
-    let result = await res.json();
-
-    if (result === false) {
-      const newUser = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/signupwithAuth`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: data.user.name,
-            email: data.user.email,
-            auth: data.user.auth,
-          }),
-        }
-      );
-      const newUserData = await newUser.json();
-      result = newUserData.id;
-    }
-
+  async function updateDiary(data: FormInput) {
     const diary = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/createDiary`,
+      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}/updateDiary`,
       {
         method: "POST",
         headers: {
@@ -97,7 +91,6 @@ export default function Form() {
           title: data.title,
           content: data.content,
           isPublic: data.isPublic,
-          authorId: result,
         }),
       }
     );
@@ -122,12 +115,24 @@ export default function Form() {
                 "로그인 정보가 없습니다. 일기를 작성하려면 먼저 로그인 또는 회원가입해주세요.",
             });
           } else {
-            CreateDiary(data);
+            updateDiary(data);
           }
         })}
       >
         <div className="p-diary-paper">
-          <p className="p-diary-date">{`${year}년 ${month}월 ${day}일`}</p>
+          <p className="p-diary-date">{`${
+            new Date(String(getValues("createdAt")))
+              .toLocaleString()
+              .split(".")[0]
+          }년 ${
+            new Date(String(getValues("createdAt")))
+              .toLocaleString()
+              .split(".")[1]
+          }월 ${
+            new Date(String(getValues("createdAt")))
+              .toLocaleString()
+              .split(".")[2]
+          }일`}</p>
           <label className="p-diary-form-title-label__outer">
             <input
               type="text"
@@ -158,7 +163,9 @@ export default function Form() {
                 required: "내용을 입력해주세요.",
               })}
               placeholder="당신의 하루를 작성해주세요."
-              onChange={onInputHandler}
+              onChange={() => {
+                onInputHandler;
+              }}
               maxLength={250}
             />
             <span className="form-control-blind">일기 내용 입력하기</span>
@@ -203,7 +210,7 @@ export default function Form() {
         <div className="p-diary-form-error-message">{errors.user?.message}</div>
         <div className="p-diary-form-utility">
           <button className="p-diary-form-submit-button" type="submit">
-            일기 올리기
+            일기 수정하기
           </button>
         </div>
       </form>
