@@ -6,6 +6,7 @@ import Button from "../navbar/Button";
 import Logo from "../navbar/Logo";
 
 interface MenuList {
+  id: Number;
   title: string;
   href: string;
 }
@@ -34,11 +35,11 @@ export default function Sidebar({
   });
 
   const menuList = [
-    { title: "소개", href: "/abuot" },
-    { title: "문의/제안", href: "/contacts" },
-    { title: "모두의 하루", href: "/user" },
-    { title: "나의 하루", href: "/user" },
-    { title: "하루쓰기", href: "/user/write" },
+    { id: 1, title: "소개", href: "/abuot" },
+    { id: 2, title: "문의/제안", href: "/contacts" },
+    { id: 3, title: "모두의 하루", href: "/user" },
+    { id: 4, title: "나의 하루", href: "/user" },
+    { id: 5, title: "하루쓰기", href: "/user/write" },
   ];
 
   return (
@@ -73,7 +74,11 @@ export default function Sidebar({
           <hr className="m-sidebar-tabmenu-hr" />
           <ul className="m-sidebar-tabmenu-ul">
             {menuList.map((item: MenuList) => (
-              <li className="m-sidebar-tabmenu-item" onClick={toggle}>
+              <li
+                className="m-sidebar-tabmenu-item"
+                onClick={toggle}
+                key={`${item.id}`}
+              >
                 <Link href={item.href}>
                   <div>{item.title}</div>
                 </Link>

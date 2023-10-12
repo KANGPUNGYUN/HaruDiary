@@ -57,7 +57,7 @@ export default function DiaryList() {
     <>
       <ol className="p-diary-list">
         {data.map((v: diary) => (
-          <li className="p-diary-item">
+          <li className="p-diary-item" key={v.id}>
             <Link href={`/user/${params.id}/` + v.id}>
               <h3>
                 {Number(

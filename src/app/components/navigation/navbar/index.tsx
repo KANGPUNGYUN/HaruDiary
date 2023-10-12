@@ -5,17 +5,18 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface MenuList {
+  id: Number;
   title: string;
   href: string;
 }
 
 export default function Navbar({ toggle }: { toggle: () => void }) {
   const menuList = [
-    { title: "소개", href: "/abuot" },
-    { title: "문의/제안", href: "/contacts" },
-    { title: "모두의 하루", href: "/user" },
-    { title: "나의 하루", href: "/user" },
-    { title: "하루쓰기", href: "/user/write" },
+    { id: 1, title: "소개", href: "/abuot" },
+    { id: 2, title: "문의/제안", href: "/contacts" },
+    { id: 3, title: "모두의 하루", href: "/user" },
+    { id: 4, title: "나의 하루", href: "/user" },
+    { id: 5, title: "하루쓰기", href: "/user/write" },
   ];
   return (
     <nav className="p-navbar">
@@ -25,7 +26,7 @@ export default function Navbar({ toggle }: { toggle: () => void }) {
             <Logo />
             <ul className="p-navbar-tabmenu-ul">
               {menuList.map((item: MenuList) => (
-                <li className="p-navbar-tabmenu-item">
+                <li className="p-navbar-tabmenu-item" key={`${item.id}`}>
                   <Link href={item.href}>{item.title}</Link>
                 </li>
               ))}

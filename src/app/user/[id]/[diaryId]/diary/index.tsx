@@ -5,9 +5,29 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { types } from "util";
+
+interface UserData {
+  email: string;
+  name: string;
+  auth: string;
+}
+
+interface DiaryData {
+  author: UserData;
+  authorId: number;
+  content: string;
+  createdAt: Date;
+  id: number;
+  isPublic: boolean;
+  title: string;
+  views: number;
+  _count: { likes: number };
+}
 
 export default function Diary() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<DiaryData>({});
+
   const params = useParams();
   const { data: session } = useSession();
 
@@ -27,7 +47,9 @@ export default function Diary() {
       return diary;
     };
 
-    getDiary().then((res) => setData(res));
+    getDiary().then((res) => {
+      setData(res);
+    });
   }, []);
 
   return (

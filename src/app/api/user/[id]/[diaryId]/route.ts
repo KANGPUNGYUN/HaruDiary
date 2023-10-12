@@ -23,6 +23,7 @@ export async function GET(
         select: {
           email: true,
           name: true,
+          auth: true,
         },
       },
       _count: {

@@ -1,13 +1,10 @@
 import prisma from "@/app/lib/prisma";
 
-interface UserData {
+interface RequestBody {
   name: string;
   email: string;
   auth: string;
-}
-
-interface RequestBody {
-  user: UserData;
+  password: string;
 }
 
 export async function POST(request: Request) {
@@ -15,9 +12,10 @@ export async function POST(request: Request) {
 
   const user = await prisma.user.create({
     data: {
-      name: body.user.name,
-      email: body.user.email,
-      auth: body.user.auth,
+      name: body.name,
+      email: body.email,
+      auth: body.auth,
+      password: body.password,
     },
   });
 

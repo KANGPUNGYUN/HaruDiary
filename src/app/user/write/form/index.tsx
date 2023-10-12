@@ -5,10 +5,12 @@ import { useForm } from "react-hook-form";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackButton from "@/app/components/backbutton";
+import axios from "axios";
+import { resolve } from "dns/promises";
 
 interface UserData {
   email: string;
-  auth: string;
+  provider: string;
   name: string;
 }
 
@@ -52,58 +54,50 @@ export default function Form() {
   }, []);
 
   async function CreateDiary(data: FormInput) {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signin/userCheck`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: data.user.email,
-          auth: data.user.auth,
-        }),
-      }
-    );
-    let result = await res.json();
-
-    if (result === false) {
-      const newUser = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/signupwithAuth`,
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signin/userCheck`,
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: data.user.name,
-            email: data.user.email,
-            auth: data.user.auth,
-          }),
+          email: data.user.email,
+          auth: data.user.provider,
         }
       );
-      const newUserData = await newUser.json();
-      result = newUserData.id;
-    }
 
-    const diary = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/createDiary`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: data.title,
-          content: data.content,
-          isPublic: data.isPublic,
-          authorId: result,
-        }),
+      let userId = res.data;
+
+      if (userId === null) {
+        try {
+          const newUser = await axios.post(
+            `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/signupwithAuth`,
+            {
+              name: data.user.name,
+              email: data.user.email,
+              auth: data.user.provider,
+              password: "",
+            }
+          );
+          userId = newUser.data.id;
+        } catch (error) {
+          console.error(error);
+        }
       }
-    );
-    const newDiary = await diary.json();
-
-    console.log("일기 업로드 완료!", newDiary);
+      try {
+        const diary = await axios.post(
+          `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/createDiary`,
+          {
+            title: data.title,
+            content: data.content,
+            isPublic: data.isPublic,
+            authorId: userId,
+          }
+        );
+        console.log("일기 업로드 완료!", diary);
+      } catch (error) {
+        console.error(error);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (

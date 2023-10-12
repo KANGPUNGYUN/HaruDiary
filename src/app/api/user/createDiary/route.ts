@@ -4,6 +4,7 @@ interface RequestBody {
   title: string;
   content: string;
   isPublic: boolean;
+  authorId: number;
 }
 
 export async function POST(request: Request) {
@@ -13,8 +14,8 @@ export async function POST(request: Request) {
     data: {
       title: body.title,
       content: body.content,
+      author: { connect: { id: body.authorId } },
       isPublic: body.isPublic,
-      authorId: body.authorId,
     },
   });
 

@@ -23,7 +23,6 @@ interface FormInput {
 }
 
 export default function UpdateForm() {
-  const [formData, setFormData] = useState({});
   const params = useParams();
   const { data: session } = useSession();
 
@@ -51,6 +50,7 @@ export default function UpdateForm() {
     if (session?.user) {
       setValue("user", session?.user);
     }
+
     const getDiary = async () => {
       const res = await axios.get(
         `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}`,
@@ -122,15 +122,15 @@ export default function UpdateForm() {
         <div className="p-diary-paper">
           <p className="p-diary-date">{`${
             new Date(String(getValues("createdAt")))
-              .toLocaleString()
+              .toLocaleString("ko-KR")
               .split(".")[0]
           }년 ${
             new Date(String(getValues("createdAt")))
-              .toLocaleString()
+              .toLocaleString("ko-KR")
               .split(".")[1]
           }월 ${
             new Date(String(getValues("createdAt")))
-              .toLocaleString()
+              .toLocaleString("ko-KR")
               .split(".")[2]
           }일`}</p>
           <label className="p-diary-form-title-label__outer">
@@ -163,9 +163,7 @@ export default function UpdateForm() {
                 required: "내용을 입력해주세요.",
               })}
               placeholder="당신의 하루를 작성해주세요."
-              onChange={() => {
-                onInputHandler;
-              }}
+              onChange={onInputHandler}
               maxLength={250}
             />
             <span className="form-control-blind">일기 내용 입력하기</span>
