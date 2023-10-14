@@ -3,7 +3,7 @@ import prisma from "@/app/lib/prisma";
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: { diaryId: string } }
 ) {
   const accessToken = request.headers.get("authorization");
   //   if (!accessToken || !verifyJwt(accessToken)) {

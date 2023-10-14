@@ -11,7 +11,6 @@ export default function MyDiaryList() {
     <>
       <main className="p-diary-list-main">
         <div className="p-diary-list-main__inner">
-          <h2 className="p-diary-list-title">나의 하루</h2>
           <DiaryList />
         </div>
       </main>

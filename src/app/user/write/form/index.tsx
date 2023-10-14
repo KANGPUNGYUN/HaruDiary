@@ -1,12 +1,14 @@
 "use client";
 import { useSession } from "next-auth/react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackButton from "@/app/components/backbutton";
+import Modal from "@/app/components/modal";
 import axios from "axios";
-import { resolve } from "dns/promises";
+import Link from "next/link";
 
 interface UserData {
   email: string;
@@ -22,6 +24,7 @@ interface FormInput {
 }
 
 export default function Form() {
+  const router = useRouter();
   const { data: session } = useSession();
 
   const {
@@ -92,6 +95,7 @@ export default function Form() {
           }
         );
         console.log("일기 업로드 완료!", diary);
+        router.push(`/user/${diary?.data?.authorId}/${diary?.data?.id}`);
       } catch (error) {
         console.error(error);
       }
@@ -99,6 +103,9 @@ export default function Form() {
       console.error(error);
     }
   }
+
+  const searchParams = useSearchParams();
+  const showModal = searchParams?.get("modal");
 
   return (
     <>
@@ -120,6 +127,7 @@ export default function Form() {
           }
         })}
       >
+        {showModal && <Modal />}
         <div className="p-diary-paper">
           <p className="p-diary-date">{`${year}년 ${month}월 ${day}일`}</p>
           <label className="p-diary-form-title-label__outer">
@@ -196,9 +204,12 @@ export default function Form() {
         </div>
         <div className="p-diary-form-error-message">{errors.user?.message}</div>
         <div className="p-diary-form-utility">
-          <button className="p-diary-form-submit-button" type="submit">
+          <Link
+            href="/user/write/?modal=true"
+            className="p-diary-form-submit-button"
+          >
             일기 올리기
-          </button>
+          </Link>
         </div>
       </form>
     </>

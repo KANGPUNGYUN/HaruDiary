@@ -1,4 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useSession } from "next-auth/react";
+import axios from "axios";
+
 import Link from "next/link";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,6 +22,8 @@ export default function Sidebar({
   toggle: () => void;
 }): JSX.Element {
   let outside = useRef<HTMLDivElement>(null);
+  const { data: session, status } = useSession();
+  const [userId, setUserId] = useState(0);
 
   useEffect(() => {
     let handler = (e: any) => {
@@ -35,12 +40,52 @@ export default function Sidebar({
   });
 
   const menuList = [
-    { id: 1, title: "소개", href: "/abuot" },
+    { id: 1, title: "소개", href: "/about" },
     { id: 2, title: "문의/제안", href: "/contacts" },
     { id: 3, title: "모두의 하루", href: "/user" },
-    { id: 4, title: "나의 하루", href: "/user" },
+    { id: 4, title: "나의 하루", href: `/user/${userId}` },
     { id: 5, title: "하루쓰기", href: "/user/write" },
   ];
+
+  useEffect(() => {
+    if (status === "authenticated" && session && session.user) {
+      const getUserId = async () => {
+        try {
+          const res = await axios.post(
+            `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signin/userCheck`,
+            {
+              email: session?.user.email,
+              auth: session?.user.provider,
+            }
+          );
+
+          let userId = res.data;
+
+          if (userId === null) {
+            try {
+              const newUser = await axios.post(
+                `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/signupwithAuth`,
+                {
+                  name: session?.user.name,
+                  email: session?.user.email,
+                  auth: session?.user.provider,
+                  password: "",
+                }
+              );
+              userId = newUser.data.id;
+            } catch (error) {
+              console.error(error);
+            }
+          }
+          setUserId(userId);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      getUserId();
+    }
+  }, [status]);
 
   return (
     <>

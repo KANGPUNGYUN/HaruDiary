@@ -8,7 +8,7 @@ interface RequestBody {
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: string; diaryId: string } }
 ) {
   const body: RequestBody = await request.json();
 

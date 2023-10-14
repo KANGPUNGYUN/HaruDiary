@@ -1,16 +1,17 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams, useRouter } from "next/navigation";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackButton from "@/app/components/backbutton";
+import Link from "next/link";
+import Modal from "@/app/components/modal";
 
 interface UserData {
   email: string;
-  auth: string;
   name: string;
 }
 
@@ -24,6 +25,7 @@ interface FormInput {
 
 export default function UpdateForm() {
   const params = useParams();
+  const router = useRouter();
   const { data: session } = useSession();
 
   const {
@@ -71,6 +73,7 @@ export default function UpdateForm() {
       setValue("content", res.content);
       setValue("isPublic", res.isPublic);
       setValue("createdAt", res.createdAt);
+      setInputCount(res.content.length);
     });
   }, []);
 
@@ -80,24 +83,25 @@ export default function UpdateForm() {
   };
 
   async function updateDiary(data: FormInput) {
-    const diary = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}/updateDiary`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+    try {
+      const updateDiaryData = await axios.post(
+        `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}/updateDiary`,
+        {
           title: data.title,
           content: data.content,
           isPublic: data.isPublic,
-        }),
+        }
+      );
+      if (updateDiaryData.status === 200) {
+        router.push(`/user/${params.id}/${params.diaryId}`);
       }
-    );
-    const newDiary = await diary.json();
-
-    console.log("일기 업로드 완료!", newDiary);
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+  const searchParams = useSearchParams();
+  const showModal = searchParams?.get("modal");
 
   return (
     <>
@@ -119,6 +123,7 @@ export default function UpdateForm() {
           }
         })}
       >
+        {showModal && <Modal />}
         <div className="p-diary-paper">
           <p className="p-diary-date">{`${
             new Date(String(getValues("createdAt")))
@@ -207,9 +212,12 @@ export default function UpdateForm() {
         </div>
         <div className="p-diary-form-error-message">{errors.user?.message}</div>
         <div className="p-diary-form-utility">
-          <button className="p-diary-form-submit-button" type="submit">
+          <Link
+            href={`/user/${params.id}/${params.diaryId}/update/?modal=true`}
+            className="p-diary-form-submit-button"
+          >
             일기 수정하기
-          </button>
+          </Link>
         </div>
       </form>
     </>
