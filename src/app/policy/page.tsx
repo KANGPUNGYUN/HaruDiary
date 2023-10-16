@@ -90,6 +90,11 @@ export default function Policy() {
         </div>
 
         <div className="p-policy-term-container">
+          <span className="p-policy-caution">
+            ※ 포트폴리오 목적으로 개발한 웹 서비스입니다. 아래 이용약관을
+            엄격하게 적용하진 않지만, 기본적인 유지보수를 위해서 적절한 조치를
+            취하겠습니다.
+          </span>
           <h3 id="제1조">제1조 (목적)</h3>
           <p>
             본 약관은 하루쓰기(이하 ‘회사’)가 제공하는 하루쓰기 및 하루쓰기 관련

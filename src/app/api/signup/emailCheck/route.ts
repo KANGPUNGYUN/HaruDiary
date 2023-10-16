@@ -7,7 +7,7 @@ interface RequestBody {
 export async function POST(request: Request) {
   const body: RequestBody = await request.json();
 
-  const UserWhereUniqueInput = await prisma.user.findUnique({
+  const UserWhereUniqueInput = await prisma.user.findFirst({
     where: { email: body.email },
   });
   if (UserWhereUniqueInput !== null) {

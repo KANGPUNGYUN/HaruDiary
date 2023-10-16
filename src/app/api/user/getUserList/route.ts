@@ -1,10 +1,7 @@
 import { verifyJwt } from "@/app/lib/jwt";
 import prisma from "@/app/lib/prisma";
 
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function GET(request: Request) {
   const accessToken = request.headers.get("authorization");
   if (!accessToken || !verifyJwt(accessToken)) {
     console.log(accessToken);
@@ -13,22 +10,19 @@ export async function GET(
     // });
   }
 
-  console.log(params);
-
-  const id = Number(params.id);
-
-  const userPosts = await prisma.diary.findMany({
-    where: {
-      authorId: id,
-    },
-    include: {
-      author: {
+  const users = await prisma.user.findMany({
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      auth: true,
+      _count: {
         select: {
-          email: true,
-          name: true,
+          diarys: true,
         },
       },
     },
   });
-  return new Response(JSON.stringify(userPosts));
+
+  return new Response(JSON.stringify(users));
 }

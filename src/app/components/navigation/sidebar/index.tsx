@@ -66,13 +66,13 @@ export default function Sidebar({
               const newUser = await axios.post(
                 `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/signupwithAuth`,
                 {
-                  name: session?.user.name,
-                  email: session?.user.email,
-                  auth: session?.user.provider,
+                  name: session?.user?.name,
+                  email: session?.user?.email,
+                  auth: session?.user?.provider,
                   password: "",
                 }
               );
-              userId = newUser.data.id;
+              userId = newUser?.data?.id;
             } catch (error) {
               console.error(error);
             }
@@ -85,7 +85,7 @@ export default function Sidebar({
 
       getUserId();
     }
-  }, [status]);
+  }, [status, session]);
 
   return (
     <>

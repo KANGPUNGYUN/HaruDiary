@@ -46,13 +46,13 @@ export default function Navbar({ toggle }: { toggle: () => void }) {
               const newUser = await axios.post(
                 `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/signupwithAuth`,
                 {
-                  name: session?.user.name,
-                  email: session?.user.email,
-                  auth: session?.user.provider,
+                  name: session?.user?.name,
+                  email: session?.user?.email,
+                  auth: session?.user?.provider,
                   password: "",
                 }
               );
-              userId = newUser.data.id;
+              userId = newUser?.data?.id;
             } catch (error) {
               console.error(error);
             }
@@ -65,7 +65,7 @@ export default function Navbar({ toggle }: { toggle: () => void }) {
 
       getUserId();
     }
-  }, [status]);
+  }, [status, session]);
 
   return (
     <nav className="p-navbar">

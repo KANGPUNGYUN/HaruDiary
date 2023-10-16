@@ -268,7 +268,7 @@ export default function SignUpForm() {
               {...register("nickname", {
                 required: "필수 입력 항목입니다.",
                 minLength: { value: 2, message: "2자 이상으로 입력해주세요." },
-                maxLength: { value: 15, message: "15자 이하로 입력해주세요." },
+                maxLength: { value: 8, message: "8자 이하로 입력해주세요." },
               })}
               className={
                 errors.nickname || isExistNickname !== ""
@@ -276,7 +276,8 @@ export default function SignUpForm() {
                   : "p-signup-form-nickname-input"
               }
               name="nickname"
-              placeholder="별명 (2~15자)"
+              maxLength={8}
+              placeholder="별명 (2~8자)"
               autoComplete="off"
               onBlur={async (data) => {
                 const res = await fetch(

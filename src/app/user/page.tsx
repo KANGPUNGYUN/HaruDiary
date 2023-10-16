@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import UserList from "./user_list";
 
 export const metadata: Metadata = {
   title: "하루쓰기 | 모두의 하루",
@@ -8,7 +9,11 @@ export const metadata: Metadata = {
 export default function User() {
   return (
     <>
-      <main></main>
+      <div className="p-user-main__outer">
+        <main className="p-user-main">
+          <UserList />
+        </main>
+      </div>
     </>
   );
 }

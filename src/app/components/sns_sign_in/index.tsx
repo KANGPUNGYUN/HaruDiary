@@ -24,7 +24,7 @@ export default function SnsSignIn() {
           >
             <Image
               src="/kakao_logo.svg"
-              alt="하루쓰기 홈으로 이동하기"
+              alt="카카오로 간편 로그인하기"
               width="25"
               height="23"
             />
@@ -45,7 +45,7 @@ export default function SnsSignIn() {
           >
             <Image
               src="/naver_logo.svg"
-              alt="하루쓰기 홈으로 이동하기"
+              alt="네이버로 간편 로그인하기"
               width="48"
               height="48"
             />
@@ -66,7 +66,7 @@ export default function SnsSignIn() {
           >
             <Image
               src="/google_logo.svg"
-              alt="하루쓰기 홈으로 이동하기"
+              alt="구글로 간편 로그인하기"
               width="64"
               height="64"
             />

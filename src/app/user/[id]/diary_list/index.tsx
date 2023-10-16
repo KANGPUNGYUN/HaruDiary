@@ -41,7 +41,7 @@ export default function DiaryList() {
     };
     getUserData().then((res) => setUser(res));
     getDiary().then((res) => setData(res));
-  }, []);
+  }, [session, params.id]);
 
   const month = {
     1: "JAN",
@@ -88,42 +88,59 @@ export default function DiaryList() {
           <span className="p-diary-list-title-user-nickname">{user?.name}</span>
           의 하루
         </h2>
-        <ol className="p-diary-list">
-          {data.map((v: diary) => (
-            <li className="p-diary-item" key={v.id}>
-              <Link href={`/user/${params.id}/` + v.id}>
-                <h3>
-                  {Number(
-                    new Date(v.createdAt).toLocaleString("ko-KR").split(".")[2]
-                  ) < 10
-                    ? `0${
-                        new Date(v.createdAt)
-                          .toLocaleString("ko-KR")
-                          .split(". ")[2]
-                      }`
-                    : new Date(v.createdAt)
-                        .toLocaleString("ko-KR")
-                        .split(".")[2]}
-                </h3>
-                <h4>
-                  {
-                    month[
-                      Number(
-                        new Date(v.createdAt)
-                          .toLocaleString("ko-KR")
-                          .split(".")[1]
-                      )
-                    ]
-                  }
-                </h4>
-                <h4>
-                  {new Date(v.createdAt).toLocaleString("kr-KR").split(".")[0]}
-                </h4>
-                <span className="p-diary-item-fold"></span>
+        {data.length === 0 ? (
+          <div className="p-diary-list-unuser__outer">
+            <div className="p-diary-list-unuser">
+              <p>아직 작성된 일기가 없습니다. 당신의 하루를 작성해 보세요.</p>
+              <Link href="/user/write" className="login-button confirm">
+                나의 하루 작성하러가기
               </Link>
-            </li>
-          ))}
-        </ol>
+            </div>
+          </div>
+        ) : (
+          <ol className="p-diary-list">
+            {data.map((v: diary) => (
+              <li className="p-diary-item" key={v.id}>
+                <Link href={`/user/${params.id}/` + v.id}>
+                  <h3>
+                    {Number(
+                      new Date(v.createdAt)
+                        .toLocaleString("ko-KR")
+                        .split(".")[2]
+                    ) < 10
+                      ? `0${
+                          new Date(v.createdAt)
+                            .toLocaleString("ko-KR")
+                            .split(". ")[2]
+                        }`
+                      : new Date(v.createdAt)
+                          .toLocaleString("ko-KR")
+                          .split(".")[2]}
+                  </h3>
+                  <h4>
+                    {
+                      month[
+                        Number(
+                          new Date(v.createdAt)
+                            .toLocaleString("ko-KR")
+                            .split(".")[1]
+                        )
+                      ]
+                    }
+                  </h4>
+                  <h4>
+                    {
+                      new Date(v.createdAt)
+                        .toLocaleString("kr-KR")
+                        .split(".")[0]
+                    }
+                  </h4>
+                  <span className="p-diary-item-fold"></span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        )}
       </>
     );
   }

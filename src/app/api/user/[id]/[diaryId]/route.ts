@@ -29,6 +29,7 @@ export async function GET(
       _count: {
         select: {
           likes: true,
+          report: true,
         },
       },
     },
