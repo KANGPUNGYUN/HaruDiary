@@ -1,28 +1,29 @@
-import { verifyJwt } from "@/app/lib/jwt";
 import prisma from "@/app/lib/prisma";
 
-export async function GET(request: Request) {
-  const accessToken = request.headers.get("authorization");
-  if (!accessToken || !verifyJwt(accessToken)) {
-    console.log(accessToken);
-    // return new Response(JSON.stringify({ error: "No Authorization" }), {
-    //   status: 401,
-    // });
-  }
+interface RequestBody {
+  page: number;
+}
 
-  const users = await prisma.user.findMany({
-    select: {
-      id: true,
-      name: true,
-      email: true,
-      auth: true,
-      _count: {
-        select: {
-          diarys: true,
+export async function POST(request: Request) {
+  const body: RequestBody = await request.json();
+  const users = await prisma.$transaction([
+    prisma.user.count(),
+    prisma.user.findMany({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        auth: true,
+        _count: {
+          select: {
+            diarys: true,
+          },
         },
       },
-    },
-  });
+      skip: (body.page - 1) * 5,
+      take: 5,
+    }),
+  ]);
 
   return new Response(JSON.stringify(users));
 }

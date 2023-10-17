@@ -263,12 +263,24 @@ export default function SignUpForm() {
           >
             닉네임
           </label>
+          <div className="p-signup-form-description">
+            공백 없이 2자이상 8자 이하의 닉네임을 입력해주세요.
+          </div>
           <label>
             <input
               {...register("nickname", {
                 required: "필수 입력 항목입니다.",
                 minLength: { value: 2, message: "2자 이상으로 입력해주세요." },
                 maxLength: { value: 8, message: "8자 이하로 입력해주세요." },
+                validate: {
+                  check: (val) => {
+                    if (val.trim() === "") {
+                      return "공백을 제외한 문자를 입력해주세요.";
+                    } else if (val !== val.split(" ").join()) {
+                      return "공백이 포함되어 있습니다.";
+                    }
+                  },
+                },
               })}
               className={
                 errors.nickname || isExistNickname !== ""

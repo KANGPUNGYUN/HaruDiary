@@ -57,7 +57,6 @@ export default function UpdateForm() {
       const res = await axios.get(
         `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}`,
         {
-          method: "GET",
           headers: {
             authorization: session?.user?.accessToken,
           },
@@ -110,19 +109,7 @@ export default function UpdateForm() {
         rel="stylesheet"
       />
       <BackButton />
-      <form
-        className="p-diary-form"
-        onSubmit={handleSubmit((data) => {
-          if (!session?.user) {
-            setError("user", {
-              message:
-                "로그인 정보가 없습니다. 일기를 작성하려면 먼저 로그인 또는 회원가입해주세요.",
-            });
-          } else {
-            updateDiary(data);
-          }
-        })}
-      >
+      <form className="p-diary-form">
         {showModal && <Modal />}
         <div className="p-diary-paper">
           <p className="p-diary-date">{`${
@@ -213,8 +200,22 @@ export default function UpdateForm() {
         <div className="p-diary-form-error-message">{errors.user?.message}</div>
         <div className="p-diary-form-utility">
           <Link
-            href={`/user/${params.id}/${params.diaryId}/update/?modal=true`}
+            href={
+              errors
+                ? ""
+                : `/user/${params.id}/${params.diaryId}/update/?modal=true`
+            }
             className="p-diary-form-submit-button"
+            onClick={handleSubmit((data) => {
+              if (!session?.user) {
+                setError("user", {
+                  message:
+                    "로그인 정보가 없습니다. 일기를 작성하려면 먼저 로그인 또는 회원가입해주세요.",
+                });
+              } else {
+                updateDiary(data);
+              }
+            })}
           >
             일기 수정하기
           </Link>

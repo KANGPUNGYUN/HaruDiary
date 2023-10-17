@@ -2335,6 +2335,7 @@ a {
   box-sizing: border-box;
   border: 1px solid #dadde0;
   border-radius: 18px;
+  background-color: var(--white);
   height: 40px;
   padding: 0 14px;
   width: 100%;
@@ -2387,12 +2388,13 @@ a {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  min-width: 280px;
+  min-width: 240px;
 }
 
 .p-user-list-item {
   background-color: var(--white);
   padding: 10px;
+  border-radius: 4px;
 }
 
 .p-user-list-item a {
@@ -2420,7 +2422,7 @@ a {
 .p-user-list-user-certified {
   width: 16px;
   height: 16px;
-  color: #62d9fc;
+  color: #3a96f3;
   position: absolute;
   left: 25px;
   top: 25px;
@@ -2459,4 +2461,206 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.p-user-list-show-more-button {
+  margin-top: 12px;
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 14px;
+  line-height: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 16px;
+  font-weight: 400;
+  box-sizing: border-box;
+  text-align: center;
+  color: #ffffff;
+  background-color: #62d9fc;
+  outline: none;
+  overflow: hidden;
+}
+
+.p-user-list-show-more-button.fold {
+  background-color: #828c94;
+  color: #ffffff;
+}
+
+.p-user-list-show-more-button:hover {
+  background-color: #009fce;
+}
+
+.p-user-list-show-more-button.fold:hover {
+  background-color: #191f28;
+}
+
+/* page: about */
+
+.p-about-main__outer {
+  padding: 20px 4% 40px;
+  min-height: calc(100vh - 412px);
+}
+
+.p-about-main {
+  display: flex;
+  gap: 60px;
+  width: 100%;
+  min-width: 280px;
+  margin: 20px auto;
+  font-family: "Gowun Batang";
+  flex-direction: column;
+}
+
+@media (min-width: 1440px) {
+  .p-about-main {
+    width: 70%;
+    flex-direction: row;
+  }
+}
+
+.p-about-description-title {
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+.p-about-description-item {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.p-about-description-item-type {
+  width: 150px;
+}
+
+.p-about-description-item-type-skills {
+  width: calc(100% - 150px);
+}
+
+/* module: iphone */
+
+.iphone {
+  aspect-ratio: 260 / 540;
+  width: 15rem;
+
+  border: solid 0.4rem black;
+  border-radius: 2rem;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.status {
+  box-sizing: border-box;
+  width: 100%;
+  height: 2rem;
+  padding: 0 1rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.status div {
+  flex: 1;
+  text-align: center;
+}
+.status .blank {
+  flex: 1.5;
+}
+
+.floating {
+  width: 5rem;
+  aspect-ratio: 300 / 90;
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  margin: 0.5rem 0;
+
+  border-radius: 2rem; /* does not really matter */
+  background: black;
+}
+.camera {
+  box-sizing: border-box;
+  width: 1rem;
+  aspect-ratio: 1 / 1;
+
+  position: absolute;
+  top: 50%;
+  right: calc(5rem / 300 * 90 * 0.25); /* center of border radius */
+  transform: translateY(-50%);
+
+  border-radius: 2rem; /* does not really matter */
+  border: solid 0.1rem #121212;
+  background: #00021d;
+}
+.blob {
+  position: absolute;
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+}
+.white {
+  width: 0.5rem;
+  aspect-ratio: 14 / 6;
+
+  top: 25%;
+  left: 50%;
+
+  background: white;
+  filter: blur(0.1rem);
+  opacity: 0.7;
+}
+.bbg {
+  width: 0.5rem;
+  aspect-ratio: 15 / 10;
+
+  top: 75%;
+  left: 50%;
+
+  background: #151e9d;
+  filter: blur(0.1rem);
+}
+.green {
+  width: 0.2rem;
+  aspect-ratio: 7 / 4;
+
+  top: 65%;
+  left: 65%;
+
+  background: #0f7b3a;
+  filter: blur(0.05rem);
+}
+.red {
+  width: 0.17rem;
+  aspect-ratio: 7 / 4;
+
+  top: 80%;
+  left: 50%;
+
+  background: #d73838;
+  filter: blur(0.05rem);
+}
+
+.home {
+  width: 7rem;
+  aspect-ratio: 300 / 15;
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  margin: 0.3rem 0;
+
+  border-radius: 2rem; /* does not really matter */
+  background: black;
 }

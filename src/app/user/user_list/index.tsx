@@ -1,7 +1,6 @@
 "use client";
 import axios from "axios";
-import { useSession } from "next-auth/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { faCircleUser, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -18,27 +17,59 @@ interface userListData {
 }
 
 export default function UserList() {
-  const { data: session } = useSession();
   const [userList, setUserList] = useState([]);
+  const [listIndex, setListIndex] = useState(2);
+  const [totalUser, setTotalUser] = useState(0);
+  const [isSearched, setIsSearched] = useState(false);
 
   useEffect(() => {
     const getUserList = async () => {
-      if (session && session?.user) {
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/getUserList`,
-          {
-            method: "GET",
-            headers: {
-              authorization: `${session}`,
-            },
-          }
-        );
-        const userList = await res.data;
-        setUserList(userList);
-      }
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/getUserList`,
+        { page: 1 }
+      );
+      const result = await res.data;
+      setUserList(result[1]);
+      setTotalUser(result[0]);
     };
     getUserList();
-  }, [session]);
+  }, []);
+
+  const searchUserList = async (e: any) => {
+    const res = await axios.post(
+      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/getUserNameList`,
+      { name: e.target.value }
+    );
+    const userList = await res.data;
+    setUserList(userList);
+    if (e.target.value !== "") {
+      setIsSearched(true);
+    } else {
+      setIsSearched(false);
+      showInit();
+    }
+  };
+
+  const showMore = async () => {
+    const res = await axios.post(
+      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/getUserList`,
+      { page: listIndex }
+    );
+    const result: never[] = await res.data;
+    setUserList([...userList, ...result[1]]);
+    setListIndex(listIndex + 1);
+  };
+
+  const showInit = async () => {
+    const res = await axios.post(
+      `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/getUserList`,
+      { page: 1 }
+    );
+    const result: never[] = await res.data;
+    setUserList(result[1]);
+    setListIndex(2);
+  };
+
   return (
     <>
       <link
@@ -52,13 +83,16 @@ export default function UserList() {
             type="text"
             className="p-user-search-bar-input"
             placeholder="닉네임으로 검색하기"
+            onChange={searchUserList}
           />
         </div>
       </div>
-      <p className="p-user-search-result">전체</p>
+      <p className="p-user-search-result">
+        {isSearched ? `검색결과 ${userList.length}명` : `전체 ${totalUser}명`}
+      </p>
       <ol className="p-user-list">
         {userList.length === 0 ? (
-          <li>유저 정보가 없습니다.</li>
+          <li>일치하는 닉네임의 회원이 없습니다.</li>
         ) : (
           userList.map((v: userListData) => (
             <li className="p-user-list-item" key={v.id}>
@@ -107,7 +141,6 @@ export default function UserList() {
                         className="p-user-list-user-auth"
                         style={{
                           backgroundColor: "var(--white)",
-                          border: "1px solid #8b8d91",
                         }}
                       >
                         <Image
@@ -119,7 +152,21 @@ export default function UserList() {
                       </span>
                     </span>
                   ) : (
-                    ""
+                    <span className="p-user-list-user-auth__outer">
+                      <span
+                        className="p-user-list-user-auth"
+                        style={{
+                          backgroundColor: "#62d9fc",
+                          color: "var(--white)",
+                          fontFamily: "Gowun Batang",
+                          fontSize: "12px",
+                          borderRadius: "0",
+                          padding: "2px",
+                        }}
+                      >
+                        하
+                      </span>
+                    </span>
                   )}
                 </div>
                 <div className="p-user-list-user-profile">
@@ -133,6 +180,27 @@ export default function UserList() {
           ))
         )}
       </ol>
+      {isSearched ? (
+        ""
+      ) : totalUser > (listIndex - 1) * 5 ? (
+        <button
+          className="p-user-list-show-more-button"
+          onClick={() => {
+            showMore();
+          }}
+        >
+          더보기
+        </button>
+      ) : (
+        <button
+          className="p-user-list-show-more-button fold"
+          onClick={() => {
+            showInit();
+          }}
+        >
+          접기
+        </button>
+      )}
     </>
   );
 }

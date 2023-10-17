@@ -61,23 +61,9 @@ export default function Sidebar({
 
           let userId = res.data;
 
-          if (userId === null) {
-            try {
-              const newUser = await axios.post(
-                `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/signupwithAuth`,
-                {
-                  name: session?.user?.name,
-                  email: session?.user?.email,
-                  auth: session?.user?.provider,
-                  password: "",
-                }
-              );
-              userId = newUser?.data?.id;
-            } catch (error) {
-              console.error(error);
-            }
+          if (userId !== null) {
+            setUserId(userId);
           }
-          setUserId(userId);
         } catch (error) {
           console.log(error);
         }

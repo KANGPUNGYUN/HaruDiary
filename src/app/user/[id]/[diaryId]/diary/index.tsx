@@ -112,13 +112,7 @@ export default function Diary() {
       const getDiary = async () => {
         try {
           const res = await axios.get(
-            `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}`,
-            {
-              method: "GET",
-              headers: {
-                authorization: session?.user?.accessToken,
-              },
-            }
+            `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}`
           );
           const diary = await res.data;
           return diary;
@@ -161,13 +155,7 @@ export default function Diary() {
         const getDiary = async () => {
           try {
             const res = await axios.get(
-              `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}`,
-              {
-                method: "GET",
-                headers: {
-                  authorization: session?.user?.accessToken,
-                },
-              }
+              `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}`
             );
             const diary = await res.data;
             return diary;
@@ -197,7 +185,6 @@ export default function Diary() {
             const res = await axios.get(
               `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}`,
               {
-                method: "GET",
                 headers: {
                   authorization: session?.user?.accessToken,
                 },

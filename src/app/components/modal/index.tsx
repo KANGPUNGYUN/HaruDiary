@@ -14,7 +14,7 @@ export default function Modal() {
           </button>
           <h1 className="modal-title">정상적으로 일기가 작성되었습니다.</h1>
           <div className="modal-button__outer">
-            <button type="submit" className="modal-button confirm">
+            <button className="modal-button confirm" onClick={router.back}>
               확인
             </button>
           </div>

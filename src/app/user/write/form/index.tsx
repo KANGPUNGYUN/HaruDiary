@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faCircleQuestion, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackButton from "@/app/components/backbutton";
 import Modal from "@/app/components/modal";
@@ -106,7 +106,7 @@ export default function Form() {
 
   const searchParams = useSearchParams();
   const showModal = searchParams?.get("modal");
-
+  const showErrorModal = searchParams?.get("errorModal");
   return (
     <>
       <link
@@ -114,19 +114,7 @@ export default function Form() {
         rel="stylesheet"
       />
       <BackButton />
-      <form
-        className="p-diary-form"
-        onSubmit={handleSubmit((data) => {
-          if (!session?.user) {
-            setError("user", {
-              message:
-                "로그인 정보가 없습니다. 일기를 작성하려면 먼저 로그인 또는 회원가입해주세요.",
-            });
-          } else {
-            CreateDiary(data);
-          }
-        })}
-      >
+      <form className="p-diary-form">
         {showModal && <Modal />}
         <div className="p-diary-paper">
           <p className="p-diary-date">{`${year}년 ${month}월 ${day}일`}</p>
@@ -205,7 +193,16 @@ export default function Form() {
         <div className="p-diary-form-error-message">{errors.user?.message}</div>
         <div className="p-diary-form-utility">
           <Link
-            href="/user/write/?modal=true"
+            onClick={handleSubmit((data) => {
+              if (!session?.user) {
+                setError("user", {
+                  message: "로그인 정보가 없습니다. 먼저 로그인 하세요.",
+                });
+              } else {
+                CreateDiary(data);
+              }
+            })}
+            href={errors ? "" : "/user/write/?modal=true"}
             className="p-diary-form-submit-button"
           >
             일기 올리기

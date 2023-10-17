@@ -17,7 +17,6 @@ export default function DiaryList() {
       const res = await axios.get(
         `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/getUserData`,
         {
-          method: "GET",
           headers: {
             authorization: `${session}`,
           },
@@ -30,7 +29,6 @@ export default function DiaryList() {
       const res = await axios.get(
         `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}`,
         {
-          method: "GET",
           headers: {
             authorization: `${session}`,
           },
