@@ -12,7 +12,7 @@ export default function Contacts() {
       <main className="p-contact-main">
         <div className="p-contact-main__inner">
           <div className="p-contact-title">
-            문의하거나 좋은 제안을 가지고 계시다면, 해당 이메일로 연락
+            문의하거나 좋은 제안을 가지고 계시다면, 아래 이메일로 연락
             부탁드립니다!
           </div>
           <div className="p-contact-email__outer">
