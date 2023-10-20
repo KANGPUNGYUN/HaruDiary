@@ -2278,7 +2278,7 @@ a {
 
 .p-diary-form-utility {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .p-diary-form-error-message {
@@ -2562,9 +2562,8 @@ a {
 }
 
 .p-about-main-FAQ {
-  border-top: 2px solid #dbdbdb;
   padding-top: 40px;
-  width: fit-content;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -2628,7 +2627,7 @@ a {
 
 .p-about-main-FAQ-list-item-main {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 10px;
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
@@ -3074,8 +3073,8 @@ a {
   }
 
   .p-home-section2-img__outer {
-    width: 100%;
-    height: calc(50vw / 337 * 735);
+    width: 42.858vw;
+    height: calc(42.858vw / 337 * 735);
   }
 
   .p-home-section2-title {

@@ -28,25 +28,25 @@ model Diary {
   isPublic   Boolean
   createdAt  DateTime  @default(now())
   views      Int       @default(0)
-  author     User      @relation(fields: [authorId], references: [id])
+  author     User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId   Int
   likes      Like[]
   report     Report[]
 }
 
 model Like {
-  diary     Diary   @relation(fields: [diaryId], references: [id])
+  diary     Diary   @relation(fields: [diaryId], references: [id], onDelete: Cascade)
   diaryId   Int
-  author    User    @relation(fields: [authorId], references: [id])
+  author    User    @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId  Int
 
   @@id([diaryId, authorId])
 }
 
 model Report {
-  diary     Diary   @relation(fields: [diaryId], references: [id])
+  diary     Diary   @relation(fields: [diaryId], references: [id], onDelete: Cascade)
   diaryId   Int
-  author    User    @relation(fields: [authorId], references: [id])
+  author    User    @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId  Int
   reportBy  String?
 

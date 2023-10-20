@@ -87,14 +87,27 @@ export default function DiaryList() {
           의 하루
         </h2>
         {data.length === 0 ? (
-          <div className="p-diary-list-unuser__outer">
-            <div className="p-diary-list-unuser">
-              <p>아직 작성된 일기가 없습니다. 당신의 하루를 작성해 보세요.</p>
-              <Link href="/user/write" className="login-button confirm">
-                나의 하루 작성하러가기
-              </Link>
+          user?.id === session?.user.id ||
+          (user?.auth === session?.user.provider &&
+            user?.email === session?.user.email) ? (
+            <div className="p-diary-list-unuser__outer">
+              <div className="p-diary-list-unuser">
+                <p>아직 작성된 일기가 없습니다. 당신의 하루를 작성해 보세요.</p>
+                <Link href="/user/write" className="login-button confirm">
+                  나의 하루 작성하기
+                </Link>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="p-diary-list-unuser__outer">
+              <div className="p-diary-list-unuser">
+                <p>아직 작성된 일기가 없습니다.</p>
+                <Link href="/user" className="login-button confirm">
+                  모두의 하루로 이동하기
+                </Link>
+              </div>
+            </div>
+          )
         ) : (
           <ol className="p-diary-list">
             {data.map((v: diary) => (

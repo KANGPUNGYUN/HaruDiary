@@ -29,6 +29,11 @@ export async function GET(
         },
       },
     },
+    orderBy: [
+      {
+        id: "desc",
+      },
+    ],
   });
   return new Response(JSON.stringify(userPosts));
 }

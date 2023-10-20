@@ -127,6 +127,21 @@ export default function Diary() {
       getDiary().then((res) => {
         setData(res);
       });
+    } else {
+      const getDiary = async () => {
+        try {
+          const res = await axios.get(
+            `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}`
+          );
+          const diary = await res.data;
+          return diary;
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getDiary().then((res) => {
+        setData(res);
+      });
     }
   }, [status, myUserId]);
 
@@ -250,8 +265,10 @@ export default function Diary() {
                 new Date(data?.createdAt).toLocaleString("ko-KR").split(".")[2]
               }일`}
             </p>
-            <p className="p-diary-title">{data?.title}</p>
-            <p className="p-diary-content">{data?.content}</p>
+            <div className="p-diary-title">{data?.title}</div>
+            <div className="p-diary-content">
+              <pre style={{ whiteSpace: "pre-wrap" }}>{data?.content}</pre>
+            </div>
           </div>
           <div className="p-diary-footer">
             <div>조회수 {data?.views}</div>
@@ -337,7 +354,7 @@ export default function Diary() {
               </div>
             )}
           </>
-        ) : (
+        ) : session && session.user ? (
           <>
             {isLiked ? (
               <button
@@ -454,6 +471,8 @@ export default function Diary() {
               </div>
             )}
           </>
+        ) : (
+          ""
         )}
       </div>
     </>

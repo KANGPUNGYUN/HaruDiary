@@ -18,6 +18,7 @@ interface userListData {
 
 export default function UserList() {
   const [userList, setUserList] = useState([]);
+  const [searchText, setSearchText] = useState("");
   const [listIndex, setListIndex] = useState(2);
   const [totalUser, setTotalUser] = useState(0);
   const [isSearched, setIsSearched] = useState(false);
@@ -42,6 +43,7 @@ export default function UserList() {
     );
     const userList = await res.data;
     setUserList(userList);
+    setSearchText(e.target.value);
     if (e.target.value !== "") {
       setIsSearched(true);
     } else {
@@ -170,7 +172,19 @@ export default function UserList() {
                   )}
                 </div>
                 <div className="p-user-list-user-profile">
-                  <div className="p-user-list-user-name">{v.name}</div>
+                  <div className="p-user-list-user-name">
+                    {searchText ? (
+                      <>
+                        {v.name.slice(0, v.name.indexOf(searchText))}
+                        <span style={{ color: "#009fce" }}>{searchText}</span>
+                        {v.name.slice(
+                          v.name.indexOf(searchText) + searchText.length
+                        )}
+                      </>
+                    ) : (
+                      v.name
+                    )}
+                  </div>
                   <div className="p-user-list-user-diarys">
                     {v._count.diarys} diarys
                   </div>
