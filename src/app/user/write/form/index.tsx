@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackButton from "@/app/components/backbutton";
 import Modal from "@/app/components/modal";
 import axios from "axios";
-import Link from "next/link";
 
 interface UserData {
   email: string;
@@ -85,17 +84,31 @@ export default function Form() {
         }
       }
       try {
-        const diary = await axios.post(
-          `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/createDiary`,
-          {
-            title: data.title,
-            content: data.content,
-            isPublic: data.isPublic,
-            authorId: userId,
-          }
+        const lastdate = await axios.get(
+          `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${userId}/checkDateValidate`
         );
-        console.log("일기 업로드 완료!", diary);
-        router.push(`/user/${diary?.data?.authorId}/${diary?.data?.id}`);
+        const res = await lastdate.data;
+        if (
+          new Date(res?.createdAt).toLocaleString("ko-KR").slice(0, 12) ===
+          new Date().toLocaleString("ko-KR").slice(0, 12)
+        ) {
+          setError("user", {
+            message:
+              "오늘 작성한 일기가 존재합니다. 하루에 하나의 일기만 작성이 가능하니 참고해주세요.",
+          });
+          return;
+        } else {
+          const diary = await axios.post(
+            `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/createDiary`,
+            {
+              title: data.title,
+              content: data.content,
+              isPublic: data.isPublic,
+              authorId: userId,
+            }
+          );
+          router.push("/user/write/?modal=true");
+        }
       } catch (error) {
         console.error(error);
       }
@@ -106,7 +119,7 @@ export default function Form() {
 
   const searchParams = useSearchParams();
   const showModal = searchParams?.get("modal");
-  const showErrorModal = searchParams?.get("errorModal");
+
   return (
     <>
       <link
@@ -150,6 +163,7 @@ export default function Form() {
               placeholder="당신의 하루를 작성해주세요."
               onChange={onInputHandler}
               maxLength={250}
+              wrap="hard"
             />
             <span className="form-control-blind">일기 내용 입력하기</span>
           </label>
@@ -185,14 +199,14 @@ export default function Form() {
                 <span className="p-diary-form-checkbox-text">공개 여부</span>
               </span>
             </label>
-            <span data-tooltip="checkbox를 checked하면 회원 모두에게 일기가 공개되며, unchecked하면 비공개됩니다.">
+            <span data-tooltip="체크박스를 check하면 일기 내용이 이용자 모두에게 공개되며, uncheck하면 비공개됩니다.">
               <FontAwesomeIcon icon={faCircleQuestion} />
             </span>
           </div>
         </div>
         <div className="p-diary-form-error-message">{errors.user?.message}</div>
         <div className="p-diary-form-utility">
-          <Link
+          <button
             onClick={handleSubmit((data) => {
               if (!session?.user) {
                 setError("user", {
@@ -202,11 +216,10 @@ export default function Form() {
                 CreateDiary(data);
               }
             })}
-            href={errors ? "" : "/user/write/?modal=true"}
             className="p-diary-form-submit-button"
           >
             일기 올리기
-          </Link>
+          </button>
         </div>
       </form>
     </>
