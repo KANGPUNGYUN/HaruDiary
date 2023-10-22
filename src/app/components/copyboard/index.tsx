@@ -33,14 +33,14 @@ export default function CopyBoard() {
   return (
     <>
       <button
-        className="p-contact-email-copy-button"
+        className="p-footer-email-copy-button"
         onClick={() => {
           copy("zkdvnd@naver.com");
           setNext(true);
         }}
       >
         <span
-          className={`p-contact-email-copy-button-text ${next ? "appear" : ""}`}
+          className={`p-footer-email-copy-button-text ${next ? "appear" : ""}`}
         >
           복사완료
         </span>

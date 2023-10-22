@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { faCircleUser, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";

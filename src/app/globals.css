@@ -468,12 +468,34 @@ a {
   box-sizing: border-box;
 }
 
+.p-footer__address__company {
+  display: flex;
+  gap: 24px;
+}
+
 .p-footer__address__company-name {
   display: block;
-  padding-bottom: 16px;
   color: var(--grey400);
+  margin-bottom: 4px;
   font-size: 18px;
   font-weight: 900;
+}
+
+.p-footer__address__company-rules {
+  vertical-align: text-bottom;
+  display: flex;
+  gap: 10px;
+  line-height: 25px;
+  margin-bottom: 4px;
+}
+
+.p-footer__address__company-rules a {
+  color: var(--grey400);
+}
+
+.p-footer__address__company-rules a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .p-footer__address,
@@ -488,7 +510,7 @@ a {
 .p-footer__social-list {
   display: flex;
   gap: 10px;
-  padding: 20px 0;
+  padding: 12px 0 16px;
 }
 
 .p-footer__social-list-item {
@@ -514,57 +536,30 @@ a {
   text-align: center;
 }
 
-/* page: contacts */
-.p-contact-main {
-  width: 100vw;
-  min-height: calc(100vh - 352px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.p-contact-main__inner {
-  padding: 0 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-}
-
-.p-contact-title {
-  font-family: "Gowun Batang";
-  color: #009fce;
-  font-size: 1.5rem;
-}
-
-.p-contact-email__outer {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 14px;
-}
-
-.p-contact-email {
-  font-size: 1.125rem;
-}
-
-.p-contact-email-copy-button {
+.p-footer-email-copy-button {
   position: relative;
   background-color: #414a55;
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
   border: 0;
   border-radius: 50%;
   opacity: 0.6;
   transition: all 0.1s ease;
+  vertical-align: middle;
 }
 
-.p-contact-email-copy-button:hover {
+.p-footer-email-copy-button:hover {
   opacity: 1;
 }
 
-.p-contact-email-copy-button-text {
+.p-footer-email-copy-button svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.p-footer-email-copy-button-text {
   width: 55px;
   position: absolute;
   top: 30px;
@@ -580,7 +575,7 @@ a {
   opacity: 0;
 }
 
-.p-contact-email-copy-button-text.appear {
+.p-footer-email-copy-button-text.appear {
   animation: appear 1s ease;
 }
 
@@ -778,7 +773,7 @@ a {
 /* page: sign_up */
 
 .p-signup-main__outer {
-  height: calc(100% - 60px);
+  height: calc(100vh - 60px);
 }
 
 .p-signup-main {
@@ -1714,7 +1709,7 @@ a {
 
 .p-password-update-main__outter {
   width: 100%;
-  height: calc(100vh - 452px);
+  height: calc(100vh - 459px);
   margin: 100px auto 0 auto;
   padding: 0 16px;
   box-sizing: border-box;
@@ -1811,7 +1806,7 @@ a {
   -webkit-box-align: center;
   align-items: center;
   width: 100vw;
-  height: calc(100vh - 352px);
+  height: calc(100vh - 359px);
   line-height: 30px;
 }
 
@@ -1863,7 +1858,7 @@ a {
 }
 
 .p-diary-list-main__inner {
-  padding: 20px 4% 40px;
+  padding: 20px 4% 33px;
   min-height: calc(100vh - 412px);
 }
 
@@ -1995,7 +1990,7 @@ a {
 
 .p-diary-main__inner {
   margin: 0 auto;
-  min-height: calc(100vh - 412px);
+  min-height: calc(100vh - 419px);
 }
 
 .p-diary-paper {
@@ -2304,7 +2299,7 @@ a {
 
 .p-user-main__outer {
   padding: 20px 4% 40px;
-  min-height: calc(100vh - 412px);
+  min-height: calc(100vh - 419px);
 }
 
 .p-user-main {
@@ -2508,7 +2503,7 @@ a {
 
 .p-about-main__outer {
   padding: 60px 4%;
-  min-height: calc(100vh - 472px);
+  min-height: calc(100vh - 479px);
 }
 
 .p-about-main {
@@ -3086,4 +3081,202 @@ a {
   .section2-signup-button {
     max-width: 300px;
   }
+}
+
+/* page: mypage */
+
+.p-mypage-main__outer {
+  padding: 20px 4%;
+  min-height: calc(100vh - 399px);
+}
+
+.p-mypage-main {
+  background-color: var(--white);
+  padding: 16px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .p-mypage-main {
+    width: 700px;
+  }
+}
+
+.p-mypage-profile__outer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.p-mypage-profile {
+  display: flex;
+  gap: 22px;
+  width: 100%;
+  min-width: 240px;
+}
+
+.p-mypage-profile-image__outer {
+  position: relative;
+}
+
+.p-mypage-profile-image {
+  width: 100px;
+  height: 100px;
+  color: #dbdbdb;
+}
+
+.p-mypage-profile-user-certified {
+  width: 40px;
+  height: 40px;
+  color: #3a96f3;
+  position: absolute;
+  left: 60px;
+  top: 60px;
+  background: white;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.p-mypage-profile-user-auth__outer {
+  position: absolute;
+  left: 60px;
+  top: 60px;
+  z-index: 2;
+}
+
+.p-mypage-profile-user-auth {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--white);
+  overflow: hidden;
+  position: relative;
+  vertical-align: bottom;
+  box-sizing: border-box;
+}
+
+.p-mypage-profile-user-auth img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.p-mypage-profile-user-name__outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.p-mypage-profile-user-name {
+  font-size: 30px;
+}
+
+.p-mypage-profile-user-name-update-button {
+  position: relative;
+  background-color: #414a55;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  opacity: 0.6;
+  transition: all 0.1s ease;
+  vertical-align: super;
+}
+
+.p-mypage-profile-user-name-update-button svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  color: var(--white);
+}
+
+.p-mypage-profile-user-name-update-button:hover {
+  opacity: 1;
+}
+
+.p-mypage-profile-user-email {
+  color: #2f3438;
+}
+
+.p-mypage-profile-user-name-input__outer {
+  display: flex;
+  gap: 8px;
+}
+
+.nickname-update-button {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  font-size: 12px;
+  line-height: 12px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-weight: 400;
+  box-sizing: border-box;
+  text-align: center;
+  color: #ffffff;
+  outline: none;
+  overflow: hidden;
+  background-color: #414a55;
+  opacity: 0.6;
+}
+
+.nickname-update-button.cancel {
+  border: 1px solid #414a55a1;
+  color: #414a55;
+  background-color: #ffffff;
+  opacity: 0.6;
+}
+
+.nickname-update-button:hover {
+  opacity: 1;
+}
+.nickname-update-button.cancel:hover {
+  color: #ffffff;
+  background-color: #414a55;
+  opacity: 1;
+}
+
+.withdraw-button {
+  margin-top: 14px;
+  display: inline-block;
+  padding: 0;
+  border: none;
+  font-size: 12px;
+  line-height: 12px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-weight: 400;
+  box-sizing: border-box;
+  text-align: center;
+  color: #ffffff;
+  outline: none;
+  overflow: hidden;
+  background-color: #f77;
+}
+
+.withdraw-button:hover {
+  background-color: #fc0120;
 }

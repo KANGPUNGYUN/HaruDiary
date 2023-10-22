@@ -3,9 +3,8 @@ import { useSession } from "next-auth/react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { faCircleQuestion, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import BackButton from "@/app/components/backbutton";
 import Modal from "@/app/components/modal";
 import axios from "axios";
 
@@ -126,7 +125,6 @@ export default function Form() {
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet"
       />
-      <BackButton />
       <form className="p-diary-form">
         {showModal && <Modal />}
         <div className="p-diary-paper">

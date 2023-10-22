@@ -41,10 +41,10 @@ export default function Sidebar({
 
   const menuList = [
     { id: 1, title: "소개", href: "/about" },
-    { id: 2, title: "문의/제안", href: "/contacts" },
-    { id: 3, title: "모두의 하루", href: "/user" },
-    { id: 4, title: "나의 하루", href: `/user/${userId}` },
-    { id: 5, title: "하루쓰기", href: "/user/write" },
+    { id: 2, title: "모두의 하루", href: "/user" },
+    { id: 3, title: "나의 하루", href: `/user/${userId}` },
+    { id: 4, title: "하루쓰기", href: "/user/write" },
+    { id: 5, title: "마이페이지", href: "/mypage" },
   ];
 
   useEffect(() => {

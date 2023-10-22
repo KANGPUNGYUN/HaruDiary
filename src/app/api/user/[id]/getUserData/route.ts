@@ -22,5 +22,10 @@ export async function GET(
       id: id,
     },
   });
-  return new Response(JSON.stringify(user));
+  if (user?.password || user?.password === "") {
+    const { password, ...result } = user;
+    return new Response(JSON.stringify(result));
+  } else {
+    return new Response(JSON.stringify(null));
+  }
 }
