@@ -6,8 +6,15 @@ import Link from "next/link";
 import axios from "axios";
 import { useParams } from "next/navigation";
 
+interface UserData {
+  id: number;
+  email: string;
+  name: string;
+  auth: string;
+}
+
 export default function DiaryList() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState<UserData | null>(null);
   const [data, setData] = useState([]);
   const { data: session } = useSession();
   const params = useParams();
@@ -41,7 +48,11 @@ export default function DiaryList() {
     getDiary().then((res) => setData(res));
   }, [session, params.id]);
 
-  const month = {
+  interface Map {
+    [key: number]: string;
+  }
+
+  const month: Map = {
     1: "JAN",
     2: "FEB",
     3: "MAR",

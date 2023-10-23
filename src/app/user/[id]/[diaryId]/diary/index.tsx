@@ -32,7 +32,7 @@ interface FormInput {
 }
 
 export default function Diary() {
-  const [data, setData] = useState<DiaryData>({});
+  const [data, setData] = useState<DiaryData | null>(null);
   const [isDeleted, setIsDeleted] = useState(false);
   const [isLiked, setIsliked] = useState(false);
   const [isReported, setIsReported] = useState(false);
@@ -54,23 +54,25 @@ export default function Diary() {
   } = useForm<FormInput>();
 
   useEffect(() => {
-    const updateViews = async () => {
-      try {
-        const res = await axios.post(
-          `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}/views`,
-          {
-            views: data._count,
-          }
-        );
-        const result = await res.data;
+    if (data) {
+      const updateViews = async () => {
+        try {
+          const res = await axios.post(
+            `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}/views`,
+            {
+              views: data._count,
+            }
+          );
+          const result = await res.data;
 
-        return result;
-      } catch (error) {
-        console.log(error);
-      }
-    };
+          return result;
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
-    updateViews();
+      updateViews();
+    }
   }, []);
 
   useEffect(() => {
@@ -237,7 +239,7 @@ export default function Diary() {
 
   return (
     <>
-      {data?._count?.report > 0 ? (
+      {data && data?._count?.report > 0 ? (
         <div className="p-diary-paper">
           <div className="p-diary-report-main">
             <div>
@@ -258,10 +260,13 @@ export default function Diary() {
           <div>
             <p className="p-diary-date">
               {`${
+                data &&
                 new Date(data?.createdAt).toLocaleString("ko-KR").split(".")[0]
               }년 ${
+                data &&
                 new Date(data?.createdAt).toLocaleString("ko-KR").split(".")[1]
               }월 ${
+                data &&
                 new Date(data?.createdAt).toLocaleString("ko-KR").split(".")[2]
               }일`}
             </p>

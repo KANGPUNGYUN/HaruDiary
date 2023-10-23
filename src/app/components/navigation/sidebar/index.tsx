@@ -19,7 +19,7 @@ export default function Sidebar({
   toggle,
 }: {
   isOpen: boolean;
-  toggle: () => void;
+  toggle: (isOpen: boolean) => void;
 }): JSX.Element {
   let outside = useRef<HTMLDivElement>(null);
   const { data: session, status } = useSession();
@@ -37,7 +37,7 @@ export default function Sidebar({
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  }, []);
 
   const menuList = [
     { id: 1, title: "소개", href: "/about" },
@@ -89,10 +89,20 @@ export default function Sidebar({
           ref={outside}
         >
           <div className="m-sidebar-top">
-            <div className="m-sidebar-logo-wrapper" onClick={toggle}>
+            <div
+              className="m-sidebar-logo-wrapper"
+              onClick={() => {
+                toggle(false);
+              }}
+            >
               <Logo />
             </div>
-            <button className="m-sidebar-tabmenu" onClick={toggle}>
+            <button
+              className="m-sidebar-tabmenu"
+              onClick={() => {
+                toggle(false);
+              }}
+            >
               <FontAwesomeIcon
                 icon={faXmark}
                 style={{ color: "#2f3438", verticalAlign: "2.89px" }}
@@ -107,7 +117,9 @@ export default function Sidebar({
             {menuList.map((item: MenuList) => (
               <li
                 className="m-sidebar-tabmenu-item"
-                onClick={toggle}
+                onClick={() => {
+                  toggle(false);
+                }}
                 key={`${item.id}`}
               >
                 <Link href={item.href}>
