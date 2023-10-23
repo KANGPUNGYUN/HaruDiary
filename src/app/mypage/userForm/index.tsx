@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import axios from "axios";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
@@ -29,9 +29,11 @@ interface FormInput {
 export default function Profile() {
   const [user, setUser] = useState<user | null>(null);
   const [nameUpdate, setNameUpdate] = useState(false);
-  const [isNameUpdate, setIsNameUpdate] = useState(false);
+  const [isNameUpdated, setIsNameUpdated] = useState(false);
+  const [isUserDeleted, setIsUserDeleted] = useState(false);
   const [myUserId, setMyUserId] = useState(null);
   const [isExistNickname, setIsExistNickname] = useState("");
+  const [pageInit, setPageInit] = useState(false);
   const {
     register,
     setValue,
@@ -44,11 +46,12 @@ export default function Profile() {
   const { data: session, status } = useSession();
   const searchParams = useSearchParams();
   const showNameUpdateModal = searchParams?.get("nameUpdateModal");
-  const showDeleteModal = searchParams?.get("DeleteModal");
+  const showDeleteModal = searchParams?.get("deleteModal");
 
   const router = useRouter();
 
   useEffect(() => {
+    setPageInit(true);
     if (status === "authenticated" && session && session.user) {
       const getUserId = async () => {
         try {
@@ -104,7 +107,7 @@ export default function Profile() {
       };
       getUserData();
     }
-  }, [status, session, myUserId, user?.name]);
+  }, [status, session, myUserId, pageInit]);
 
   async function updateUserName(name: string) {
     try {
@@ -113,9 +116,22 @@ export default function Profile() {
         { name: name }
       );
       if (updateUserName.status === 200) {
-        setIsNameUpdate(true);
-      } else {
-        console.log(updateUserName.status);
+        setIsNameUpdated(true);
+        setPageInit(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function deleteUser() {
+    try {
+      const deleteUser = await axios.post(
+        `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/deleteUser`,
+        { id: myUserId }
+      );
+      if (deleteUser.status === 200) {
+        setIsUserDeleted(true);
       }
     } catch (error) {
       console.log(error);
@@ -288,12 +304,19 @@ export default function Profile() {
                     </div>
                   </div>
 
-                  <Link
-                    href="/mypage/?nameUpdateModal=true"
+                  <button
                     className="nickname-update-button"
+                    onClick={() => {
+                      if (
+                        !errors.nickname &&
+                        isExistNickname !== "사용 중인 닉네임입니다."
+                      ) {
+                        router.push("/mypage/?nameUpdateModal=true");
+                      }
+                    }}
                   >
                     수정
-                  </Link>
+                  </button>
                   <button
                     className="nickname-update-button cancel"
                     onClick={() => {
@@ -305,7 +328,7 @@ export default function Profile() {
                   {showNameUpdateModal && (
                     <div className="modal__outer">
                       <div className="modal" style={{ height: "240px" }}>
-                        {!isNameUpdate ? (
+                        {!isNameUpdated ? (
                           <>
                             <button
                               className="modal-escape"
@@ -345,7 +368,7 @@ export default function Profile() {
                               onClick={() => {
                                 router.push("/mypage");
                                 setNameUpdate(false);
-                                setIsNameUpdate(false);
+                                setIsNameUpdated(false);
                               }}
                               className="modal-escape"
                             >
@@ -361,7 +384,7 @@ export default function Profile() {
                                 onClick={() => {
                                   router.push("/mypage");
                                   setNameUpdate(false);
-                                  setIsNameUpdate(false);
+                                  setIsNameUpdated(false);
                                 }}
                                 className="modal-button confirm"
                               >
@@ -391,9 +414,75 @@ export default function Profile() {
               <div className="p-mypage-profile-user-email">{user?.email}</div>
             </div>
           </div>
-          <Link href="/mypage/?modal=true" className="withdraw-button">
+          <Link href="/mypage/?deleteModal=true" className="withdraw-button">
             회원탈퇴
           </Link>
+          {showDeleteModal && (
+            <div className="modal__outer">
+              <div className="modal" style={{ height: "240px" }}>
+                {!isUserDeleted ? (
+                  <>
+                    <button className="modal-escape" onClick={router.back}>
+                      <FontAwesomeIcon icon={faXmark} />
+                    </button>
+                    <div className="modal-title__outer">
+                      <FontAwesomeIcon
+                        icon={faExclamation}
+                        className="modal-icon-exclamation"
+                      />
+                      <h1 className="modal-title">정말 탈퇴하시겠습니까?</h1>
+                      <span className="modal-content">
+                        일기와 좋아요 기록이 모두 삭제됩니다.
+                      </span>
+                    </div>
+                    <div className="modal-button__outer">
+                      <button
+                        className="modal-button cancel"
+                        onClick={router.back}
+                      >
+                        취소
+                      </button>
+                      <button
+                        className="modal-button confirm"
+                        onClick={() => {
+                          setIsUserDeleted(false);
+                          deleteUser();
+                        }}
+                      >
+                        확인
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => {
+                        signOut();
+                      }}
+                      className="modal-escape"
+                    >
+                      <FontAwesomeIcon icon={faXmark} />
+                    </button>
+                    <div className="modal-title__outer">
+                      <h1 className="modal-title">
+                        정상적으로 회원탈퇴했습니다.
+                      </h1>
+                    </div>
+                    <div className="modal-button__outer">
+                      <button
+                        onClick={() => {
+                          signOut();
+                        }}
+                        className="modal-button confirm"
+                      >
+                        확인
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </>
     );

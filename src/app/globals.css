@@ -1709,8 +1709,8 @@ a {
 
 .p-password-update-main__outter {
   width: 100%;
-  height: calc(100vh - 459px);
-  margin: 100px auto 0 auto;
+  min-height: calc(100vh - 509px);
+  margin: 100px auto 50px auto;
   padding: 0 16px;
   box-sizing: border-box;
 }
@@ -1740,6 +1740,10 @@ a {
   margin: 12px 0px 28px;
 }
 
+.p-password-update-email__outer {
+  width: 100%;
+}
+
 .p-password-update-input {
   transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
   display: block;
@@ -1753,6 +1757,10 @@ a {
   background-color: #fff;
   color: black;
   font-size: 12px;
+}
+
+.p-password-update-input:read-only {
+  background-color: #dbdbdb;
 }
 
 .p-password-update-input-button {
@@ -1794,6 +1802,13 @@ a {
   background-color: #c7effb;
   border-color: #c7effb;
   color: #fff;
+}
+
+.p-signup-form-confirm-message {
+  padding-top: 10px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #35c5f0;
 }
 
 /* page: not-found */
@@ -3174,6 +3189,25 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+
+@media (max-width: 550px) {
+  .p-mypage-profile-user-auth__outer {
+    left: 55%;
+  }
+  .p-mypage-main {
+    text-align: center;
+  }
+  .p-mypage-profile__outer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .p-mypage-profile {
+    flex-direction: column;
+  }
+  .p-mypage-profile-user-name__outer {
+    align-items: center;
+  }
 }
 
 .p-mypage-profile-user-name {
