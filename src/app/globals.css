@@ -1,4 +1,74 @@
-@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Agdasima&family=Noto+Sans+KR&display=swap");
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url("/font/NotoSansKR-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url("/font/NotoSansKR-ExtraBold.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url("/font/NotoSansKR-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url("/font/NotoSansKR-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url("/font/NotoSansKR-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agdasima";
+  src: url("/font/Agdasima-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agdasima";
+  src: url("/font/Agdasima-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gowun Batang";
+  src: url("/font/GowunBatang-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gowun Batang";
+  src: url("/font/GowunBatang-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   font-family: "Noto Sans KR", sans-serif;
@@ -92,7 +162,6 @@ a {
   padding: 5px;
   border-radius: 50%;
 }
-
 .modal-title {
   font-weight: 900;
 }
@@ -246,7 +315,6 @@ a {
 
 .p-navbar__logo__text {
   font-size: 20px;
-  font-weight: 900;
   font-family: "Gowun Batang";
 }
 
