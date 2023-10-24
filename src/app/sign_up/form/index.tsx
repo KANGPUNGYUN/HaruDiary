@@ -133,11 +133,12 @@ export default function SignUpForm() {
                     placeholder="이메일"
                     autoComplete="off"
                     onBlur={async (data) => {
-                      const isExistEmail = await axios.post(
+                      const res = await axios.post(
                         `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/emailCheck`,
                         { email: data.target.value }
                       );
-                      if (isExistEmail) {
+                      const checkEmail = res.data;
+                      if (checkEmail) {
                         setIsExistEmail(
                           "이미 가입된 이메일입니다. 비밀번호 재설정 또는 로그인해주세요."
                         );
@@ -284,20 +285,11 @@ export default function SignUpForm() {
               placeholder="별명 (2~8자)"
               autoComplete="off"
               onBlur={async (data) => {
-                const res = await fetch(
+                const res = await axios.post(
                   `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/nicknameCheck`,
-                  {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                      nickname: data.target.value,
-                    }),
-                  }
+                  { nickname: data.target.value }
                 );
-                const checkNickname = await res.json();
-
+                const checkNickname = res.data;
                 if (checkNickname) {
                   setIsExistNickname("사용 중인 닉네임입니다.");
                 } else {
