@@ -780,6 +780,7 @@ a {
   width: 380px;
   margin: 0px auto;
   padding: 0 10px 60px;
+  height: fit-content;
 }
 
 .p-signup-h2 {
