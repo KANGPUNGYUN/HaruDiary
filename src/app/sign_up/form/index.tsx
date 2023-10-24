@@ -5,6 +5,7 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 interface FormInput {
   email: string;
@@ -132,20 +133,11 @@ export default function SignUpForm() {
                     placeholder="이메일"
                     autoComplete="off"
                     onBlur={async (data) => {
-                      const res = await fetch(
+                      const isExistEmail = await axios.post(
                         `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/signup/emailCheck`,
-                        {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify({
-                            email: data.target.value,
-                          }),
-                        }
+                        { email: data.target.value }
                       );
-                      const checkEmail = await res.json();
-                      if (checkEmail) {
+                      if (isExistEmail) {
                         setIsExistEmail(
                           "이미 가입된 이메일입니다. 비밀번호 재설정 또는 로그인해주세요."
                         );
