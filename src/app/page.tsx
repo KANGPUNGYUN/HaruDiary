@@ -28,7 +28,7 @@ export default function Home() {
           <div className="p-home-section-img__outer fadein">
             <Image
               className="p-home-section-img first-image"
-              src="/section_1.png"
+              src="./section_1.png"
               alt="메인 이미지"
               sizes="100%"
               fill
@@ -40,7 +40,7 @@ export default function Home() {
           <div className="p-home-section-img__outer fadein">
             <Image
               className="p-home-section-img"
-              src="/section_2.png"
+              src="./section_2.png"
               alt="메인 이미지"
               sizes="100%"
               fill
@@ -82,7 +82,7 @@ export default function Home() {
             <div className="p-home-section2-img-monitor">
               <Image
                 className="p-home-section2-img"
-                src="/screenshot.png"
+                src="./screenshot.png"
                 alt="메인 이미지"
                 sizes="100%"
                 fill

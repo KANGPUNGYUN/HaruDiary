@@ -175,7 +175,7 @@ export default function Profile() {
                     style={{ backgroundColor: "#fee500" }}
                   >
                     <Image
-                      src="/kakao_logo.svg"
+                      src="./kakao_logo.svg"
                       alt="kakao 간편로그인 회원"
                       width="25"
                       height="30"
@@ -189,7 +189,7 @@ export default function Profile() {
                     style={{ backgroundColor: "#03c75a" }}
                   >
                     <Image
-                      src="/naver_logo.svg"
+                      src="./naver_logo.svg"
                       alt="naver 간편로그인 회원"
                       width="45"
                       height="45"
@@ -205,7 +205,7 @@ export default function Profile() {
                     }}
                   >
                     <Image
-                      src="/google_logo.svg"
+                      src="./google_logo.svg"
                       alt="google 간편로그인 회원"
                       width="70"
                       height="70"

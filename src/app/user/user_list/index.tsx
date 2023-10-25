@@ -116,7 +116,7 @@ export default function UserList() {
                         style={{ backgroundColor: "#fee500" }}
                       >
                         <Image
-                          src="/kakao_logo.svg"
+                          src="./kakao_logo.svg"
                           alt="kakao 간편로그인 회원"
                           width="10"
                           height="12"
@@ -130,7 +130,7 @@ export default function UserList() {
                         style={{ backgroundColor: "#03c75a" }}
                       >
                         <Image
-                          src="/naver_logo.svg"
+                          src="./naver_logo.svg"
                           alt="naver 간편로그인 회원"
                           width="18"
                           height="18"
@@ -146,7 +146,7 @@ export default function UserList() {
                         }}
                       >
                         <Image
-                          src="/google_logo.svg"
+                          src="./google_logo.svg"
                           alt="google 간편로그인 회원"
                           width="28"
                           height="28"

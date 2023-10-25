@@ -44,7 +44,7 @@ export default function About() {
         <div className="p-about-main">
           <div className="p-about-main-header">
             <Image
-              src="/logo.svg"
+              src="./logo.svg"
               width="190"
               height="190"
               alt="하루쓰기 메인로고"

@@ -2,7 +2,7 @@
   "name": "harudiary",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kangpungyun.github.io/harudiary/",
+  "homepage": "https://kangpungyun.github.io/harudiary",
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build && next export",
