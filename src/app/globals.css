@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Noto Sans KR";
-  src: url("../NotoSansKR-Medium.woff") format("woff");
+  src: url("/../NotoSansKR-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
