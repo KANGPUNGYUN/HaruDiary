@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String
+  name     String
+  password String?
+  auth     String    
+  diarys   Diary[]
+  likes    Like[]
+  report   Report[]
+}
+
+model Diary {
+  id         Int       @id @default(autoincrement())
+  title      String
+  content    String
+  isPublic   Boolean
+  createdAt  DateTime  @default(now())
+  views      Int       @default(0)
+  author     User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId   Int
+  likes      Like[]
+  report     Report[]
+}
+
+model Like {
+  diary     Diary   @relation(fields: [diaryId], references: [id], onDelete: Cascade)
+  diaryId   Int
+  author    User    @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId  Int
+
+  @@id([diaryId, authorId])
+}
+
+model Report {
+  diary     Diary   @relation(fields: [diaryId], references: [id], onDelete: Cascade)
+  diaryId   Int
+  author    User    @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId  Int
+  reportBy  String?
+
+  @@id([diaryId, authorId])
+}
