@@ -2,14 +2,13 @@
   "name": "harudiary",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kangpungyun.github.io/harudiary",
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build && next export",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy": "touch out/.nojekyll && gh-pages -d out --dotfiles"
+    "vercel-deploy": "next build && next export",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",

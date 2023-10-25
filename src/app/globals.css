@@ -1,16 +1,14 @@
 @font-face {
   font-family: "Noto Sans KR";
-  src: url("https://kangpungyun.github.io/harudiary/public/font/NotoSansKR-Bold.woff")
-    format("woff");
-  font-weight: 700;
+  src: url("/font/NotoSansKR-Bold.woff") format("woff");
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Noto Sans KR";
-  src: url("https://kangpungyun.github.io/harudiary/public/font/NotoSansKR-ExtraBold.woff")
-    format("woff");
+  src: url("/font/NotoSansKR-ExtraBold.woff") format("woff");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -18,8 +16,7 @@
 
 @font-face {
   font-family: "Noto Sans KR";
-  src: url("https://kangpungyun.github.io/harudiary/public/font/NotoSansKR-Medium.woff")
-    format("woff");
+  src: url("/font/NotoSansKR-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -27,8 +24,7 @@
 
 @font-face {
   font-family: "Noto Sans KR";
-  src: url("https://kangpungyun.github.io/harudiary/public/font/NotoSansKR-Regular.woff")
-    format("woff");
+  src: url("/font/NotoSansKR-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -36,8 +32,7 @@
 
 @font-face {
   font-family: "Noto Sans KR";
-  src: url("https://kangpungyun.github.io/harudiary/public/font/NotoSansKR-Thin.woff")
-    format("woff");
+  src: url("/font/NotoSansKR-Thin.woff") format("woff");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -45,8 +40,7 @@
 
 @font-face {
   font-family: "Agdasima";
-  src: url("https://kangpungyun.github.io/harudiary/public/font/Agdasima-Bold.woff")
-    format("woff");
+  src: url("/font/Agdasima-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -54,8 +48,7 @@
 
 @font-face {
   font-family: "Agdasima";
-  src: url("https://kangpungyun.github.io/harudiary/public/font/Agdasima-Bold.woff")
-    format("woff");
+  src: url("/font/Agdasima-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -63,17 +56,15 @@
 
 @font-face {
   font-family: "Gowun Batang";
-  src: url("https://kangpungyun.github.io/harudiary/public/font/GowunBatang-Bold.woff")
-    format("woff");
-  font-weight: 700;
+  src: url("/font/GowunBatang-Bold.woff") format("woff");
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Gowun Batang";
-  src: url("https://kangpungyun.github.io/harudiary/public/font/GowunBatang-Regular.woff")
-    format("woff");
+  src: url("/font/GowunBatang-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
