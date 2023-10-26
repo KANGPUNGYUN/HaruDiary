@@ -1,4 +1,4 @@
-import { verifyJwt } from "@/app/lib/jwt";
+// import { verifyJwt } from "@/app/lib/jwt";
 import prisma from "@/app/lib/prisma";
 
 export async function GET(
@@ -6,12 +6,12 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   const accessToken = request.headers.get("authorization");
-  if (!accessToken || !verifyJwt(accessToken)) {
-    console.log(accessToken);
-    // return new Response(JSON.stringify({ error: "No Authorization" }), {
-    //   status: 401,
-    // });
-  }
+  // if (!accessToken || !verifyJwt(accessToken)) {
+  //   console.log(accessToken);
+  //   return new Response(JSON.stringify({ error: "No Authorization" }), {
+  //     status: 401,
+  //   });
+  // }
 
   console.log(params);
 
