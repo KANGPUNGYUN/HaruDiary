@@ -40,7 +40,7 @@
 
 import { db } from "@vercel/postgres";
 
-export default async function handler(
+export async function GET(
   request: Request,
   { params }: { params: { id: string } }
 ) {
