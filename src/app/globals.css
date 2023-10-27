@@ -163,12 +163,12 @@ a {
   border-radius: 50%;
 }
 .modal-title {
-  font-weight: 900;
+  font-weight: 500;
 }
 
 .modal-content {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   color: #808080;
   line-height: 18px;
 }
@@ -493,7 +493,7 @@ a {
   margin: 4px 0px 0px;
   padding: 0px;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
   color: rgb(47, 52, 56);
 }
 
@@ -1616,7 +1616,7 @@ a {
 
 .p-policy-caution {
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 700;
   color: #009fce;
 }
 
@@ -1697,7 +1697,7 @@ a {
   -webkit-tap-highlight-color: transparent;
   color: #424242;
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 700;
   font-variant-ligatures: normal;
   font-variant-caps: normal;
   letter-spacing: normal;
@@ -1896,7 +1896,7 @@ a {
 
 .p-notfound-main-title {
   font-family: "Gowun Batang";
-  font-weight: 900;
+  font-weight: 500;
   margin: 20px 0;
   font-size: 30px;
   color: #009fce;
@@ -1949,7 +1949,7 @@ a {
 .p-diary-list-title {
   font-family: "Gowun Batang";
   font-size: 32px;
-  font-weight: 900;
+  font-weight: 500;
   margin-bottom: 30px;
 }
 
@@ -2105,7 +2105,7 @@ a {
 .p-diary-title {
   font-family: "Gowun Batang";
   font-size: 32px;
-  font-weight: 900;
+  font-weight: 700;
   margin-top: 30px;
 }
 
@@ -2121,7 +2121,7 @@ a {
 .p-diary-report-title {
   font-family: sans-serif;
   font-size: 40px;
-  font-weight: 900;
+  font-weight: 500;
   color: #62d9fc;
   margin-bottom: 24px;
 }
@@ -2129,7 +2129,7 @@ a {
 .p-diary-content {
   font-family: "Gowun Batang";
   font-size: 18px;
-  font-weight: 900;
+  font-weight: 400;
   margin-top: 40px;
 }
 
@@ -2623,7 +2623,7 @@ a {
 .p-about-description-title {
   font-family: "Gowun Batang";
   font-size: 30px;
-  font-weight: 900;
+  font-weight: 400;
   margin-bottom: 30px;
 }
 
@@ -2651,7 +2651,7 @@ a {
 .p-about-main-FAQ-title {
   text-align: center;
   font-size: 30px;
-  font-weight: 900;
+  font-weight: 500;
   background-color: #414a55;
   border-radius: 24px;
   color: var(--white);
