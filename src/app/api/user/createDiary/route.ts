@@ -1,4 +1,5 @@
-import prisma from "@/app/lib/prisma";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 interface RequestBody {
   title: string;
