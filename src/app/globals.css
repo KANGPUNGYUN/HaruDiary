@@ -262,6 +262,23 @@ a {
   background-color: #62d9fc;
 }
 
+/** loading animation  */
+.loading-anmation {
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  border: 10px solid #dbdbdb;
+  border-top: 10px solid #62d9fc;
+  border-radius: 100%;
+  animation: loader 1s infinite linear;
+}
+
+@keyframes loader {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /** navigation bar styling  */
 
 .p-navbar {
@@ -532,7 +549,7 @@ a {
 .p-footer__inner {
   max-width: 1064px;
   margin: auto;
-  padding: 0 67px;
+  padding: 0 3vw;
   box-sizing: border-box;
 }
 

@@ -54,7 +54,7 @@ export default function Diary() {
   } = useForm<FormInput>();
 
   useEffect(() => {
-    if (data) {
+    if (data !== null) {
       const updateViews = async () => {
         try {
           const res = await axios.post(
@@ -70,10 +70,9 @@ export default function Diary() {
           console.log(error);
         }
       };
-
       updateViews();
     }
-  }, []);
+  }, [data]);
 
   useEffect(() => {
     if (status === "authenticated" && session && session.user) {
