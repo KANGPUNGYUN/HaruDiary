@@ -22,6 +22,7 @@ export default function UserList() {
   const [listIndex, setListIndex] = useState(2);
   const [totalUser, setTotalUser] = useState(0);
   const [isSearched, setIsSearched] = useState(false);
+  const [isResolved, setIsResolved] = useState(false);
 
   useEffect(() => {
     const getUserList = async () => {
@@ -33,7 +34,7 @@ export default function UserList() {
       setUserList(result[1]);
       setTotalUser(result[0]);
     };
-    getUserList();
+    getUserList().then(() => setIsResolved(true));
   }, []);
 
   const searchUserList = async (e: any) => {
@@ -90,10 +91,22 @@ export default function UserList() {
         </div>
       </div>
       <p className="p-user-search-result">
-        {isSearched ? `검색결과 ${userList.length}명` : `전체 ${totalUser}명`}
+        {isSearched
+          ? `검색결과 ${userList.length}명`
+          : !isResolved
+          ? "회원 검색 중..."
+          : `전체 ${totalUser}명`}
       </p>
       <ol className="p-user-list">
-        {userList.length === 0 ? (
+        {!isResolved ? (
+          <>
+            <li className="p-user-list-item skeleton"></li>
+            <li className="p-user-list-item skeleton"></li>
+            <li className="p-user-list-item skeleton"></li>
+            <li className="p-user-list-item skeleton"></li>
+            <li className="p-user-list-item skeleton"></li>
+          </>
+        ) : userList.length === 0 ? (
           <li>일치하는 닉네임의 회원이 없습니다.</li>
         ) : (
           userList.map((v: userListData) => (
@@ -103,6 +116,8 @@ export default function UserList() {
                   <FontAwesomeIcon
                     icon={faCircleUser}
                     className="p-user-list-user-profile-image"
+                    width="40px"
+                    height="40px"
                   />
                   {v.id === 1 ? (
                     <FontAwesomeIcon

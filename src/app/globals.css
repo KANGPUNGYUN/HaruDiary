@@ -263,8 +263,14 @@ a {
 }
 
 /** loading animation  */
-.loading-anmation {
-  margin: 0 auto;
+.loading-animation__outer {
+  height: calc(100vh - 412px);
+  display: flex;
+  align-items: center;
+}
+
+.loading-animation {
+  margin: 50% auto;
   width: 50px;
   height: 50px;
   border: 10px solid #dbdbdb;
@@ -2495,6 +2501,24 @@ a {
   background-color: var(--white);
   padding: 10px;
   border-radius: 4px;
+}
+
+.p-user-list-item.skeleton {
+  max-width: 500px;
+  height: 40px;
+  background: linear-gradient(90deg, #eeeeee 25%, #dedede 50%, #eeeeee 75%);
+  background-size: 200% 100%;
+  animation: loading 2s infinite ease-in-out;
+  border-radius: 8px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .p-user-list-item a {

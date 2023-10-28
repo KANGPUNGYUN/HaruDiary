@@ -14,8 +14,9 @@ interface UserData {
 }
 
 export default function DiaryList() {
-  const [user, setUser] = useState<UserData | null>(null);
+  const [userData, setUser] = useState<UserData | null>(null);
   const [data, setData] = useState([]);
+  const [init, setInit] = useState(false);
   const { data: session } = useSession();
   const params = useParams();
 
@@ -45,7 +46,10 @@ export default function DiaryList() {
       return diary;
     };
     getUserData().then((res) => setUser(res));
-    getDiary().then((res) => setData(res));
+    getDiary().then((res) => {
+      setData(res);
+      setInit(true);
+    });
   }, [session, params.id]);
 
   interface Map {
@@ -93,75 +97,87 @@ export default function DiaryList() {
   } else {
     return (
       <>
-        <h2 className="p-diary-list-title">
-          <span className="p-diary-list-title-user-nickname">{user?.name}</span>
-          의 하루
-        </h2>
-        {data.length === 0 ? (
-          user?.id === session?.user.id ||
-          (user?.auth === session?.user.provider &&
-            user?.email === session?.user.email) ? (
-            <div className="p-diary-list-unuser__outer">
-              <div className="p-diary-list-unuser">
-                <p>아직 작성된 일기가 없습니다. 당신의 하루를 작성해 보세요.</p>
-                <Link href="/user/write" className="login-button confirm">
-                  나의 하루 작성하기
-                </Link>
-              </div>
-            </div>
-          ) : (
-            <div className="p-diary-list-unuser__outer">
-              <div className="p-diary-list-unuser">
-                <p>아직 작성된 일기가 없습니다.</p>
-                <Link href="/user" className="login-button confirm">
-                  모두의 하루로 이동하기
-                </Link>
-              </div>
-            </div>
-          )
+        {init === false ? (
+          <div className="loading-animation__outer">
+            <div className="loading-animation"></div>
+          </div>
         ) : (
-          <ol className="p-diary-list">
-            {data.map((v: diary) => (
-              <li className="p-diary-item" key={v.id}>
-                <Link href={`/user/${params.id}/` + v.id}>
-                  <h3>
-                    {Number(
-                      new Date(v.createdAt)
-                        .toLocaleString("ko-KR")
-                        .split(".")[2]
-                    ) < 10
-                      ? `0${
+          <>
+            <h2 className="p-diary-list-title">
+              <span className="p-diary-list-title-user-nickname">
+                {userData?.name}
+              </span>
+              의 하루
+            </h2>
+            {data?.length === 0 ? (
+              userData?.id === session?.user.id ||
+              (userData?.auth === session?.user.provider &&
+                userData?.email === session?.user.email) ? (
+                <div className="p-diary-list-unuser__outer">
+                  <div className="p-diary-list-unuser">
+                    <p>
+                      아직 작성된 일기가 없습니다. 당신의 하루를 작성해 보세요.
+                    </p>
+                    <Link href="/user/write" className="login-button confirm">
+                      나의 하루 작성하기
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <div className="p-diary-list-unuser__outer">
+                  <div className="p-diary-list-unuser">
+                    <p>아직 작성된 일기가 없습니다.</p>
+                    <Link href="/user" className="login-button confirm">
+                      모두의 하루로 이동하기
+                    </Link>
+                  </div>
+                </div>
+              )
+            ) : (
+              <ol className="p-diary-list">
+                {data?.map((v: diary) => (
+                  <li className="p-diary-item" key={v.id}>
+                    <Link href={`/user/${params.id}/` + v.id}>
+                      <h3>
+                        {Number(
                           new Date(v.createdAt)
                             .toLocaleString("ko-KR")
-                            .split(". ")[2]
-                        }`
-                      : new Date(v.createdAt)
-                          .toLocaleString("ko-KR")
-                          .split(".")[2]}
-                  </h3>
-                  <h4>
-                    {
-                      month[
-                        Number(
+                            .split(".")[2]
+                        ) < 10
+                          ? `0${
+                              new Date(v.createdAt)
+                                .toLocaleString("ko-KR")
+                                .split(". ")[2]
+                            }`
+                          : new Date(v.createdAt)
+                              .toLocaleString("ko-KR")
+                              .split(".")[2]}
+                      </h3>
+                      <h4>
+                        {
+                          month[
+                            Number(
+                              new Date(v.createdAt)
+                                .toLocaleString("ko-KR")
+                                .split(".")[1]
+                            )
+                          ]
+                        }
+                      </h4>
+                      <h4>
+                        {
                           new Date(v.createdAt)
-                            .toLocaleString("ko-KR")
-                            .split(".")[1]
-                        )
-                      ]
-                    }
-                  </h4>
-                  <h4>
-                    {
-                      new Date(v.createdAt)
-                        .toLocaleString("kr-KR")
-                        .split(".")[0]
-                    }
-                  </h4>
-                  <span className="p-diary-item-fold"></span>
-                </Link>
-              </li>
-            ))}
-          </ol>
+                            .toLocaleString("kr-KR")
+                            .split(".")[0]
+                        }
+                      </h4>
+                      <span className="p-diary-item-fold"></span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            )}
+          </>
         )}
       </>
     );

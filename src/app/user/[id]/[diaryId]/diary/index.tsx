@@ -259,20 +259,35 @@ export default function Diary() {
           <div>
             <p className="p-diary-date">
               {`${
-                data &&
-                new Date(data?.createdAt).toLocaleString("ko-KR").split(".")[0]
+                data === null
+                  ? "0000"
+                  : new Date(data?.createdAt)
+                      .toLocaleString("ko-KR")
+                      .split(".")[0]
               }년 ${
-                data &&
-                new Date(data?.createdAt).toLocaleString("ko-KR").split(".")[1]
+                data === null
+                  ? "00"
+                  : new Date(data?.createdAt)
+                      .toLocaleString("ko-KR")
+                      .split(".")[1]
               }월 ${
-                data &&
-                new Date(data?.createdAt).toLocaleString("ko-KR").split(".")[2]
+                data === null
+                  ? "00"
+                  : new Date(data?.createdAt)
+                      .toLocaleString("ko-KR")
+                      .split(".")[2]
               }일`}
             </p>
-            <div className="p-diary-title">{data?.title}</div>
-            <div className="p-diary-content">
-              <pre style={{ whiteSpace: "pre-wrap" }}>{data?.content}</pre>
-            </div>
+            {data === null ? (
+              <div className="loading-animation"></div>
+            ) : (
+              <>
+                <div className="p-diary-title">{data?.title}</div>
+                <div className="p-diary-content">
+                  <pre style={{ whiteSpace: "pre-wrap" }}>{data?.content}</pre>
+                </div>
+              </>
+            )}
           </div>
           <div className="p-diary-footer">
             <div>조회수 {data?.views}</div>

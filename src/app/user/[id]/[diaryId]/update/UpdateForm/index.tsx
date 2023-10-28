@@ -1,14 +1,12 @@
 "use client";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { useParams, useSearchParams, useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackButton from "@/app/components/backbutton";
-import Link from "next/link";
-import Modal from "@/app/components/modal";
 
 interface UserData {
   email: string;
@@ -99,9 +97,6 @@ export default function UpdateForm() {
     }
   }
 
-  const searchParams = useSearchParams();
-  const showModal = searchParams?.get("modal");
-
   return (
     <>
       <link
@@ -110,7 +105,6 @@ export default function UpdateForm() {
       />
       <BackButton />
       <form className="p-diary-form">
-        {showModal && <Modal />}
         <div className="p-diary-paper">
           <p className="p-diary-date">{`${
             new Date(String(getValues("createdAt")))
@@ -199,12 +193,7 @@ export default function UpdateForm() {
         </div>
         <div className="p-diary-form-error-message">{errors.user?.message}</div>
         <div className="p-diary-form-utility">
-          <Link
-            href={
-              errors
-                ? ""
-                : `/user/${params.id}/${params.diaryId}/update/?modal=true`
-            }
+          <button
             className="p-diary-form-submit-button"
             onClick={handleSubmit((data) => {
               if (!session?.user) {
@@ -218,7 +207,7 @@ export default function UpdateForm() {
             })}
           >
             일기 수정하기
-          </Link>
+          </button>
         </div>
       </form>
     </>
