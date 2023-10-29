@@ -162,6 +162,8 @@ export default function Profile() {
               <FontAwesomeIcon
                 icon={faCircleUser}
                 className="p-mypage-profile-image"
+                width="100px"
+                height="100px"
               />
               {user?.id === 1 ? (
                 <FontAwesomeIcon
