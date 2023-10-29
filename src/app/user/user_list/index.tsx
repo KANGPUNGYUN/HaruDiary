@@ -100,11 +100,61 @@ export default function UserList() {
       <ol className="p-user-list">
         {!isResolved ? (
           <>
-            <li className="p-user-list-item skeleton"></li>
-            <li className="p-user-list-item skeleton"></li>
-            <li className="p-user-list-item skeleton"></li>
-            <li className="p-user-list-item skeleton"></li>
-            <li className="p-user-list-item skeleton"></li>
+            <li className="p-user-list-item">
+              <Link href="/">
+                <div className="p-user-list-user-profile-image__outer">
+                  <div className="avatar-skeleton"></div>
+                </div>
+                <div className="p-user-list-user-profile">
+                  <div className="p-user-list-user-name skeleton-loader"></div>
+                  <div className="p-user-list-user-diarys skeleton-loader"></div>
+                </div>
+              </Link>
+            </li>
+            <li className="p-user-list-item">
+              <Link href="/">
+                <div className="p-user-list-user-profile-image__outer">
+                  <div className="avatar-skeleton"></div>
+                </div>
+                <div className="p-user-list-user-profile">
+                  <div className="p-user-list-user-name skeleton-loader"></div>
+                  <div className="p-user-list-user-diarys skeleton-loader"></div>
+                </div>
+              </Link>
+            </li>
+            <li className="p-user-list-item">
+              <Link href="/">
+                <div className="p-user-list-user-profile-image__outer">
+                  <div className="avatar-skeleton"></div>
+                </div>
+                <div className="p-user-list-user-profile">
+                  <div className="p-user-list-user-name skeleton-loader"></div>
+                  <div className="p-user-list-user-diarys skeleton-loader"></div>
+                </div>
+              </Link>
+            </li>
+            <li className="p-user-list-item">
+              <Link href="/">
+                <div className="p-user-list-user-profile-image__outer">
+                  <div className="avatar-skeleton"></div>
+                </div>
+                <div className="p-user-list-user-profile">
+                  <div className="p-user-list-user-name skeleton-loader"></div>
+                  <div className="p-user-list-user-diarys skeleton-loader"></div>
+                </div>
+              </Link>
+            </li>
+            <li className="p-user-list-item">
+              <Link href="/">
+                <div className="p-user-list-user-profile-image__outer">
+                  <div className="avatar-skeleton"></div>
+                </div>
+                <div className="p-user-list-user-profile">
+                  <div className="p-user-list-user-name skeleton-loader"></div>
+                  <div className="p-user-list-user-diarys skeleton-loader"></div>
+                </div>
+              </Link>
+            </li>
           </>
         ) : userList.length === 0 ? (
           <li>일치하는 닉네임의 회원이 없습니다.</li>

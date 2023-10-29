@@ -2503,24 +2503,6 @@ a {
   border-radius: 4px;
 }
 
-.p-user-list-item.skeleton {
-  max-width: 500px;
-  height: 40px;
-  background: linear-gradient(90deg, #eeeeee 25%, #dedede 50%, #eeeeee 75%);
-  background-size: 200% 100%;
-  animation: loading 2s infinite ease-in-out;
-  border-radius: 8px;
-}
-
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-}
-
 .p-user-list-item a {
   display: flex;
   gap: 10px;
@@ -2585,6 +2567,42 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.avatar-skeleton {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(90deg, #dbdbdb 25%, #cbcbcb 50%, #dbdbdb 75%);
+  background-size: 200% 100%;
+  animation: loading 2s infinite ease-in-out;
+  border-radius: 50%;
+}
+
+.p-user-list-user-name.skeleton-loader {
+  width: 100px;
+  height: 14px;
+  background: linear-gradient(90deg, #dbdbdb 25%, #cbcbcb 50%, #dbdbdb 75%);
+  background-size: 200% 100%;
+  animation: loading 2s infinite ease-in-out;
+  border-radius: 8px;
+}
+
+.p-user-list-user-diarys.skeleton-loader {
+  width: 75px;
+  height: 14px;
+  background: linear-gradient(90deg, #dbdbdb 25%, #cbcbcb 50%, #dbdbdb 75%);
+  background-size: 200% 100%;
+  animation: loading 2s infinite ease-in-out;
+  border-radius: 8px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .p-user-list-show-more-button {
