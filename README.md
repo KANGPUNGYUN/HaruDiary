@@ -15,7 +15,7 @@ Next.js 13(App Router), TypeScript로 직접 개발한 일기 웹서비스 플�
 
 #### Diary WEB service platform developed by Next.js and TypeScript
 
-I hope everyone can write a diary and cheer for others' days through this platform. Also, I want to develop my WEB Site from start to finish by myself. And I did it. 
+I hope everyone can write a diary and cheer for others' days through this platform. Also, I want to develop my WEB Site from start to finish by myself. And I did it. 
 Enjoy it!
 
 ## Stacks
