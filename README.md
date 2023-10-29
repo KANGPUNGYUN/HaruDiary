@@ -11,7 +11,7 @@
 > **URL** : [https://harudiary.vercel.app](https://harudiary.vercel.app) <br>
 
 ## 프로젝트 소개
-Next.js 13(App Router), TypeScript로 직접 개발한 일기 웹서비스 플랫폼입니다. Next.js와 TypeScript를 배우면서, 스스로의 힘으로 처음부터 끝까지 개발해보는 경험을 만들고자 시작하게 되었습니다. 누구나 방문해서 일기를 작성할 수 있고, 다른 사람의 일기를 응원할 수 있는 플랫폼이 되었으면 합니다.
+Next.js 13(App Router), TypeScript로 직접 개발한 일기 웹서비스 플랫폼입니다. Next.js와 TypeScript를 배우면서, 오로지 혼자서 처음부터 끝까지 개발해보는 경험을 만들고자 시작하게 되었습니다. 누구나 방문해서 일기를 작성할 수 있고, 다른 사람의 일기를 응원할 수 있는 플랫폼이 되었으면 합니다.
 
 #### Diary WEB service platform developed by Next.js and TypeScript
 
