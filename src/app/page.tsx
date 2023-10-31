@@ -22,6 +22,10 @@ export default function Home() {
         name="naver-site-verification"
         content="0fc0efcb926dc4118a917eeef06099c48d49a4fc"
       />
+      <meta
+        name="google-site-verification"
+        content="cHTy20JNIadsj7DMtxa2d5dHarTPhGW2tTv9UO7UEu8"
+      />
       <main>
         <section className="p-home-section section1">
           <div className="p-home-section-slider__outer1">
