@@ -38,3 +38,6 @@ next-env.d.ts
 # db
 *Db.*
 dev.db
+
+# lighthouse report
+*.report.html
