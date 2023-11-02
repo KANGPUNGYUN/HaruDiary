@@ -2,6 +2,8 @@
 
 <div align="center">
 <img width="329" alt="image" src="https://github.com/KANGPUNGYUN/harudiary/assets/71264780/5e43f6ec-2923-4647-aacf-754b03dc5fdd"/>
+  
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FKANGPUNGYUN%2Fharudiary&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 </div>
 
 # Haru Diary
