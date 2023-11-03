@@ -1,7 +1,7 @@
 import Logo from "@/app/components/navigation/navbar/Logo";
 import { Metadata } from "next";
 import Link from "next/link";
-import Confetti from "./confetti";
+import Confetti from "../../components/confetti";
 
 export const metadata: Metadata = {
   title: "하루쓰기 | 회원가입 성공",

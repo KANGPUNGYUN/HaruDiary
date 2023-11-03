@@ -868,7 +868,7 @@ a {
 }
 
 .p-signup-main {
-  width: 380px;
+  max-width: 380px;
   margin: 0px auto;
   padding: 0 10px 60px;
   height: fit-content;

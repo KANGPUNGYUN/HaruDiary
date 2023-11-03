@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Profile from "./userForm";
+import Profile from "../components/Profile";
 
 export const metadata: Metadata = {
   title: "하루쓰기 | 마이페이지",

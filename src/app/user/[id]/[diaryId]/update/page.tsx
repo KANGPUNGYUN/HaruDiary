@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import UpdateForm from "./UpdateForm";
+import DiaryUpdateForm from "../../../../components/DiaryUpdateForm";
 
 export const metadata: Metadata = {
   title: "하루쓰기 | 나의 하루 수정하기",
@@ -18,7 +18,7 @@ export default function MyDiaryUpdate() {
     <>
       <main className="p-diary-main">
         <div className="p-diary-main__inner">
-          <UpdateForm />
+          <DiaryUpdateForm />
         </div>
       </main>
     </>

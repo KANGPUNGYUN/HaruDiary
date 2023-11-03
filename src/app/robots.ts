@@ -3,9 +3,9 @@ import { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: "*",
+      userAgent: ["Yeti", "Googlebot"],
       allow: "/",
-      disallow: "/user/",
+      disallow: ["/user/", "/*.png"],
     },
     sitemap: "https://harudiary.vercel.app/sitemap.xml",
   };

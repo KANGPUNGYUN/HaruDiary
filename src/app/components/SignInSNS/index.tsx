@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 
-export default function SnsSignIn() {
+export default function SignInSNS() {
   return (
     <>
       <div className="p-signin-sns-signin__text">

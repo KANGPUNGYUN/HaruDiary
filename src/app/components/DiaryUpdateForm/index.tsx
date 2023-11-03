@@ -21,7 +21,7 @@ interface FormInput {
   user: UserData;
 }
 
-export default function UpdateForm() {
+export default function DiaryUpdateForm() {
   const params = useParams();
   const router = useRouter();
   const { data: session } = useSession();

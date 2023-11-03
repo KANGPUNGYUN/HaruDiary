@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "하루쓰기 | Home",
+  title: "하루쓰기",
   description: "당신의 하루를 작성하세요",
   openGraph: {
     title: "하루쓰기",

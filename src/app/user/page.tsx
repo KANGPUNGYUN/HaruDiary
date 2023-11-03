@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import UserList from "./user_list";
+import UserList from "../components/UserList";
 
 export const metadata: Metadata = {
   title: "하루쓰기 | 모두의 하루",

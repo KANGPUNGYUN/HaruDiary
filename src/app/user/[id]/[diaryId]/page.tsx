@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Diary from "./diary";
+import Diary from "../../../components/Diary";
 import BackButton from "@/app/components/backbutton";
 
 export const metadata: Metadata = {

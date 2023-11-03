@@ -1,4 +1,4 @@
-import Form from "./form";
+import DiaryForm from "../../components/DiaryForm";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default function write() {
     <>
       <main className="p-diary-main">
         <div className="p-diary-main__inner">
-          <Form />
+          <DiaryForm />
         </div>
       </main>
     </>

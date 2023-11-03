@@ -12,7 +12,7 @@ interface FormInput {
   confirmPassword: string;
 }
 
-export default function UpdatePasswordForm() {
+export default function PasswordUpdateForm() {
   const {
     register,
     handleSubmit,

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import UpdatePasswordForm from "./updatePasswordForm";
+import PasswordUpdateForm from "../../components/PasswordUpdateForm";
 
 export const metadata: Metadata = {
   title: "하루쓰기 | 비밀번호 재설정",
@@ -18,7 +18,7 @@ export default function Password() {
     <>
       <div className="p-password-update-main__outter">
         <main className="p-password-update-main">
-          <UpdatePasswordForm />
+          <PasswordUpdateForm />
         </main>
       </div>
     </>

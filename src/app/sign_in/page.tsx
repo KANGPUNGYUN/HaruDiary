@@ -1,7 +1,7 @@
 import Logo from "../components/navigation/navbar/Logo";
-import SnsSignIn from "../components/sns_sign_in";
+import SignInSNS from "../components/SignInSNS";
 import { Metadata } from "next";
-import SignInForm from "./form";
+import SignInForm from "../components/SignInForm";
 
 export const metadata: Metadata = {
   title: "하루쓰기 | 로그인",
@@ -27,7 +27,7 @@ export default function SignIn() {
               </div>
               <SignInForm />
               <section className="p-signin-sns-signin">
-                <SnsSignIn />
+                <SignInSNS />
               </section>
             </div>
           </div>
