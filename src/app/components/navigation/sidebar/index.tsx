@@ -102,11 +102,14 @@ export default function Sidebar({
               onClick={() => {
                 toggle(false);
               }}
+              role="button"
+              aria-label="메뉴 닫기 버튼"
             >
               <FontAwesomeIcon
                 icon={faXmark}
                 style={{ color: "#2f3438", verticalAlign: "2.89px" }}
               />
+              <span className="p-blind">메뉴 닫기 버튼</span>
             </button>
           </div>
           <Link href="/sign_in">
