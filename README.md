@@ -7,7 +7,7 @@
 </div>
 
 # Haru Diary
-> **일기 SNS 웹서비스 플랫폼** <br/> **개발기간: 2023.09 ~ 2023.10** <br/> **리펙토링: 2023.11 ~ 진행중**
+> **일기 SNS 웹서비스 플랫폼** <br/> **개발기간: 2023.09 ~ 2023.10** <br/> **리팩터링: 2023.11 ~ 진행중**
 
 ## 배포 주소
 > **URL** : [https://harudiary.vercel.app](https://harudiary.vercel.app) <br>
