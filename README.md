@@ -7,10 +7,14 @@
 </div>
 
 # Haru Diary
-> **일기 SNS 웹서비스 플랫폼** <br/> **개발기간: 2023.09 ~ 2023.10**
+> **일기 SNS 웹서비스 플랫폼** <br/> **개발기간: 2023.09 ~ 2023.10** <br/> **리펙토링: 2023.11 ~ 진행중**
 
 ## 배포 주소
 > **URL** : [https://harudiary.vercel.app](https://harudiary.vercel.app) <br>
+
+> **DEMO USER** <br>
+Email : test@naver.com <br>
+Password : test1234 <br>
 
 ## 프로젝트 소개
 Next.js 13(App Router), TypeScript로 직접 개발한 일기 웹서비스 플랫폼입니다. Next.js와 TypeScript를 배우면서, 오로지 혼자서 처음부터 끝까지 개발해보는 경험을 만들고자 시작하게 되었습니다. 누구나 방문해서 일기를 작성할 수 있고, 다른 사람의 하루를 응원할 수 있는 플랫폼이 되었으면 합니다.
@@ -19,7 +23,7 @@ Next.js 13(App Router), TypeScript로 직접 개발한 일기 웹서비스 플�
 
 - 회원 가입/수정/탈퇴
 - 일기 생성/수정/삭제
-- 일기 좋아요/신고
+- 일기 좋아요/신고/비공개
 - 회원 검색
 
 #### Diary WEB service platform developed by Next.js and TypeScript
@@ -31,7 +35,7 @@ Enjoy it!
 
 - sign up/update/withdraw USER
 - create/update/delete DIARY
-- like/report DIARY
+- like/report/private DIARY
 - search USER
 
 ## Stacks
