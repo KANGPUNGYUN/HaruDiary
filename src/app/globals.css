@@ -3158,6 +3158,10 @@ a {
   width: 100%;
 }
 
+.section2-signup-button {
+  color: #000;
+}
+
 @media (max-width: 768px) {
   .section2 {
     flex-direction: column;
