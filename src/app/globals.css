@@ -224,7 +224,7 @@ a {
 
 /** loading animation  */
 .loading-animation__outer {
-  height: calc(100vh - 412px);
+  height: calc(100vh - 410px);
   display: flex;
   align-items: center;
 }
@@ -1761,7 +1761,7 @@ a {
 
 .p-password-update-main__outter {
   width: 100%;
-  min-height: calc(100vh - 509px);
+  min-height: calc(100vh - 507px);
   margin: 100px auto 50px auto;
   padding: 0 16px;
   box-sizing: border-box;
@@ -1873,7 +1873,7 @@ a {
   -webkit-box-align: center;
   align-items: center;
   width: 100vw;
-  height: calc(100vh - 359px);
+  height: calc(100vh - 357px);
   line-height: 30px;
 }
 
@@ -1926,7 +1926,7 @@ a {
 
 .p-diary-list-main__inner {
   padding: 20px 4% 33px;
-  min-height: calc(100vh - 412px);
+  min-height: calc(100vh - 410px);
 }
 
 .p-diary-list-title {
@@ -1942,7 +1942,7 @@ a {
 
 .p-diary-list-unuser__outer {
   width: 92vw;
-  height: calc(100vh - 474px);
+  height: calc(100vh - 472px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2057,7 +2057,7 @@ a {
 
 .p-diary-main__inner {
   margin: 0 auto;
-  min-height: calc(100vh - 419px);
+  min-height: calc(100vh - 417px);
 }
 
 .p-diary-paper {
@@ -2366,7 +2366,7 @@ a {
 
 .p-user-main__outer {
   padding: 20px 4% 40px;
-  min-height: calc(100vh - 419px);
+  min-height: calc(100vh - 417px);
 }
 
 .p-user-main {
@@ -2606,7 +2606,7 @@ a {
 
 .p-about-main__outer {
   padding: 60px 4%;
-  min-height: calc(100vh - 479px);
+  min-height: calc(100vh - 477px);
 }
 
 .p-about-main {
@@ -3190,7 +3190,7 @@ a {
 
 .p-mypage-main__outer {
   padding: 20px 4%;
-  min-height: calc(100vh - 399px);
+  min-height: calc(100vh - 397px);
 }
 
 .p-mypage-main {

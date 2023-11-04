@@ -1,4 +1,3 @@
-import { url } from "inspector";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,9 +38,9 @@ export default function Home() {
                 className="p-home-section-img first-image"
                 src="/section_1.png"
                 alt="메인 이미지"
-                sizes="100%"
+                sizes="(min-width: 768px) 230px, (min-width: 1600px) 480px, 100%"
                 fill
-                priority
+                priority={true}
               />
             </div>
           </div>
@@ -51,9 +50,9 @@ export default function Home() {
                 className="p-home-section-img"
                 src="/section_2.png"
                 alt="메인 이미지"
-                sizes="100%"
+                sizes="(min-width: 768px) 230px, (min-width: 1600px) 480px, 100%"
                 fill
-                priority
+                priority={true}
               />
             </div>
             <div className="p-home-section-slider-text__outer2 textSlideUp">
@@ -94,9 +93,9 @@ export default function Home() {
                   className="p-home-section2-img"
                   src="/screenshot.png"
                   alt="메인 이미지"
-                  sizes="100%"
+                  sizes="(min-width: 768px) 331px, 100%"
                   fill
-                  priority
+                  priority={false}
                 />
               </div>
             </div>
