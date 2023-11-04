@@ -330,6 +330,14 @@ a {
   }
 }
 
+.p-blind {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+}
+
 .p-navbar-tabmenu-item {
   font-family: "Gowun Batang";
 }
@@ -571,16 +579,19 @@ a {
   border-radius: 50%;
   background-color: #414a55;
   transition: opacity 0.2s ease;
+  opacity: 0.6;
 }
 
 .p-footer__social-list-item:hover {
   background-color: #787b8d;
+  opacity: 1;
 }
 
-.p-footer__social-list-item__icon {
+.p-footer__social-list-item .p-footer__social-list-item__icon {
   width: 20px;
   height: 20px;
   vertical-align: 0;
+  color: #ffffff;
 }
 
 .p-footer__copyright {

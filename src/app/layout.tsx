@@ -14,7 +14,7 @@ export default function RootLayout({
   const pathname = usePathname();
 
   return (
-    <html>
+    <html lang="ko">
       <body>
         <Providers>
           {pathname !== "/sign_in" &&

@@ -88,9 +88,11 @@ export default function Navbar({ toggle }: { toggle: () => void }) {
             <button
               className="m-navbar-tabmenu"
               onClick={toggle}
-              aria-label="menu-button"
+              role="button"
+              aria-label="메뉴 버튼"
             >
               <FontAwesomeIcon icon={faBars} style={{ color: "#2f3438" }} />
+              <span className="p-blind">메뉴 버튼</span>
             </button>
           </div>
         </div>

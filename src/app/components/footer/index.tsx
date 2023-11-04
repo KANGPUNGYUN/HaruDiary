@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Link from "next/link";
 import {
   faGithub,
@@ -10,9 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CopyBoard from "../copyboard";
 
 export default function Footer() {
-  const [isHover1, setIsHover1] = useState(false);
-  const [isHover2, setIsHover2] = useState(false);
-  const [isHover3, setIsHover3] = useState(false);
   return (
     <>
       <footer className="p-footer">
@@ -33,42 +29,35 @@ export default function Footer() {
             e-mail : zkdvnd@naver.com <CopyBoard />
           </address>
           <ul className="p-footer__social-list">
-            <Link
-              href="https://github.com/KANGPUNGYUN"
-              className="p-footer__social-list-item"
-              onMouseOver={() => setIsHover1(true)}
-              onMouseLeave={() => setIsHover1(false)}
-            >
-              <FontAwesomeIcon
-                className="p-footer__social-list-item__icon"
-                icon={faGithub}
-                style={isHover1 ? { color: "#ffffff" } : { color: "#8b8d91" }}
-              />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/pungyun-kang-b2677a212/"
-              className="p-footer__social-list-item"
-              onMouseOver={() => setIsHover2(true)}
-              onMouseLeave={() => setIsHover2(false)}
-            >
-              <FontAwesomeIcon
-                className="p-footer__social-list-item__icon"
-                icon={faLinkedinIn}
-                style={isHover2 ? { color: "#ffffff" } : { color: "#8b8d91" }}
-              />
-            </Link>
-            <Link
-              href="https://velog.io/@kangpungyun"
-              className="p-footer__social-list-item"
-              onMouseOver={() => setIsHover3(true)}
-              onMouseLeave={() => setIsHover3(false)}
-            >
-              <FontAwesomeIcon
-                className="p-footer__social-list-item__icon"
-                icon={faVimeoV}
-                style={isHover3 ? { color: "#ffffff" } : { color: "#8b8d91" }}
-              />
-            </Link>
+            <li className="p-footer__social-list-item">
+              <Link href="https://github.com/KANGPUNGYUN">
+                <FontAwesomeIcon
+                  className="p-footer__social-list-item__icon"
+                  icon={faGithub}
+                />
+                <span className="p-blind">강풍윤의 깃허브 사이트 이동하기</span>
+              </Link>
+            </li>
+            <li className="p-footer__social-list-item">
+              <Link href="https://www.linkedin.com/in/pungyun-kang-b2677a212/">
+                <FontAwesomeIcon
+                  className="p-footer__social-list-item__icon"
+                  icon={faLinkedinIn}
+                />
+                <span className="p-blind">
+                  강풍윤의 링크드인 사이트 이동하기
+                </span>
+              </Link>
+            </li>
+            <li className="p-footer__social-list-item">
+              <Link href="https://velog.io/@kangpungyun">
+                <FontAwesomeIcon
+                  className="p-footer__social-list-item__icon"
+                  icon={faVimeoV}
+                />
+                <span className="p-blind">강풍윤의 벨로그 사이트 이동하기</span>
+              </Link>
+            </li>
           </ul>
           <div className="p-footer__copyright">
             Copyright 2023. KANGPUNGYUN. All rights reserved.
