@@ -7,7 +7,7 @@ export default function Logo() {
     <>
       <Link href="/" className="p-navbar__logo">
         <Image
-          src="/logo.png"
+          src="/logo.webp"
           alt="하루쓰기 홈으로 이동하기"
           width="40"
           height="40"

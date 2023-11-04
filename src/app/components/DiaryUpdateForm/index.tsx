@@ -101,7 +101,8 @@ export default function DiaryUpdateForm() {
     <>
       <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
+        rel="stylesheet preload"
+        as="style"
       />
       <BackButton />
       <form className="p-diary-form">

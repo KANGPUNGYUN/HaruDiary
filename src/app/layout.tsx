@@ -2,7 +2,6 @@
 import "./reset.css";
 import "./globals.css";
 import Navigation from "./components/navigation";
-import Head from "next/head";
 import Footer from "./components/footer";
 import { usePathname } from "next/navigation";
 import Providers from "./components/Providers";
@@ -16,9 +15,6 @@ export default function RootLayout({
 
   return (
     <html>
-      <Head>
-        <link rel="shortcut icon" href="/favicon.ico" />
-      </Head>
       <body>
         <Providers>
           {pathname !== "/sign_in" &&

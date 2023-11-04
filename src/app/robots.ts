@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: ["Yeti", "Googlebot"],
       allow: "/",
-      disallow: ["/user/", "/*.png"],
+      disallow: ["/user/", "/*.webp"],
     },
     sitemap: "https://harudiary.vercel.app/sitemap.xml",
   };

@@ -123,7 +123,8 @@ export default function DiaryForm() {
     <>
       <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
+        rel="stylesheet preload"
+        as="style"
       />
       <form className="p-diary-form">
         {showModal && <Modal />}

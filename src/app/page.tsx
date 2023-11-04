@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "하루쓰기",
     description: "NextJS 기반 웹 일기 서비스",
     siteName: "하루쓰기",
-    images: [{ url: "/opengraph_image.png", width: 800, height: 400 }],
+    images: [{ url: "/opengraph_image.webp", width: 800, height: 400 }],
     type: "website",
   },
 };
@@ -36,7 +36,7 @@ export default function Home() {
             <div className="p-home-section-img__outer fadein">
               <Image
                 className="p-home-section-img first-image"
-                src="/section_1.png"
+                src="/section_1.webp"
                 alt="메인 이미지"
                 sizes="(min-width: 768px) 230px, (min-width: 1600px) 480px, 100%"
                 fill
@@ -48,7 +48,7 @@ export default function Home() {
             <div className="p-home-section-img__outer fadein">
               <Image
                 className="p-home-section-img"
-                src="/section_2.png"
+                src="/section_2.webp"
                 alt="메인 이미지"
                 sizes="(min-width: 768px) 230px, (min-width: 1600px) 480px, 100%"
                 fill
@@ -91,7 +91,7 @@ export default function Home() {
               <div className="p-home-section2-img-monitor">
                 <Image
                   className="p-home-section2-img"
-                  src="/screenshot.png"
+                  src="/screenshot.webp"
                   alt="메인 이미지"
                   sizes="(min-width: 768px) 331px, 100%"
                   fill
