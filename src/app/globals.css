@@ -2472,7 +2472,7 @@ a {
   position: relative;
 }
 
-.p-user-list-user-profile-image {
+.p-user-list-user-profile-image__outer .p-user-list-user-profile-image {
   width: 40px;
   height: 40px;
   color: #dbdbdb;
@@ -3227,7 +3227,7 @@ a {
   position: relative;
 }
 
-.p-mypage-profile-image {
+.p-mypage-profile-image__outer .p-mypage-profile-image {
   width: 100px;
   height: 100px;
   color: #dbdbdb;
