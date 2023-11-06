@@ -39,6 +39,7 @@ export default function Home() {
                 src="/section_1.webp"
                 alt="메인 이미지"
                 sizes="(min-width: 768px) 230px, (min-width: 1600px) 480px, 100%"
+                style={{ right: "0", left: "auto" }}
                 fill
                 priority={true}
               />

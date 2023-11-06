@@ -17,14 +17,14 @@
 @font-face {
   font-family: "Gowun Batang";
   src: url("/font/GowunBatang-Bold.woff2") format("woff2");
-  font-weight: bold;
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Gowun Batang";
-  src: url("/font/GowunBatang-Regular.woff2") format("woff");
+  src: url("/font/GowunBatang-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -381,7 +381,7 @@ a {
   font-weight: 400;
   box-sizing: border-box;
   text-align: center;
-  color: #ffffff;
+  color: black;
   background-color: #62d9fc;
   outline: none;
   overflow: hidden;
@@ -2990,8 +2990,8 @@ a {
 
 .p-home-section-img {
   height: 100%;
-  max-width: none;
-  min-height: inherit;
+  max-width: 600px;
+  max-height: 600px;
   object-fit: cover;
   object-position: center;
   width: 100%;
