@@ -59,6 +59,7 @@ export default function Home() {
             <div className="p-home-section-slider-text__outer2 textSlideUp">
               <p className="p-home-section-slider-text">
                 늘 당신의 <span className="text-blue">하루</span>를 응원합니다
+                :)
               </p>
             </div>
           </div>
