@@ -38,10 +38,10 @@ export default function Home() {
                 className="p-home-section-img first-image"
                 src="/section_1.webp"
                 alt="메인 이미지"
-                sizes="(min-width: 768px) 230px, (min-width: 1600px) 480px, 100%"
+                sizes="100%"
                 style={{ right: "0", left: "auto" }}
                 fill
-                priority={true}
+                priority
               />
             </div>
           </div>
@@ -51,15 +51,14 @@ export default function Home() {
                 className="p-home-section-img"
                 src="/section_2.webp"
                 alt="메인 이미지"
-                sizes="(min-width: 768px) 230px, (min-width: 1600px) 480px, 100%"
+                sizes="100%"
                 fill
-                priority={true}
+                priority
               />
             </div>
             <div className="p-home-section-slider-text__outer2 textSlideUp">
               <p className="p-home-section-slider-text">
                 늘 당신의 <span className="text-blue">하루</span>를 응원합니다
-                :)
               </p>
             </div>
           </div>
@@ -94,9 +93,9 @@ export default function Home() {
                   className="p-home-section2-img"
                   src="/screenshot.webp"
                   alt="메인 이미지"
-                  sizes="(min-width: 768px) 331px, 100%"
+                  sizes="100%"
                   fill
-                  priority={false}
+                  priority
                 />
               </div>
             </div>
