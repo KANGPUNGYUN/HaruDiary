@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { GowunBatang } from "@/app/styles/font";
 
 interface MenuList {
   id: Number;
@@ -75,7 +76,10 @@ export default function Navbar({ toggle }: { toggle: () => void }) {
             <Logo />
             <ul className="p-navbar-tabmenu-ul">
               {menuList.map((item: MenuList) => (
-                <li className="p-navbar-tabmenu-item" key={`${item.id}`}>
+                <li
+                  className={`p-navbar-tabmenu-item ${GowunBatang.className}`}
+                  key={`${item.id}`}
+                >
                   <Link href={item.href}>{item.title}</Link>
                 </li>
               ))}

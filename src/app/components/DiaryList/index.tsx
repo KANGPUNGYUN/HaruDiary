@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import axios from "axios";
 import { useParams } from "next/navigation";
+import { GowunBatang, Agdasima } from "@/app/styles/font";
 
 interface UserData {
   id: number;
@@ -81,7 +82,9 @@ export default function DiaryList() {
   if (Number(params.id) === 0) {
     return (
       <>
-        <h2 className="p-diary-list-title">나의 하루</h2>
+        <h2 className={`p-diary-list-title ${GowunBatang.className}`}>
+          나의 하루
+        </h2>
         <div className="p-diary-list-unuser__outer">
           <div className="p-diary-list-unuser">
             <p>
@@ -103,7 +106,7 @@ export default function DiaryList() {
           </div>
         ) : (
           <>
-            <h2 className="p-diary-list-title">
+            <h2 className={`p-diary-list-title ${GowunBatang.className}`}>
               <span className="p-diary-list-title-user-nickname">
                 {userData?.name}
               </span>
@@ -137,7 +140,10 @@ export default function DiaryList() {
               <ol className="p-diary-list">
                 {data?.map((v: diary) => (
                   <li className="p-diary-item" key={v.id}>
-                    <Link href={`/user/${params.id}/` + v.id}>
+                    <Link
+                      className={Agdasima.className}
+                      href={`/user/${params.id}/` + v.id}
+                    >
                       <h3>
                         {Number(
                           new Date(v.createdAt)

@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { faXmark, faExclamation } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { GowunBatang } from "@/app/styles/font";
 
 interface UserData {
   email: string;
@@ -282,8 +283,10 @@ export default function Diary() {
               <div className="loading-animation"></div>
             ) : (
               <>
-                <div className="p-diary-title">{data?.title}</div>
-                <div className="p-diary-content">
+                <div className={`p-diary-title ${GowunBatang.className}`}>
+                  {data?.title}
+                </div>
+                <div className={`p-diary-content ${GowunBatang.className}`}>
                   <pre style={{ whiteSpace: "pre-wrap" }}>{data?.content}</pre>
                 </div>
               </>

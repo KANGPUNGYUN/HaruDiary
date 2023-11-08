@@ -1,37 +1,6 @@
-@font-face {
-  font-family: "Agdasima";
-  src: url("/font/Agdasima-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Agdasima";
-  src: url("/font/Agdasima-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Gowun Batang";
-  src: url("/font/GowunBatang-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Gowun Batang";
-  src: url("/font/GowunBatang-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   font-family: sans-serif;
+  font-display: swap;
   --white: #fff;
   --grey400: #b0b8c1;
   --grey500: #8b95a1;
@@ -298,7 +267,6 @@ a {
 
 .p-navbar__logo__text {
   font-size: 20px;
-  font-family: "Gowun Batang";
 }
 
 .p-navbar-tabmenu-ul {
@@ -336,10 +304,6 @@ a {
   width: 1px;
   height: 1px;
   white-space: nowrap;
-}
-
-.p-navbar-tabmenu-item {
-  font-family: "Gowun Batang";
 }
 
 .p-navbar-tabmenu-item > a {
@@ -440,6 +404,7 @@ a {
   border: none;
   background: none;
   font: sans-serif;
+  font-display: swap;
   font-size: 14px;
   line-height: 18px;
   display: -webkit-inline-box;
@@ -480,11 +445,10 @@ a {
 }
 
 .m-sidebar-tabmenu-item {
-  font-family: "Gowun Batang";
+  font-weight: 400;
   margin: 4px 0px 0px;
   padding: 0px;
   font-size: 14px;
-  font-weight: 500;
   color: rgb(47, 52, 56);
 }
 
@@ -516,6 +480,7 @@ a {
 
 .p-footer {
   font: 1.2rem sans-serif;
+  font-display: swap;
   background-color: #191f28;
   padding: 40px 0 80px;
 }
@@ -736,6 +701,7 @@ a {
   border: none;
   background: none;
   font-family: sans-serif;
+  font-display: swap;
   font-size: 14px;
   line-height: 10px;
   display: -webkit-inline-box;
@@ -1889,16 +1855,15 @@ a {
 }
 
 .p-notfound-main-title {
-  font-family: "Gowun Batang";
-  font-weight: 500;
+  font-weight: 400;
   margin: 20px 0;
   font-size: 30px;
   color: #009fce;
 }
 
 .p-notfound-main-description {
-  font-family: "Gowun Batang";
   font-size: 18px;
+  text-align: center;
 }
 
 .p-notfound-main-button {
@@ -1941,9 +1906,8 @@ a {
 }
 
 .p-diary-list-title {
-  font-family: "Gowun Batang";
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 30px;
 }
 
@@ -2004,7 +1968,6 @@ a {
 .p-diary-item a {
   position: relative;
   display: block;
-  font-family: "Agdasima";
   border: 2px solid #62d9fc;
   box-sizing: border-box;
   border-radius: 11px;
@@ -2097,7 +2060,6 @@ a {
 }
 
 .p-diary-title {
-  font-family: "Gowun Batang";
   font-size: 32px;
   font-weight: 700;
   margin-top: 30px;
@@ -2114,6 +2076,7 @@ a {
 
 .p-diary-report-title {
   font-family: sans-serif;
+  font-display: swap;
   font-size: 40px;
   font-weight: 500;
   color: #62d9fc;
@@ -2121,10 +2084,10 @@ a {
 }
 
 .p-diary-content {
-  font-family: "Gowun Batang";
   font-size: 18px;
   font-weight: 400;
   margin-top: 40px;
+  line-height: 120%;
 }
 
 .p-diary-footer {
@@ -2222,9 +2185,8 @@ a {
 
 .p-diary-form-title {
   width: 100%;
-  font-family: "Gowun Batang";
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 400;
   margin-top: 30px;
   border: none;
   outline: none;
@@ -2254,9 +2216,8 @@ a {
 .p-diary-form-content {
   width: 100%;
   min-height: 256px;
-  font-family: "Gowun Batang";
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   margin-top: 40px;
   padding: 6px;
   border: 2px solid #bdbdbd;
@@ -2651,7 +2612,6 @@ a {
 }
 
 .p-about-description-title {
-  font-family: "Gowun Batang";
   font-size: 30px;
   font-weight: 400;
   margin-bottom: 30px;
@@ -2689,6 +2649,7 @@ a {
   width: 100px;
   height: 46px;
   box-sizing: border-box;
+  padding: 10px 0;
 }
 
 .p-about-main-FAQ-list {

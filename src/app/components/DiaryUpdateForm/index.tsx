@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BackButton from "@/app/components/backbutton";
+import { GowunBatang } from "@/app/styles/font";
 
 interface UserData {
   email: string;
@@ -125,8 +126,8 @@ export default function DiaryUpdateForm() {
               type="text"
               className={
                 errors.title
-                  ? "p-diary-form-title errored"
-                  : "p-diary-form-title"
+                  ? `p-diary-form-title errored ${GowunBatang.className}`
+                  : `p-diary-form-title ${GowunBatang.className}`
               }
               {...register("title", {
                 required: "제목을 입력해주세요.",
@@ -143,8 +144,8 @@ export default function DiaryUpdateForm() {
             <textarea
               className={
                 errors.content
-                  ? "p-diary-form-content errored"
-                  : "p-diary-form-content"
+                  ? `p-diary-form-content errored ${GowunBatang.className}`
+                  : `p-diary-form-content ${GowunBatang.className}`
               }
               {...register("content", {
                 required: "내용을 입력해주세요.",

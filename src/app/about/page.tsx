@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Accordion from "@/app/components/accordion";
+import { GowunBatang } from "@/app/styles/font";
 
 const qnaList = [
   {
@@ -50,7 +51,9 @@ export default function About() {
               alt="하루쓰기 메인로고"
             />
             <section className="p-about-description">
-              <h2 className="p-about-description-title">
+              <h2
+                className={`p-about-description-title ${GowunBatang.className}`}
+              >
                 하루쓰기는 일기 형태의 소셜 네트워크 웹 서비스입니다.
               </h2>
               <ul className="p-about-description-list">

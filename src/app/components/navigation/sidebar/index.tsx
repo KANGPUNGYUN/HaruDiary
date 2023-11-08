@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
-
+import { GowunBatang } from "@/app/styles/font";
 import Link from "next/link";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -119,7 +119,7 @@ export default function Sidebar({
           <ul className="m-sidebar-tabmenu-ul">
             {menuList.map((item: MenuList) => (
               <li
-                className="m-sidebar-tabmenu-item"
+                className={`m-sidebar-tabmenu-item ${GowunBatang.className}`}
                 onClick={() => {
                   toggle(false);
                 }}
