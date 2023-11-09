@@ -5,6 +5,7 @@ import { faCircleUser, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import Image from "next/image";
+import { GowunBatang } from "@/app/styles/font";
 
 interface userListData {
   id: number;
@@ -221,11 +222,11 @@ export default function UserList() {
                   ) : (
                     <span className="p-user-list-user-auth__outer">
                       <span
-                        className="p-user-list-user-auth"
+                        className={`p-user-list-user-auth ${GowunBatang.className}`}
                         style={{
                           backgroundColor: "#62d9fc",
                           color: "var(--white)",
-                          fontFamily: "Gowun Batang",
+                          fontWeight: 400,
                           fontSize: "12px",
                           borderRadius: "0",
                           padding: "2px",

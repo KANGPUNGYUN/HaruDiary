@@ -14,6 +14,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { useSearchParams, useRouter } from "next/navigation";
+import { GowunBatang } from "@/app/styles/font";
 
 interface user {
   id: number;
@@ -231,11 +232,11 @@ export default function Profile() {
                 ) : (
                   <span className="p-mypage-profile-user-auth__outer">
                     <span
-                      className="p-mypage-profile-user-auth"
+                      className={`p-mypage-profile-user-auth ${GowunBatang.className}`}
                       style={{
                         backgroundColor: "#62d9fc",
+                        fontWeight: 400,
                         color: "var(--white)",
-                        fontFamily: "Gowun Batang",
                         fontSize: "30px",
                         borderRadius: "0",
                         padding: "5px",

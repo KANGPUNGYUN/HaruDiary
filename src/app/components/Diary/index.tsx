@@ -255,6 +255,22 @@ export default function Diary() {
             <div>참 잘했어요 {data?._count?.likes}</div>
           </div>
         </div>
+      ) : data && !data?.isPublic ? (
+        <div className="p-diary-paper">
+          <div className="p-diary-report-main">
+            <div>
+              <FontAwesomeIcon
+                icon={faExclamation}
+                className="modal-icon-exclamation"
+              />
+              <p>해당 일기는 비공개 일기입니다.</p>
+            </div>
+          </div>
+          <div className="p-diary-footer">
+            <div>조회수 {data?.views}</div>
+            <div>참 잘했어요 {data?._count?.likes}</div>
+          </div>
+        </div>
       ) : (
         <div className="p-diary-paper">
           <div>
