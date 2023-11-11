@@ -41,6 +41,7 @@ export default function Home() {
                 sizes="100%"
                 style={{ right: "0", left: "auto" }}
                 fill
+                priority
               />
             </div>
           </div>
@@ -95,6 +96,7 @@ export default function Home() {
                   alt="메인 이미지"
                   sizes="100%"
                   fill
+                  priority
                 />
               </div>
             </div>
