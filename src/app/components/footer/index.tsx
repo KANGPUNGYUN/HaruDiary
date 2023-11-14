@@ -39,7 +39,7 @@ export default function Footer() {
               </Link>
             </li>
             <li className="p-footer__social-list-item">
-              <Link href="https://www.linkedin.com/in/pungyun-kang-b2677a212/">
+              <Link href="https://www.linkedin.com/in/pung-yun-kang-b2677a212/">
                 <FontAwesomeIcon
                   className="p-footer__social-list-item__icon"
                   icon={faLinkedinIn}
