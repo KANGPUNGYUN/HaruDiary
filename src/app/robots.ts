@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/user/", "/*.webp"],
     },
-    sitemap: "https://harudiary.site/sitemap.xml",
+    sitemap: "https://www.harudiary.site/sitemap.xml",
   };
 }
