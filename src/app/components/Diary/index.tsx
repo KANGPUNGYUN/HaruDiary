@@ -73,7 +73,7 @@ export default function Diary() {
       };
       updateViews();
     }
-  }, [data]);
+  }, []);
 
   useEffect(() => {
     if (status === "authenticated" && session && session.user) {
