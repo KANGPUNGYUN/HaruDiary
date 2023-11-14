@@ -2346,6 +2346,7 @@ a {
 .p-user-main {
   width: 100%;
   margin: 10px auto;
+  min-height: 502px;
 }
 
 @media (min-width: 550px) {

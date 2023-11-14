@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/user/", "/*.webp"],
     },
-    sitemap: "https://harudiary.vercel.app/sitemap.xml",
+    sitemap: "https://harudiary.site/sitemap.xml",
   };
 }
