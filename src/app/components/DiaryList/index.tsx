@@ -16,7 +16,7 @@ interface UserData {
 
 export default function DiaryList() {
   const [userData, setUser] = useState<UserData | null>(null);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any | []>([]);
   const [init, setInit] = useState(false);
   const { data: session } = useSession();
   const params = useParams();
@@ -77,6 +77,22 @@ export default function DiaryList() {
     title: string;
     content: string;
     createdAt: Date;
+    views: number;
+  }
+
+  async function updateViews(diaryId: number) {
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${diaryId}/views`,
+        {
+          views: data.views,
+        }
+      );
+      const result = await res.data;
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   if (Number(params.id) === 0) {
@@ -143,6 +159,9 @@ export default function DiaryList() {
                     <Link
                       className={Agdasima.className}
                       href={`/user/${params.id}/` + v.id}
+                      onClick={() => {
+                        updateViews(v.id);
+                      }}
                     >
                       <h3>
                         {Number(

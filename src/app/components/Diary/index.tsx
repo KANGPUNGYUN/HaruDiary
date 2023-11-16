@@ -55,27 +55,6 @@ export default function Diary() {
   } = useForm<FormInput>();
 
   useEffect(() => {
-    if (data !== null) {
-      const updateViews = async () => {
-        try {
-          const res = await axios.post(
-            `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/user/${params.id}/${params.diaryId}/views`,
-            {
-              views: data._count,
-            }
-          );
-          const result = await res.data;
-
-          return result;
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      updateViews();
-    }
-  }, []);
-
-  useEffect(() => {
     if (status === "authenticated" && session && session.user) {
       const getMyUserId = async () => {
         try {
