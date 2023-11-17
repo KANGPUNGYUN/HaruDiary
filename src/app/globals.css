@@ -2383,19 +2383,14 @@ a {
 }
 
 .p-user-search-bar-icon {
-  display: inline-block;
-  font-size: 24px;
-  line-height: 1;
-  vertical-align: middle;
   padding-right: 6px;
-  color: #828c94;
 }
 
-.p-user-search-bar-icon::before {
-  font-family: "Material Icons";
-  content: "search";
-  vertical-align: top;
-  -webkit-font-feature-settings: "liga";
+.p-user-search-bar-icon .SearchSVG {
+  line-height: 1;
+  color: #828c94;
+  width: 14px;
+  height: 14px;
 }
 
 .p-user-search-bar-input {

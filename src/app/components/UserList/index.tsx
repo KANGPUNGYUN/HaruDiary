@@ -1,7 +1,11 @@
 "use client";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { faCircleUser, faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMagnifyingGlass,
+  faCircleUser,
+  faCircleCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import Image from "next/image";
@@ -82,7 +86,9 @@ export default function UserList() {
       />
       <div className="p-user-search-bar__outer">
         <div className="p-user-search-bar">
-          <span className="p-user-search-bar-icon"></span>
+          <span className="p-user-search-bar-icon">
+            <FontAwesomeIcon icon={faMagnifyingGlass} className="SearchSVG" />
+          </span>
           <input
             type="text"
             className="p-user-search-bar-input"
