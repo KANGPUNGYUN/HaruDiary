@@ -49,6 +49,7 @@ Enjoy it!
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)
+![Styled_Components](https://img.shields.io/badge/Styled_Components-DB7093?style=for-the-badge&logo=StyledComponents&logoColor=white)
 
 ### BackEnd
 
