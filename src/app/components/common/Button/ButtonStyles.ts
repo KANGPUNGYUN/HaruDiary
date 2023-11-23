@@ -22,7 +22,6 @@ export const baseStyles = css`
   width: auto;
   height: 40px;
   border-radius: 4px;
-  padding: 0 16px;
   font-weight: 400;
   box-sizing: border-box;
   text-align: center;

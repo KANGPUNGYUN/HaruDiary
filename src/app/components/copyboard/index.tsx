@@ -4,7 +4,6 @@ import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function CopyBoard() {
-  const [appear, setAppear] = useState("");
   const [next, setNext] = useState(false);
 
   const copy = (text: string) => {
@@ -21,11 +20,9 @@ export default function CopyBoard() {
   useEffect(() => {
     if (!next) return;
     let timeout = setTimeout(() => {
-      setAppear("");
       setNext(false);
     }, 1000);
     return () => {
-      setAppear("appear");
       clearTimeout(timeout);
     };
   });
