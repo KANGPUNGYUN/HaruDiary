@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 
 export const baseStyles = css`
-  display: inline-block;
+  display: flex;
   padding: 0;
   border: 1px solid transparent;
   background: none;
@@ -19,6 +19,7 @@ export const baseStyles = css`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  gap: 10px;
   width: auto;
   height: 40px;
   border-radius: 4px;
@@ -60,3 +61,7 @@ export const variants = {
     }
   `,
 };
+
+export const circleButton = css`
+  border-radius: 50%;
+`;

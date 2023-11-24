@@ -1,13 +1,14 @@
 "use client";
 import { ReactNode, CSSProperties, MouseEventHandler } from "react";
 import styled from "styled-components";
-import { baseStyles, variants } from "./ButtonStyles";
+import { baseStyles, variants, circleButton } from "./ButtonStyles";
 import { Icon } from "../Icon/Icon";
 
 type Props = {
   variant?: keyof typeof variants;
   width?: CSSProperties["width"];
   height?: CSSProperties["height"];
+  backgroundColor?: CSSProperties["backgroundColor"];
   children: ReactNode;
 };
 
@@ -15,17 +16,20 @@ type StyledButtonProps = {
   $variant: Props["variant"];
   isLoading: boolean;
   iconOnly: boolean;
+  isCircleButton: boolean;
 };
 
 const StyledButton = styled.button<StyledButtonProps>`
   ${baseStyles};
-  ${(p) => (p.$variant !== undefined ? variants[p.$variant] : "primary")};
+  ${(p) => (p.$variant !== undefined ? variants[p.$variant] : "")};
+  ${(p) => (!!p.isCircleButton ? circleButton : "")};
 `;
 
 export const IconButton = ({
-  variant = "primary",
+  variant,
   width = "80px",
   height = "40px",
+  backgroundColor,
   children,
   isLoading,
   onClick,
@@ -45,7 +49,7 @@ export const IconButton = ({
   };
   return (
     <StyledButton
-      style={{ width, height }}
+      style={{ width, height, backgroundColor }}
       $isLoading={isLoading}
       onClick={handleClick}
       $variant={variant}

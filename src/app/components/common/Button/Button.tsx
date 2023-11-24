@@ -17,11 +17,11 @@ type StyledButtonProps = {
 
 const StyledButton = styled.button<StyledButtonProps>`
   ${baseStyles};
-  ${(p) => (p.$variant !== undefined ? variants[p.$variant] : "primary")};
+  ${(p) => (p.$variant !== undefined ? variants[p.$variant] : "")};
 `;
 
 export const Button = ({
-  variant = "primary",
+  variant,
   width = "80px",
   height = "40px",
   children,
