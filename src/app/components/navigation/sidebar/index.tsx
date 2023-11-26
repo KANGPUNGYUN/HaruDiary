@@ -5,8 +5,8 @@ import { GowunBatang } from "@/app/styles/font";
 import Link from "next/link";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "../navbar/Button";
 import Logo from "../navbar/Logo";
+import SigninButton from "../navbar/SigninButton";
 
 interface MenuList {
   id: Number;
@@ -113,7 +113,7 @@ export default function Sidebar({
             </button>
           </div>
           <Link href="/sign_in">
-            <Button />
+            <SigninButton />
           </Link>
           <hr className="m-sidebar-tabmenu-hr" />
           <ul className="m-sidebar-tabmenu-ul">

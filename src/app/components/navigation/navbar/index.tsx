@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Logo from "./Logo";
-import Button from "./Button";
+import SigninButton from "./SigninButton";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSession } from "next-auth/react";
@@ -84,9 +84,7 @@ export default function Navbar({ toggle }: { toggle: () => void }) {
                 </li>
               ))}
               <li className="p-navbar-tabmenu-item-login">
-                <Link href="/sign_in">
-                  <Button />
-                </Link>
+                <SigninButton />
               </li>
             </ul>
             <button

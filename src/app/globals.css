@@ -332,7 +332,7 @@ a {
   background-color: rgba(2, 32, 71, 0.05);
 }
 
-.p-navbar-tabmenu-item-login > a > button {
+.p-navbar-tabmenu-item-login > button {
   display: inline-block;
   margin: 0 0 0 10px;
   padding: 0;
@@ -365,7 +365,7 @@ a {
   overflow: hidden;
 }
 
-.p-navbar-tabmenu-item-login > a > button:hover {
+.p-navbar-tabmenu-item-login > button:hover {
   background-color: #009fce;
 }
 
