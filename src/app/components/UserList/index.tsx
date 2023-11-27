@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import Image from "next/image";
 import { GowunBatang } from "@/app/styles/font";
+import UserListSkeleton from "./UserListSkeleton";
 
 interface userListData {
   id: number;
@@ -48,6 +49,7 @@ export default function UserList() {
       { name: e.target.value }
     );
     const userList = await res.data;
+    console.log("유저 검색");
     setUserList(userList);
     setSearchText(e.target.value);
     if (e.target.value !== "") {
@@ -106,63 +108,7 @@ export default function UserList() {
       </p>
       <ol className="p-user-list">
         {!isResolved ? (
-          <>
-            <li className="p-user-list-item">
-              <Link href="/">
-                <div className="p-user-list-user-profile-image__outer">
-                  <div className="avatar-skeleton"></div>
-                </div>
-                <div className="p-user-list-user-profile">
-                  <div className="p-user-list-user-name skeleton-loader"></div>
-                  <div className="p-user-list-user-diarys skeleton-loader"></div>
-                </div>
-              </Link>
-            </li>
-            <li className="p-user-list-item">
-              <Link href="/">
-                <div className="p-user-list-user-profile-image__outer">
-                  <div className="avatar-skeleton"></div>
-                </div>
-                <div className="p-user-list-user-profile">
-                  <div className="p-user-list-user-name skeleton-loader"></div>
-                  <div className="p-user-list-user-diarys skeleton-loader"></div>
-                </div>
-              </Link>
-            </li>
-            <li className="p-user-list-item">
-              <Link href="/">
-                <div className="p-user-list-user-profile-image__outer">
-                  <div className="avatar-skeleton"></div>
-                </div>
-                <div className="p-user-list-user-profile">
-                  <div className="p-user-list-user-name skeleton-loader"></div>
-                  <div className="p-user-list-user-diarys skeleton-loader"></div>
-                </div>
-              </Link>
-            </li>
-            <li className="p-user-list-item">
-              <Link href="/">
-                <div className="p-user-list-user-profile-image__outer">
-                  <div className="avatar-skeleton"></div>
-                </div>
-                <div className="p-user-list-user-profile">
-                  <div className="p-user-list-user-name skeleton-loader"></div>
-                  <div className="p-user-list-user-diarys skeleton-loader"></div>
-                </div>
-              </Link>
-            </li>
-            <li className="p-user-list-item">
-              <Link href="/">
-                <div className="p-user-list-user-profile-image__outer">
-                  <div className="avatar-skeleton"></div>
-                </div>
-                <div className="p-user-list-user-profile">
-                  <div className="p-user-list-user-name skeleton-loader"></div>
-                  <div className="p-user-list-user-diarys skeleton-loader"></div>
-                </div>
-              </Link>
-            </li>
-          </>
+          <UserListSkeleton />
         ) : userList.length === 0 ? (
           <li>일치하는 닉네임의 회원이 없습니다.</li>
         ) : (
