@@ -113,7 +113,7 @@ export default function Sidebar({
             </button>
           </div>
           <Link href="/sign_in">
-            <SigninButton />
+            <SigninButton width="100%" />
           </Link>
           <hr className="m-sidebar-tabmenu-hr" />
           <ul className="m-sidebar-tabmenu-ul">

@@ -3,13 +3,13 @@ import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Button } from "../../common/Button/Button";
 
-function SigninButton() {
+function SigninButton({ width }: { width: string }) {
   const { data: session } = useSession();
 
   if (session && session.user) {
     return (
       <>
-        <Button variant="primary" width="82px" onClick={() => signOut()}>
+        <Button variant="primary" width={width} onClick={() => signOut()}>
           로그아웃
         </Button>
       </>
@@ -17,7 +17,7 @@ function SigninButton() {
   } else {
     return (
       <>
-        <Button variant="primary" width="82px" onClick={() => signIn()}>
+        <Button variant="primary" width={width} onClick={() => signIn()}>
           로그인
         </Button>
       </>

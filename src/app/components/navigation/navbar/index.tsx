@@ -84,7 +84,7 @@ export default function Navbar({ toggle }: { toggle: () => void }) {
                 </li>
               ))}
               <li className="p-navbar-tabmenu-item-login">
-                <SigninButton />
+                <SigninButton width="82px" />
               </li>
             </ul>
             <button
