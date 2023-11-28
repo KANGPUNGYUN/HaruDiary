@@ -1,37 +1,46 @@
 "use client";
 import { ReactNode, CSSProperties, MouseEventHandler } from "react";
 import styled from "styled-components";
-import { baseStyles, variants, circleButton } from "./ButtonStyles";
+import { baseStyles } from "./ButtonStyles";
 import { Icon } from "../Icon/Icon";
+import Link from "next/link";
+import { LinkProps } from "next/dist/client/link";
 
-type Props = {
-  variant?: keyof typeof variants;
+interface Props {
   width?: CSSProperties["width"];
   height?: CSSProperties["height"];
   backgroundColor?: CSSProperties["backgroundColor"];
+  borderRadius?: CSSProperties["borderRadius"];
   children: ReactNode;
-};
+  buttonType:
+    | (React.ComponentPropsWithoutRef<"button"> & { renderAs: "button" })
+    | ({
+        renderAs: "link";
+        href: string;
+      } & React.ComponentPropsWithoutRef<"a">)
+    | ({
+        renderAs: "routerLink";
+        href: string;
+      } & React.PropsWithChildren<LinkProps>);
+}
 
 type StyledButtonProps = {
-  $variant: Props["variant"];
   isLoading: boolean;
   iconOnly: boolean;
-  isCircleButton: boolean;
 };
 
 const StyledButton = styled.button<StyledButtonProps>`
   ${baseStyles};
-  ${(p) => (p.$variant !== undefined ? variants[p.$variant] : "")};
-  ${(p) => (!!p.isCircleButton ? circleButton : "")};
 `;
 
 export const IconButton = ({
-  variant,
   width = "80px",
   height = "40px",
   backgroundColor,
+  borderRadius,
   children,
   isLoading,
+  buttonType,
   onClick,
   icon,
   iconSize,
@@ -47,12 +56,64 @@ export const IconButton = ({
 
     onClick?.(event);
   };
+  if (buttonType.renderAs === "link") {
+    return (
+      <StyledButton
+        as={"a"}
+        href={buttonType.href}
+        target="_blank"
+        rel="noopener"
+        style={{ width, height, backgroundColor, borderRadius }}
+        $isLoading={isLoading}
+        onClick={handleClick}
+        {...props}
+      >
+        {isLoading ? (
+          <div className="button-loading" />
+        ) : iconOnly ? (
+          <>
+            <Icon icon={icon} size={iconSize} color={iconColor} />{" "}
+            <span className="p-blind">{children}</span>
+          </>
+        ) : (
+          <>
+            <Icon icon={icon} size={iconSize} color={iconColor} /> {children}
+          </>
+        )}
+      </StyledButton>
+    );
+  }
+
+  if (buttonType.renderAs === "routerLink") {
+    return (
+      <Link href={buttonType.href}>
+        <StyledButton
+          style={{ width, height, backgroundColor, borderRadius }}
+          $isLoading={isLoading}
+          onClick={handleClick}
+          {...props}
+        >
+          {isLoading ? (
+            <div className="button-loading" />
+          ) : iconOnly ? (
+            <>
+              <Icon icon={icon} size={iconSize} color={iconColor} />{" "}
+              <span className="p-blind">{children}</span>
+            </>
+          ) : (
+            <>
+              <Icon icon={icon} size={iconSize} color={iconColor} /> {children}
+            </>
+          )}
+        </StyledButton>
+      </Link>
+    );
+  }
   return (
     <StyledButton
-      style={{ width, height, backgroundColor }}
+      style={{ width, height, backgroundColor, borderRadius }}
       $isLoading={isLoading}
       onClick={handleClick}
-      $variant={variant}
       {...props}
     >
       {isLoading ? (

@@ -34,6 +34,10 @@ export const baseStyles = css`
     cursor: none;
     pointer-events: none;
   }
+
+  &:hover {
+    opacity: 0.6;
+  }
 `;
 
 export const variants = {

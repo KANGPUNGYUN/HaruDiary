@@ -82,10 +82,6 @@ export default function UserList() {
 
   return (
     <>
-      <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
-      />
       <div className="p-user-search-bar__outer">
         <div className="p-user-search-bar">
           <span className="p-user-search-bar-icon">
