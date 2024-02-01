@@ -51,27 +51,6 @@ export default function SignInSNS() {
             />
           </button>
         </li>
-        <li
-          className="p-signin-sns-list-item"
-          style={{ backgroundColor: "var(--white)" }}
-        >
-          <button
-            onClick={async () => {
-              const signInGoogle = {
-                redirect: true,
-                callbackUrl: "/",
-              };
-              await signIn("google", signInGoogle);
-            }}
-          >
-            <Image
-              src="/google_logo.svg"
-              alt="구글로 간편 로그인하기"
-              width="64"
-              height="64"
-            />
-          </button>
-        </li>
       </ul>
     </>
   );
