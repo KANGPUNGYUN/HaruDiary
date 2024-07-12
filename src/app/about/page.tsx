@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Accordion from "@/app/components/accordion";
 import { GowunBatang } from "@/app/styles/font";
-import MediaCapture from "../components/MediaCapture";
 
 const qnaList = [
   {
@@ -104,7 +103,6 @@ export default function About() {
               })}
             </ol>
           </div>
-          <MediaCapture />
         </div>
       </main>
     </>
